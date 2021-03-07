@@ -1,5 +1,4 @@
 # Guide to Contributing
-<<<<<<< HEAD
 
 ### Values and Expectations
 This project serves to create an organized and centralized platform where K-pop artist card collectors can easily buy and sell photo cards. The team values effective communication and collaboration therefore it is expected that others who want to contribute to this project as well uphold these values. If a contribution is made, it should be fully completed in a timely manner in order for it not to hinder the progress of the project. For example, if a new feature is to be implemented, this feature must be completed in full; a half done implementation will not be approved.
@@ -17,6 +16,3 @@ Any disagreements or conflicts will be resolved through clear communication and 
 Click the fork button in the repository and from that fork, clone the repository locally from Github through terminal using **git clone URL**. Go to the location of the fork you cloned on your local computer with the **cd** command and type **git remote -v** which you should see the current configured remote repository for the fork. Then type **git remote add upstream URL** and paste the same cloned URL so that the fork is synced with the upstream repository. Next create branches for your edits with **git checkout -b nameofbranch**.
 
 ### Instructions for Building and Testing  
-=======
-Delete the contents of this file and replace with the contents of a proper guide to contributing to this project, as described in the [instructions](./instructions.md)
->>>>>>> 11d340a8522fc3923252397fe9fe762b6bbe475a
