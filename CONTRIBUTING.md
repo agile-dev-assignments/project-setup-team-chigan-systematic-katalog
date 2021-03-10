@@ -1,5 +1,9 @@
 # Guide to Contributing
 
+### Standup Schedule
+Monday and Wednesday 3pm
+Friday 12:15pm
+
 ### Values and Expectations
 This project serves to create an organized and centralized platform where K-pop artist card collectors can easily buy and sell photo cards. The team values effective communication and collaboration therefore it is expected that others who want to contribute to this project as well uphold these values. If a contribution is made, it should be fully completed in a timely manner in order for it not to hinder the progress of the project. For example, if a new feature is to be implemented, this feature must be completed in full; a half done implementation will not be approved.
 
