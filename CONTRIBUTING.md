@@ -2,6 +2,7 @@
 
 ### Standup Schedule
 Monday and Wednesday 3pm
+
 Friday 12:15pm
 
 ### Values and Expectations
