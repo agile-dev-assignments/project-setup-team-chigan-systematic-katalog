@@ -1,3 +1,10 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'PT Sans', sans-serif;
+}
+
 .sliderimg{
     display: block;
     margin-top: 30px;
@@ -60,27 +67,32 @@ ul.alice-carousel__dots{
 
 @media (min-width: 700px) {
 
-    /* .photocard{
+    .photocard{
+        max-width: 1000px;
+        margin: 30px auto 0 auto;
         display: flex;
-        margin-left: 100px;
-        margin-right: 100px;
     }
 
-    .images{
+    .firstColumn{
         width: 50%;
+        flex: 1;
     }
-    */
 
+    .secondColumn{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        margin-right: 50px;
+    }
+   
     .photocardDesc{
-        /* flex: 1;
-        margin-left: 0px;
-        margin-top: 50px; */
-        text-align: center;
+        flex: 1;
+        margin-left: 0;
     }
 
     .rect{
-        width: 640px;
-        height: 500px;
+        flex: 2;
+        width: 100%;
     }
 
 }

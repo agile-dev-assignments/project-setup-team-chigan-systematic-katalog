@@ -18,7 +18,7 @@ function Photocard(props){
     return (
         <div>
             <div className="photocard">
-                <div className="images">
+                <div className="firstColumn">
                     <AliceCarousel disableButtonsControls>
                         <div>
                             <img src={props.image[0]} alt="front photocard" className="sliderimg"/>
@@ -30,25 +30,27 @@ function Photocard(props){
                         </div>
                     </AliceCarousel>
                 </div>
-                <div className="photocardDesc">
-                    <h3>{props.name}</h3>
-                    <p>{props.grp}</p>
-                    <p>Member: {props.member}</p>
-                    <p>Album: {props.album}</p>
+                <div className="secondColumn">
+                    <div className="photocardDesc">
+                        <h3>{props.name}</h3>
+                        <p>{props.grp}</p>
+                        <p>Member: {props.member}</p>
+                        <p>Album: {props.album}</p>
+                    </div>
+                    <div className="rect">
+                        <ResponsiveContainer width="95%" height="85%">
+                            <LineChart width={300} height={200} data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }} className="graph">
+                                <Line type="monotone" dataKey="price" stroke="#8884d8" />
+                                <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+                                <XAxis dataKey="name" />
+                                <YAxis />
+                                <Tooltip />
+                            </LineChart>
+                        </ResponsiveContainer>
+                        <p className="graphDesc">Avg Price: ${avgPrice}</p>
+                    </div>    
                 </div>
             </div>
-            <div className="rect">
-                <ResponsiveContainer width="95%" height="85%">
-                    <LineChart width={300} height={200} data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }} className="graph">
-                        <Line type="monotone" dataKey="price" stroke="#8884d8" />
-                        <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-                        <XAxis dataKey="name" />
-                        <YAxis />
-                        <Tooltip />
-                    </LineChart>
-                </ResponsiveContainer>
-                <p className="graphDesc">Avg Price: ${avgPrice}</p>
-            </div>    
         </div>
         
     )
