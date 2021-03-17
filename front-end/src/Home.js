@@ -9,9 +9,6 @@ import TextField from "@material-ui/core/TextField";
 import {Grid} from "@material-ui/core";
 
 const Home = (props) => {
-
-
-
   return (
 
     <div className="Home">
@@ -42,7 +39,6 @@ const Home = (props) => {
     </div>
   )
 }
-
 
 
 export default Home

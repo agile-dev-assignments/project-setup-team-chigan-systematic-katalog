@@ -5,6 +5,7 @@ nav {
   padding: 20px;
   margin: 20px 0; /* no margin on left or right */
   text-align: center;
+  background-color: #8093F1
 }
 
 nav a {
