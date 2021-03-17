@@ -6,6 +6,7 @@ import Search from './Search'
 import Profile from './Profile'
 import FAQ from './FAQ'
 import About from './About'
+import Login from './Login'
 import AnimalsList from './AnimalsList'
 import Animal from './Animal'
 import './App.css'
@@ -28,6 +29,10 @@ const App = (props) => {
     <div className="container">
       <Router>
         <Switch>
+        <Route path="/login">
+            <PrimaryNav />
+            <Login />
+          </Route>
 
           <Route path="/search">
             <PrimaryNav />
