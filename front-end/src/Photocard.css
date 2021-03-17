@@ -1,0 +1,99 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'PT Sans', sans-serif;
+}
+
+.sliderimg{
+    display: block;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    max-width: 376px;
+    max-height: 600px;
+}
+
+ul.alice-carousel__dots{
+    margin-top: 15px;
+}
+
+.imgDesc{
+    font-family: sans-serif;
+    color:lightgrey;
+    text-align: center;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+.photocard{
+    position: relative;
+}
+
+.photocardDesc{
+    display: block;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 15px;
+}
+
+.rect{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    width: 320px;
+    height: 250px;
+    background-color: #edece8;
+    border-radius: 20px;
+}
+
+.graph{
+    position: absolute;
+    margin-top: 20px;
+}
+
+.graphDesc{
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+    font-family: sans-serif;
+    color: darkgrey;
+}
+
+@media (min-width: 700px) {
+
+    .photocard{
+        max-width: 1000px;
+        margin: 30px auto 0 auto;
+        display: flex;
+    }
+
+    .firstColumn{
+        width: 50%;
+        flex: 1;
+    }
+
+    .secondColumn{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        margin-right: 50px;
+    }
+   
+    .photocardDesc{
+        flex: 1;
+        margin-left: 0;
+    }
+
+    .rect{
+        flex: 2;
+        width: 100%;
+    }
+
+}
