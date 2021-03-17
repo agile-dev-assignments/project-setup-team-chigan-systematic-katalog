@@ -1,2 +1,14 @@
-.Home {
+.Home img {
+    justify-content: center;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
 }
+
+.Home h1{
+    display: flex;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
