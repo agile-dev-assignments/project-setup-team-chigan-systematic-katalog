@@ -6,9 +6,10 @@ import Search from './Search'
 import Profile from './Profile'
 import FAQ from './FAQ'
 import About from './About'
+import Login from './Login'
+import AnimalsList from './AnimalsList'
 import Animal from './Animal'
 import './App.css'
-import PhotocardPage from './PhotocardPage'
 
 
 // this is used in one of the routes below for a specific animal with a specific id
@@ -28,6 +29,10 @@ const App = (props) => {
     <div className="container">
       <Router>
         <Switch>
+        <Route path="/login">
+            <PrimaryNav />
+            <Login />
+          </Route>
 
           <Route path="/search">
             <PrimaryNav />
@@ -53,7 +58,7 @@ const App = (props) => {
 
           <Route path="/animals">
             <PrimaryNav />
-            <PhotocardPage />
+            <AnimalsList />
           </Route>
 
           <Route path="/">
