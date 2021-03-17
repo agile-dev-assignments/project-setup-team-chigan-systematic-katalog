@@ -1,0 +1,27 @@
+
+h1{
+	text-align: center;
+}
+
+.Login {
+    padding: 0px 60px 30px;
+}
+
+.Login form {
+    margin: 0 auto;
+    max-width: 320px;
+    padding-bottom: auto;
+}
+
+.center {
+	margin: auto;
+	vertical-align: middle;
+}
+
+links {
+    display: flex;
+}
+
+links a {
+    margin: 20px 50px 10px 0px;
+}
