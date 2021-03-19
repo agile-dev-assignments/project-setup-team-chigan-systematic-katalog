@@ -1,0 +1,107 @@
+.menu {
+    border-width: 1px 0 1px 19px; 
+    font-family: georgia;
+    padding: 20px;
+    margin: auto;
+    text-align: center;
+    overflow: hidden;
+    width: 80%;
+    background-color: blueviolet;
+}
+  
+.menu p {
+    text-decoration: none;
+    color: black;
+    margin: auto;
+    width: 25%;
+    float: left;
+    font-size: 16px;
+    text-align: center;
+    padding: 14px 16px;
+}
+.photocard-container {
+    border: 3px solid black;
+    width: 80%;
+    margin: auto;
+    margin-top: 1%;
+}
+.cards {
+    width: 80%;
+    margin: auto;
+}
+
+.card {
+  border: 3px solid black;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+.image {
+  margin-left: 5%;
+  width: 30%;
+}
+
+
+.card img {
+    float: left;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.card p {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 50%;
+    margin-right: 0;
+}
+
+.card address {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 50%;
+    margin-right: 0;
+}
+
+.sortmenu {
+
+}
+
+
+.sortBy{
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  text-align: left;
+  
+}
+
+.sort {
+  width: 60%;
+  margin: auto;
+}
+
+.sortmenu {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.sortmenu p {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: none;
+}
+
+.content {
+  width: 80%;
+  margin: auto;
+}
