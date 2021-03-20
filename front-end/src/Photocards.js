@@ -90,7 +90,7 @@ const dataTrading2 = {
 	loc: "NY",
 	want: "?????",
 	shipTo: "NYC",
-	date: "35"
+	date: "3"
 }
 
 const dataTrading3 = {
@@ -110,29 +110,70 @@ const dataLookingFor = {
 	date: "3"
 }
 
-let dataS = [dataSelling, dataSelling1, dataSelling2,dataSelling3]
-let dataT = [dataTrading, dataTrading2, dataTrading3]
-let dataL = [dataLookingFor, dataLookingFor, dataLookingFor]
+const dataLookingFor1 = {
+	picture: "https://stylecaster.com/wp-content/uploads/2019/12/black-pink.jpg",
+	username: "???",
+	loc: "NY",
+	offer: "?????",
+	shipTo: "NYC",
+	date: "5553"
+}
 
+const dataLookingFor2 = {
+	picture: "https://stylecaster.com/wp-content/uploads/2019/12/black-pink.jpg",
+	username: "???",
+	loc: "NY",
+	offer: "?????",
+	shipTo: "NYC",
+	date: "35"
+}
 
+const dataS = [dataSelling, dataSelling1, dataSelling2,dataSelling3]
+const dataT = [dataTrading, dataTrading2, dataTrading3]
+const dataL = [dataLookingFor, dataLookingFor1, dataLookingFor2]
 
-const SortTrading = () => {
+const sortAccording = {
+	1: "date",
+	2: "date",
+	3: "price",
+	4: "price"
+}
+
+const sortData = (type, setData, data) => {
+	const sortType =sortAccording[type];
+	const sorted = (type == 1 || type == 3 ) ? [...data].sort((a, b) => b[sortType] - a[sortType]) : [...data].sort((b, a) => b[sortType] - a[sortType])
+	setData(sorted);
+}
+
+const Trading = (props) => {
 	const [sort, setSort] = React.useState('');
+	const [data, setData] = React.useState(dataT);
 
-  	const changeSort = (sort) => {
-    	setSort(sort);
- 	}
+	const sortAccording = {
+		1: "date",
+		2: "date"
+	}
 
 	return (
-		
-		<div className = "sort">
-			<select className="sortBy" value = {sort} onChange={event => changeSort(event.target.value)}>
-            	<option value="0" >Sort By:</option>
-            	<option value="1" >Oldest</option>
-				<option value="2" >Newest</option>
-        	</select>
+		<div className = "content">
+			<div className = "sort">
+				<select className="sortBy" value = {sort} onChange={event => {setSort(event.target.value); sortData(event.target.value, setData, dataT)}}>
+					<option value="0" >Sort By:</option>
+					<option value="1" >Newest</option>
+					<option value="2" >Oldest</option>
+				</select>
+			</div>
+			<div>
+				<div className = "cards">
+					{data.map((item) => (
+						<CardTrading data = {item}/>
+					))}
+				</div>
+			</div>
 		</div>
 	)
+
+	
 }
 
 const Selling = (props) => {
@@ -145,17 +186,11 @@ const Selling = (props) => {
 		3: "price",
 		4: "price"
 	}
-	const sortDataL = type => {
-		const sortType =sortAccording[type];
-		console.log(type)
-		const sorted = (type == 1 || type == 3 ) ? [...dataS].sort((a, b) => b[sortType] - a[sortType]) : [...dataS].sort((b, a) => b[sortType] - a[sortType])
-		setData(sorted);
-	}
 
 	return (
 		<div className = "content">
 			<div className = "sort">
-				<select className="sortBy" value = {sort} onChange={event => {setSort(event.target.value); sortDataL(event.target.value) }}>
+				<select className="sortBy" value = {sort} onChange={event => {setSort(event.target.value); sortData(event.target.value, setData, dataS)}}>
 					<option value="0" >Sort By: Default </option>
 					<option value="1" >Newest</option>
 					<option value="2" >Oldest</option>
@@ -170,52 +205,30 @@ const Selling = (props) => {
 					))}
 				</div>
 			</div>
-	</div>
-	)
-}
-
-
-const SortLookingFor = () => {
-	const [sort, setSort] = React.useState('');
-
-  	const changeSort = (sort) => {
-    	setSort(sort);
- 	}
-
-	return (
-		<div className = "sort">
-			<select className="sortBy" value = {sort} onChange={event => changeSort(event.target.value)}>
-            	<option value="0" >Sort By:</option>
-            	<option value="1" >Newest</option>
-				<option value="2" >Oldest</option>
-        	</select>
 		</div>
 	)
 }
 
-	
-	
-const Trading = (props) => {
-	return (
-		<div className = "content">
-			<SortTrading/>
-			<div className = "cards">
-				{dataT.map((item) => (
-          			<CardTrading data = {item}/>
-        		))}
-			</div>
-		</div>
-	)
-}
 
 const LookingFor = (props) => {
+	const [sort, setSort] = React.useState('');
+	const [data, setData] = React.useState(dataL);
+	
 	return (
 		<div className = "content">
-			<SortLookingFor/>
-			<div className = "cards">
-				{dataL.map((item) => (
-          			<CardLookingFor data = {item}/>
-        		))}
+			<div className = "sort">
+				<select className="sortBy" value = {sort} onChange={event => {setSort(event.target.value); sortData(event.target.value, setData, dataL) }}>
+					<option value="0" >Sort By:</option>
+					<option value="1" >Newest</option>
+					<option value="2" >Oldest</option>
+				</select>
+			</div>
+			<div>
+				<div className = "cards">
+					{data.map((item) => (
+						<CardLookingFor data = {item}/>
+					))}
+				</div>
 			</div>
 		</div>
 	)
