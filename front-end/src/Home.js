@@ -8,6 +8,9 @@ import SearchIcon from "@material-ui/icons/Search";
 import TextField from "@material-ui/core/TextField";
 import {Grid} from "@material-ui/core";
 import { Form, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+
+import { Link } from 'react-router-dom';
+
 const Home = (props) => {
   return (
     <div>
@@ -31,7 +34,9 @@ const Home = (props) => {
             endAdornment: (
               <InputAdornment position="start">
                 <IconButton>
-                  <SearchIcon />
+                  <Link to="/results">
+                    <SearchIcon />
+                  </Link>
                 </IconButton>
               </InputAdornment>
           )

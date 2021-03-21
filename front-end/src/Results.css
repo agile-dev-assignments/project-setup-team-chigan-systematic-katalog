@@ -1,0 +1,76 @@
+.Results img{
+    
+    width: 200px;
+    height: 200px;
+    
+}
+
+.Results p{
+    text-align: center;
+    padding-bottom: 5px;
+
+}
+
+.Results h1 {
+    justify-content: left;
+    font-size: large;
+
+}
+
+.Results #resultstext {
+    color: #B388EB;
+    float: left;
+    font-size: large;
+}
+
+.Results a{
+    padding: 15px;
+}
+
+.Results p4{
+    text-align: left;
+    float:right;
+    padding-right: 400px;
+    padding-top: 50px;
+    margin: auto;
+    font-size: large;
+    
+}
+
+.Results #middle-content{
+    padding: 5px;
+}
+
+.Results #filterstext {
+    color: #B388EB;
+    float: right;
+    font-size: large;
+    justify-content: right;
+}
+
+.Results #main-content{
+    border: 5px solid #B388EB;
+    
+}
+
+.Results {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.Results button{
+    color: #8093f1;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    margin: 0em;
+    font: 400 11px system-ui;
+    padding: 1px 7px 2px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #8093f1;
+}
