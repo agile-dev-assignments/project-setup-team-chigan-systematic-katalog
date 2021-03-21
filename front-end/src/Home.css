@@ -3,6 +3,7 @@
     display: block;
     margin-right: auto;
     margin-left: auto;
+    border-width: 5;
 }
 
 .Home h1{
@@ -36,8 +37,5 @@
     border-style: solid;
     border-color: #8093f1;
 }
-
-
-
 
 
