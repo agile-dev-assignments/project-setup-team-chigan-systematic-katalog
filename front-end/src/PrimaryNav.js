@@ -10,7 +10,6 @@ const PrimaryNav = (props) => {
       <Link to="/profile">Profile</Link>
       <Link to="/faq">FAQ</Link>
       <Link to="/about">About</Link>
-      <Link to="/animals">Animals</Link>
     </nav>
   )
 }
