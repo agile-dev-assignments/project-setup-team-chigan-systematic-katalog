@@ -1,4 +1,4 @@
-p, h1, h3 {
+.About p, .About h1, .About h3 {
     text-align: center;
     font-family: sans-serif;
 }
@@ -23,6 +23,6 @@ p, h1, h3 {
     color: black;
 }
 
-a:hover {
+.About a:hover {
     color: #B388EB;
 }
