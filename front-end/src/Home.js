@@ -11,12 +11,14 @@ import { Form, Button, FormGroup, FormControl, ControlLabel } from "react-bootst
 
 import { Link } from 'react-router-dom';
 
+const logo = ["logo.png"]
+
 const Home = (props) => {
   return (
     <div>
 
     <div className="Home">
-      <img alt="logo" src="https://picsum.photos/200?page=home" />
+      <img className="logo" alt="logo" src={logo}/>
       <h1>katalog</h1>
 
       <Grid container direction="column" alignItems="center" justify="center">
