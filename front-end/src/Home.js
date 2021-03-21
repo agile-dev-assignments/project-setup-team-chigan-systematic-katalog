@@ -60,20 +60,27 @@ const Home = (props) => {
             resizeMode: "repeat",
             display: "flex",
             padding: 1,
+            borderWidth: 3,
+            borderColor: '#B388EB',
             height: 100,
             width: 100
-          }}/>
+          }}/> 
                 <img alt="Photocard 2" src="images/image3.jpg"style={{
             resizeMode: "repeat",
             display: "flex",
             padding: 1,
+            borderWidth: 5,
+            borderColor: '#B388EB',
             height: 100,
+
             width: 100
           }} />
                 <img alt="Photocard 3" src="images/image4.jpg"style={{
             resizeMode: "repeat",
             display: "flex",
             padding: 1,
+            borderWidth: 5,
+            borderColor: '#B388EB',
             height: 100,
             width: 100
           }}/>
@@ -81,6 +88,8 @@ const Home = (props) => {
             resizeMode: "repeat",
             display: "flex",
             padding: 1,
+            borderWidth: 5,
+            borderColor: '#B388EB',
             height: 100,
             width: 100
           }}/>
@@ -88,6 +97,8 @@ const Home = (props) => {
             resizeMode: "repeat",
             display: "flex",
             padding: 1,
+            borderWidth: 5,
+            borderColor: '#B388EB',
             height: 100,
             width: 100
           }}/>
@@ -105,6 +116,8 @@ const Home = (props) => {
             resizeMode: "repeat",
             display: "flex",
             padding: 1,
+            borderWidth: 5,
+            borderColor: '#B388EB',
             height: 100,
             width: 100
           }}/>
@@ -112,6 +125,8 @@ const Home = (props) => {
             resizeMode: "repeat",
             display: "flex",
             padding: 1,
+            borderWidth: 5,
+            borderColor: '#B388EB',
             height: 100,
             width: 100
           }} />
@@ -119,6 +134,8 @@ const Home = (props) => {
             resizeMode: "repeat",
             display: "flex",
             padding: 1,
+            borderWidth: 5,
+            borderColor: '#B388EB',
             height: 100,
             width: 100
           }}/>
@@ -126,6 +143,8 @@ const Home = (props) => {
             resizeMode: "repeat",
             display: "flex",
             padding: 1,
+            borderWidth: 5,
+            borderColor: '#B388EB',
             height: 100,
             width: 100
           }}/>
@@ -134,6 +153,8 @@ const Home = (props) => {
             display: "flex",
             padding: 1,
             height: 100,
+            borderWidth: 5,
+            borderColor: '#B388EB',
             width: 100
           }}/>
 
@@ -144,10 +165,6 @@ const Home = (props) => {
   </div>
   )
 }
-
-
-
-
 
 
 export default Home
