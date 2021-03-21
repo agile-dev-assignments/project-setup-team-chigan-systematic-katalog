@@ -1,0 +1,14 @@
+.Results img{
+    justify-content: left
+}
+
+.Results h1 {
+    justify-content: left;
+    font-size: large;
+
+}
+
+.Results {
+    padding-left: 50px;
+    padding-right: 50px;
+}

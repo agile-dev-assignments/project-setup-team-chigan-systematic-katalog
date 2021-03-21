@@ -9,6 +9,7 @@ import About from './About'
 import AnimalsList from './AnimalsList'
 import Animal from './Animal'
 import './App.css'
+import Results from './Results'
 
 
 // this is used in one of the routes below for a specific animal with a specific id
@@ -54,6 +55,11 @@ const App = (props) => {
           <Route path="/animals">
             <PrimaryNav />
             <AnimalsList />
+          </Route>
+
+          <Route path="/results">
+            <PrimaryNav />
+            <Results />
           </Route>
 
           <Route path="/">
