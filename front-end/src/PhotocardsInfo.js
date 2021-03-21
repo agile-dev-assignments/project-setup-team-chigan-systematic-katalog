@@ -1,7 +1,6 @@
 import React from 'react'
-// import { filterProps } from 'recharts/types/util/types'
 // import logo from './logo.svg'
-import './Photocards.css'
+import './PhotocardsInfo.css'
 
 
 
@@ -30,12 +29,6 @@ const Photocards = (props) => {
 		</div>
 	)
 }
-
-
-// const PhotocardsMenu = () => {
-	
-	
-// }
 
 
 const dataSelling = {
@@ -149,11 +142,6 @@ const Trading = (props) => {
 	const [sort, setSort] = React.useState('');
 	const [data, setData] = React.useState(dataT);
 
-	const sortAccording = {
-		1: "date",
-		2: "date"
-	}
-
 	return (
 		<div className = "content">
 			<div className = "sort">
@@ -179,13 +167,6 @@ const Trading = (props) => {
 const Selling = (props) => {
 	const [sort, setSort] = React.useState('');
 	const [data, setData] = React.useState(dataS);
-
-	const sortAccording = {
-		1: "date",
-		2: "date",
-		3: "price",
-		4: "price"
-	}
 
 	return (
 		<div className = "content">
