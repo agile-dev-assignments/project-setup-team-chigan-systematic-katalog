@@ -1,14 +1,14 @@
-// referenced source: https://serverless-stack.com/chapters/create-a-login-page.html
+// referenced source: https://serverless-stack.com/chapters/create-a-SignUp-page.html
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Link } from 'react-router-dom'
 import Checkboxes from "./Checkboxes";
 // import logo from './logo.svg';
-import './Login.css'
+import './SignUp.css'
 
 
-function Login(props) {
+function SignUp(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -21,11 +21,11 @@ function Login(props) {
   }
 
   return (
-    <div className="Login">
-      <h1>Login</h1>
+    <div className="SignUp">
+      <h1>SignUp</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group size="lg" controlId="email">
-          <p>Username/Email</p>
+          <p>Email</p>
           <Form.Control
             autoFocus
             type="email"
@@ -45,13 +45,13 @@ function Login(props) {
         <links>
           <Link to="/">Forgot Password</Link>
           <br></br>
-          <Link to="/signup">Sign Up</Link>
+          <Link to="/">Sign Up</Link>
         </links>
         
         <Checkboxes className='center'/>
         <br/>
         <Button block size="lg" type="submit" disabled={!validateForm()}>
-          Login
+          SignUp
         </Button>
         <br/>
       </Form>
@@ -59,4 +59,4 @@ function Login(props) {
   );
 };
 
-export default Login
+export default SignUp

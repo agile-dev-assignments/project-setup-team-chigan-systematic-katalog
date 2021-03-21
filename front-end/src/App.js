@@ -7,7 +7,8 @@ import Profile from './Profile'
 import FAQ from './FAQ'
 import About from './About'
 import Login from './Login'
-import AnimalsList from './AnimalsList'
+import SignUp from './SignUp'
+// import AnimalsList from './AnimalsList'
 import Animal from './Animal'
 import './App.css'
 import Results from './Results'
@@ -34,6 +35,11 @@ const App = (props) => {
         <Route path="/login">
             <PrimaryNav />
             <Login />
+          </Route>
+
+          <Route path="/signup">
+            <PrimaryNav />
+            <SignUp />
           </Route>
 
           <Route path="/search">
