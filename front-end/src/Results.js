@@ -9,6 +9,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import TextField from "@material-ui/core/TextField";
 import {Grid} from "@material-ui/core"
 import { Form, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { Link } from 'react-router-dom'
 import PhotocardPage from './PhotocardPage';
 
 
@@ -42,12 +43,14 @@ const Results = (props) => {
         
         </Grid>
         <p> Filter 1 <a></a> Filter 2 <a></a> Filter 3</p>
+      
+      <Link to="/photocard">
+        <section id="main-content">
+          <img alt="Photocard 1" src="images/image1.jpg" />
+          <p4>Member<br />Album<br />Group</p4>
 
-      <section id="main-content">
-        <img alt="Photocard 1" src="images/image1.jpg" />
-        <p4>Member<br />Album<br />Group</p4>
-
-      </section>
+        </section>
+      </Link>
       
       <section id="middle-content"></section>
 
