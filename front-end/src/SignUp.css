@@ -1,5 +1,5 @@
 
-h1{
+.SignUp h1{
 	text-align: center;
 }
 
@@ -13,13 +13,11 @@ h1{
     padding-bottom: auto;
 }
 
-.center {
-	margin: auto;
-	vertical-align: middle;
-}
 
 links {
     display: flex;
+    margin: auto;
+	vertical-align: middle;
 }
 
 links a {
