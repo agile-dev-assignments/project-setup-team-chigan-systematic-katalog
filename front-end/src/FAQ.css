@@ -1,2 +1,41 @@
-.FAQ {
+
+.questions {
+    display: block;
+    margin-top: 10px;
+    list-style-type: none;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 0;
+}
+
+.questions > li {
+    margin-top: 10px;
+}
+
+a, h3 {
+    color: #B388EB;
+}
+
+.line {
+    width: 90%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.answers {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+@media (min-width: 700px) {
+    .questions {
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+
+    .answers {
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+
 }
