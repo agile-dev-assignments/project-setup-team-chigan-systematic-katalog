@@ -65,7 +65,7 @@ const Home = (props) => {
             height: 100,
             width: 100
           }}/> 
-                <img alt="Photocard 2" src="images/image3.jpg"style={{
+            <img alt="Photocard 2" src="images/image3.jpg"style={{
             resizeMode: "repeat",
             display: "flex",
             padding: 1,
@@ -75,7 +75,7 @@ const Home = (props) => {
 
             width: 100
           }} />
-                <img alt="Photocard 3" src="images/image4.jpg"style={{
+            <img alt="Photocard 3" src="images/image4.jpg"style={{
             resizeMode: "repeat",
             display: "flex",
             padding: 1,
@@ -84,7 +84,7 @@ const Home = (props) => {
             height: 100,
             width: 100
           }}/>
-                          <img alt="Photocard 4" src="images/image4.jpg"style={{
+            <img alt="Photocard 4" src="images/image4.jpg"style={{
             resizeMode: "repeat",
             display: "flex",
             padding: 1,
@@ -93,7 +93,7 @@ const Home = (props) => {
             height: 100,
             width: 100
           }}/>
-                          <img alt="Photocard 5" src="images/image4.jpg"style={{
+            <img alt="Photocard 5" src="images/image4.jpg"style={{
             resizeMode: "repeat",
             display: "flex",
             padding: 1,
@@ -121,7 +121,7 @@ const Home = (props) => {
             height: 100,
             width: 100
           }}/>
-                <img alt="Photocard 2" src="images/image3.jpg"style={{
+          <img alt="Photocard 2" src="images/image3.jpg"style={{
             resizeMode: "repeat",
             display: "flex",
             padding: 1,
@@ -130,7 +130,7 @@ const Home = (props) => {
             height: 100,
             width: 100
           }} />
-                <img alt="Photocard 3" src="images/image4.jpg"style={{
+          <img alt="Photocard 3" src="images/image4.jpg"style={{
             resizeMode: "repeat",
             display: "flex",
             padding: 1,
@@ -148,7 +148,7 @@ const Home = (props) => {
             height: 100,
             width: 100
           }}/>
-                          <img alt="Photocard 5" src="images/image4.jpg"style={{
+            <img alt="Photocard 5" src="images/image4.jpg"style={{
             resizeMode: "repeat",
             display: "flex",
             padding: 1,
@@ -165,6 +165,5 @@ const Home = (props) => {
   </div>
   )
 }
-
 
 export default Home
