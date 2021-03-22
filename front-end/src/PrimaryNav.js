@@ -31,7 +31,8 @@ const PrimaryNav = () => {
                   <Nav.Link href="/about">About</Nav.Link>
                 </Nav>
                 <Form inline>
-                  <Button className="nav-button" variant="outline-light" size="sm" href="/login">Login/Signup</Button>
+                  <Button className="nav-button" variant="outline-light" size="sm" href="/login">Login</Button>
+                  <Button className="nav-button" variant="outline-light" size="sm" href="/signup">Signup</Button>
                 </Form>
                 </Navbar.Collapse>
               </Navbar>
