@@ -146,7 +146,7 @@ const Trading = (props) => {
 		<div className = "content">
 			<div className = "sort">
 				<select className="sortBy" value = {sort} onChange={event => {setSort(event.target.value); sortData(event.target.value, setData, dataT)}}>
-					<option value="0" >Sort By:</option>
+					<option value="0" >Sort By: Default</option>
 					<option value="1" >Newest</option>
 					<option value="2" >Oldest</option>
 				</select>
@@ -199,7 +199,7 @@ const LookingFor = (props) => {
 		<div className = "content">
 			<div className = "sort">
 				<select className="sortBy" value = {sort} onChange={event => {setSort(event.target.value); sortData(event.target.value, setData, dataL) }}>
-					<option value="0" >Sort By:</option>
+					<option value="0" >Sort By: Default</option>
 					<option value="1" >Newest</option>
 					<option value="2" >Oldest</option>
 				</select>
