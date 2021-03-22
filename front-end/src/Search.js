@@ -10,7 +10,7 @@ import TextField from "@material-ui/core/TextField";
 import {Grid} from "@material-ui/core"
 import { Form, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import { Router } from 'react-router';
-
+import CategoriesModal from './CategoriesModal'
 import { Link } from 'react-router-dom';
 
 
@@ -19,7 +19,7 @@ const Search = (props) => {
   return (
     <div className="Search">
 
-      <h1>Search</h1> 
+      <h1>Search</h1>
       <Grid container direction="column" alignItems="center" justify="center">
 
         <TextField
@@ -40,8 +40,11 @@ const Search = (props) => {
         }}
           />
 
+          <CategoriesModal />
+
+          <br />
         <h3>Trending</h3>
-        
+
         </Grid>
 
 
@@ -52,6 +55,6 @@ const Search = (props) => {
       </section>
     </div>
   )
-} 
+}
 
 export default Search

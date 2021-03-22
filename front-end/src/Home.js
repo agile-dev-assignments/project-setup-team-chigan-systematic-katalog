@@ -12,7 +12,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import TextField from "@material-ui/core/TextField";
 import {Grid} from "@material-ui/core";
 import { Form, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-
+import CategoriesModal from './CategoriesModal'
 import { Link } from 'react-router-dom';
 
 const logo = ["logo.png"]
@@ -30,9 +30,6 @@ const Home = (props) => {
       <p style={{
             'white-space': 'pre-wrap'
             }}>{" \n "}</p>
-      <Button style={{alignSelf:'center',width:100,backgroundColor:'#F4F4ED'}}>
-                    Login/Signup
-      </Button>
 
         <TextField
           id="outlined-basic"
@@ -52,6 +49,8 @@ const Home = (props) => {
         }}
           />
 
+          <CategoriesModal />
+
             <div className="Trending">
             <p style={{
             'white-space': 'pre-wrap'
@@ -66,7 +65,7 @@ const Home = (props) => {
             borderColor: '#B388EB',
             height: 100,
             width: 100
-          }}/> 
+          }}/>
             <img alt="Photocard 2" src="images/image3.jpg"style={{
             resizeMode: "repeat",
             display: "flex",
