@@ -1,8 +1,8 @@
 .Results img{
-    
+
     width: 200px;
     height: 200px;
-    
+
 }
 
 .Results p{
@@ -34,23 +34,17 @@
     padding-top: 50px;
     margin: auto;
     font-size: large;
-    
+
 }
 
 .Results #middle-content{
     padding: 5px;
 }
 
-.Results #filterstext {
-    color: #B388EB;
-    float: right;
-    font-size: large;
-    justify-content: right;
-}
 
 .Results #main-content{
     border: 5px solid #B388EB;
-    
+
 }
 
 .Results {

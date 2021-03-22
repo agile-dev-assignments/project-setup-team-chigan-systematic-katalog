@@ -11,6 +11,7 @@ import {Grid} from "@material-ui/core"
 import { Form, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import { Link } from 'react-router-dom'
 import PhotocardPage from './PhotocardPage';
+import FilterModal from './FilterModal'
 
 
 
@@ -20,9 +21,9 @@ const Results = (props) => {
 
       <section className="above search">
         <p id = "resultstext">Results</p>
-        <button id = "filterstext">Filters</button>
+        <FilterModal />
       </section>
-      
+
       <Grid container direction="column" alignItems="left" justify="left">
 
         <TextField
@@ -40,10 +41,10 @@ const Results = (props) => {
           )
         }}
           />
-        
+
         </Grid>
         <p> Filter 1 <a></a> Filter 2 <a></a> Filter 3</p>
-      
+
       <Link to="/photocard">
         <section id="main-content">
           <img alt="Photocard 1" src="images/image1.jpg" />
@@ -51,7 +52,7 @@ const Results = (props) => {
 
         </section>
       </Link>
-      
+
       <section id="middle-content"></section>
 
       <section id="main-content">
@@ -69,6 +70,6 @@ const Results = (props) => {
       </section>
     </div>
   )
-} 
+}
 
 export default Results

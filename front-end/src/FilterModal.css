@@ -1,0 +1,53 @@
+#filterstext {
+    background-color: #72DDF7;
+    color: white;
+    opacity: 90%;
+    float: right;
+    font-size: large;
+    justify-content: right;
+    border-color: #72DDF7;
+}
+
+#filterstext:hover {
+  background-color: #72DDF7;
+  color: white;
+  opacity: 100%;
+}
+
+.filter-button {
+  background-color: #72DDF7;
+  color: white;
+  opacity: 80%;
+}
+
+.filter-button:hover {
+  background-color: #72DDF7;
+  color: white;
+  opacity: 100%;
+}
+
+.position {
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.filterPosition {
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.filterSpace {
+  margin: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.filterTitle {
+  margin: 0 auto;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
