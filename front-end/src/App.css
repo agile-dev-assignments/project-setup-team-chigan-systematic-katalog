@@ -6,7 +6,7 @@
 /* styles shared by all screens within the app */
 
 .container {
-  border: 1px solid black;
+  /* border: 1px solid #8093F1; */
   max-width: 800px;
   margin: 0 auto;
   padding: 0;
