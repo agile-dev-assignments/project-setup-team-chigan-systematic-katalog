@@ -2,22 +2,8 @@ import React from 'react'
 import './PrimaryNav.css'
 import { Link } from 'react-router-dom'
 import { Navbar, NavItem, NavDropdown, MenuItem, Nav, Form, FormControl, Button } from 'react-bootstrap';
-
 //import { slide as Menu } from 'react-burger-menu'
 
-// const PrimaryNav = (props) => {
-//   return (
-//     <nav>
-//       <Link to="/">Home</Link>
-//       <Link to="/search">Search</Link>
-//       <Link to="/profile">Profile</Link>
-//       <Link to="/faq">FAQ</Link>
-//       <Link to="/about">About</Link>
-//     </nav>
-//   )
-// }
-//
-// export default PrimaryNav
 
 const PrimaryNav = () => {
 
@@ -45,7 +31,7 @@ const PrimaryNav = () => {
                   <Nav.Link href="/about">About</Nav.Link>
                 </Nav>
                 <Form inline>
-                  <Button variant="outline-light" size="sm">Login/Signup</Button>
+                  <Button className="nav-button" variant="outline-light" size="sm" href="/login">Login/Signup</Button>
                 </Form>
                 </Navbar.Collapse>
               </Navbar>
@@ -56,6 +42,9 @@ const PrimaryNav = () => {
 
 export default PrimaryNav;
 
+
+
+// if we need hamburger side nav-bar element
 // const PrimaryNav = (props) => {
 //   return(
 //     <Menu>
