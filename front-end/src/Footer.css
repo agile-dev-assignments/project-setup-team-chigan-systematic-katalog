@@ -1,0 +1,25 @@
+.nav-space {
+    background-color: #8093F1;
+    margin-top: 20px;
+}
+
+.icon {
+    position: absolute;
+    right:10px;
+    top: 10px;
+    margin-bottom: 20px;
+    justify-content: space-between;
+}
+
+.twitter {
+    color: black;
+    margin-right: 10px;
+}
+
+.instagram {
+    color: black;
+}
+
+a:hover {
+    color: #F4F4ED;
+}
