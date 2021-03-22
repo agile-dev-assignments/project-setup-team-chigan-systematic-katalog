@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import PrimaryNav from './PrimaryNav'
+import Footer from './Footer'
 import Home from './Home'
 import Search from './Search'
 import Profile from './Profile'
@@ -35,6 +36,7 @@ const App = (props) => {
         <Route path="/login">
             <PrimaryNav />
             <Login />
+            <Footer />
           </Route>
 
           <Route path="/signup">
@@ -45,38 +47,45 @@ const App = (props) => {
           <Route path="/search">
             <PrimaryNav />
             <Search />
+            <Footer />
           </Route>
 
           <Route path="/profile">
             <PrimaryNav />
             <Profile />
+            <Footer />
           </Route>
 
           <Route path="/faq">
             <PrimaryNav />
             <FAQ />
+            <Footer />
           </Route>
 
           <Route path="/about">
             <PrimaryNav />
             <About />
+            <Footer />
           </Route>
-        
+
           <Route path="/animals/:id" component={AnimalWrapper} />
 
           <Route path="/photocard">
             <PrimaryNav />
             <PhotocardPage />
+            <Footer />
           </Route>
 
           <Route path="/results">
             <PrimaryNav />
             <Results />
+            <Footer />
           </Route>
 
           <Route path="/">
             <PrimaryNav />
             <Home />
+            <Footer />
           </Route>
         </Switch>
       </Router>
