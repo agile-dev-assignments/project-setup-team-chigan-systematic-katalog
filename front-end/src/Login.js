@@ -25,7 +25,7 @@ function Login(props) {
       <h1>Login</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group size="lg" controlId="email">
-          <p>Email</p>
+          <p>Username/Email</p>
           <Form.Control
             autoFocus
             type="email"
@@ -45,7 +45,7 @@ function Login(props) {
         <links>
           <Link to="/">Forgot Password</Link>
           <br></br>
-          <Link to="/">Sign Up</Link>
+          <Link to="/signup">Sign Up</Link>
         </links>
         
         <Checkboxes className='center'/>
