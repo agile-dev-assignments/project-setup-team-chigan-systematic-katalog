@@ -1,29 +1,104 @@
 import React from 'react'
 // import logo from './logo.svg';
 import './Profile.css'
+import { Button } from "react-bootstrap";
+import { Grid } from "@material-ui/core"
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+}));
 
 const Profile = (props) => {
+  const classes = useStyles();
+  function FormRow() {
+    return (
+      <React.Fragment>
+        <Grid item xs={3.5}>
+          <Paper className={classes.paper}><img alt="Photocard 1" src="https://picsum.photos/200?page=profile" style={{
+            resizeMode: "repeat",
+            display: "flex",
+            padding: 1,
+            borderWidth: 3,
+            borderColor: '#B388EB',
+            height: 100,
+            width: 100
+          }}/> </Paper>
+        </Grid>
+        <Grid item xs={3.5}>
+          <Paper className={classes.paper}><img alt="Photocard 1" src="https://picsum.photos/200?page=profile" style={{
+            resizeMode: "repeat",
+            display: "flex",
+            padding: 1,
+            borderWidth: 3,
+            borderColor: '#B388EB',
+            height: 100,
+            width: 100
+          }}/> </Paper>
+        </Grid>
+        <Grid item xs={3.5}>
+          <Paper className={classes.paper}><img alt="Photocard 1" src="https://picsum.photos/200?page=profile" style={{
+            resizeMode: "repeat",
+            display: "flex",
+            padding: 1,
+            borderWidth: 3,
+            borderColor: '#B388EB',
+            height: 100,
+            width: 100
+          }}/> </Paper>
+        </Grid>
+      </React.Fragment>
+    );
+  }
   return (
     <div className="Profile">
       <h1>Profile</h1>
       <section className="main-content">
-        <img alt="welcome!" src="https://picsum.photos/200?page=profile" />
-        <p>
-          Brownie toffee jujubes tiramisu sugar plum macaroon wafer danish
-          icing. Cotton candy jelly-o topping ice cream tart oat cake
-          gingerbread jelly halvah. Marshmallow gummies danish jelly-o sesame
-          snaps fruitcake candy chocolate bar. Sweet pie sweet powder ice cream
-          cookie apple pie. Powder chocolate bear claw candy lemon drops jelly.
-          Biscuit halvah cookie. Gummi bears biscuit oat cake sweet roll sugar
-          plum brownie candy brownie powder. Halvah halvah candy pastry gummies
-          cotton candy tiramisu jelly-o jelly. Pudding tiramisu gummies caramels
-          danish sugar plum fruitcake apple pie. Chocolate bar sweet toffee
-          gummi bears dessert dragée. Tart croissant pudding sugar plum apple
-          pie brownie biscuit. Candy lollipop liquorice caramels icing biscuit.
-          Marzipan candy canes gingerbread bonbon tart dessert pudding sesame
-          snaps sweet roll. Gingerbread gummi bears toffee chupa chups.
-        </p>
+        <section>
+          <img alt="welcome!" src="https://picsum.photos/200?page=profile" />
+          <br /><br />
+          <Button style={{ alignSelf: 'center', backgroundColor: '#F4F4ED' }}>
+            Edit Profile
+          </Button><br /><br />
+          <Button style={{ alignSelf: 'center', backgroundColor: '#F4F4ED' }}>
+            Wishlist
+          </Button><br /><br />
+          <Button style={{ alignSelf: 'center', backgroundColor: '#F4F4ED' }}>
+            Recently Viewed Items
+          </Button><br /><br />
+        </section>
+        <section>
+          <h3>Name</h3>
+          <p>
+            Brownie toffee jujubes tiramisu sugar plum macaroon wafer danish
+            icing. Cotton candy jelly-o topping ice cream tart oat cake
+            gingerbread jelly halvah. Marshmallow gummies danish jelly-o sesame
+            snaps fruitcake candy chocolate bar. Sweet pie sweet powder ice cream
+            cookie apple pie. Powder chocolate bear claw candy lemon drops jelly.
+            Biscuit halvah cookie.
+            </p><br/><br/>
+          <h5>Showcase</h5>
+          <div className={classes.root}>
+            <Grid container spacing={1}>
+              <Grid container item xs={12} spacing={5}>
+                <FormRow />
+              </Grid>
+            </Grid>
+          </div> <br/><br/>
+          <Button style={{ alignSelf: 'center', backgroundColor: '#F4F4ED' }}>
+            Add a Listing
+          </Button><br /><br />
+        </section>
       </section>
+
     </div>
   )
 }

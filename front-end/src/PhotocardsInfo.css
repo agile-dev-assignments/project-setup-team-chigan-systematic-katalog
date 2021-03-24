@@ -20,12 +20,12 @@
 }
 .photocard-container {
     border: 3px solid black;
-    width: 50%;
+    width: 90%;
     margin: auto;
     margin-top: 1%;
 }
 .cards {
-    width: 80%;
+    width: 99%;
     margin: auto;
 }
 
@@ -37,27 +37,31 @@
 
 .image {
     margin-left: 5%;
-    margin-top: 1%;
-    margin-bottom: 1%;
+    margin-top: auto;
+    margin-bottom: auto;
     width: 40%;
-    height: 50%;
+    height: 100%;
 }
 
 
 .card img {
-    margin-top: auto;
-    margin-bottom: auto;
+    max-width: 100%;
+    max-height: 60%;
+    margin: auto;
     float: left;
-    width: 50%;
+    width: 90%;
     height: auto;
-    display: flex;
+    display: block;
+    margin-top: 20%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .card p {
     display: block;
     margin-top: 1em;
     margin-bottom: 1em;
-    margin-left: 50%;
+    margin-left: 60%;
     margin-right: 0;
 }
 
@@ -65,7 +69,7 @@
     display: block;
     margin-top: 1em;
     margin-bottom: 1em;
-    margin-left: 50%;
+    margin-left: 60%;
     margin-right: 0;
 }
 

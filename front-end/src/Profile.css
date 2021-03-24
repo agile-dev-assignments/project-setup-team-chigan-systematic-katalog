@@ -1,2 +1,22 @@
-.Profile {
+.Profile Container{
+    width: 5%;
+}
+.Profile section{
+    padding: 10px;
+}
+.Profile button{
+    color: #8093f1;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    margin: 0em;
+    font: 400 11px system-ui;
+    padding: 1px 7px 2px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #8093f1;
 }
