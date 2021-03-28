@@ -6,3 +6,8 @@
 .nav-button:hover {
   color: #8093F1;
 }
+
+.user {
+  color: rgba(255,255,255,.5);
+  padding-left: 0px;
+}
