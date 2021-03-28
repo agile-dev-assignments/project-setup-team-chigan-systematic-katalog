@@ -65,13 +65,13 @@ const Profile = (props) => {
         <section>
           <img alt="welcome!" src="https://picsum.photos/200?page=profile" />
           <br /><br />
-          <Button style={{ alignSelf: 'center', backgroundColor: '#F4F4ED' }}>
+          <Button className = "pfLogin" style={{ alignSelf: 'center', backgroundColor: '#F4F4ED' }} href="/editprofile">
             Edit Profile
           </Button><br /><br />
-          <Button style={{ alignSelf: 'center', backgroundColor: '#F4F4ED' }}>
+          <Button className = "pfLogin" style={{ alignSelf: 'center', backgroundColor: '#F4F4ED' }} href = "/">
             Wishlist
           </Button><br /><br />
-          <Button style={{ alignSelf: 'center', backgroundColor: '#F4F4ED' }}>
+          <Button className = "pfLogin"  style={{ alignSelf: 'center', backgroundColor: '#F4F4ED' }}>
             Recently Viewed Items
           </Button><br /><br />
         </section>
@@ -93,7 +93,7 @@ const Profile = (props) => {
               </Grid>
             </Grid>
           </div> <br/><br/>
-          <Button style={{ alignSelf: 'center', backgroundColor: '#F4F4ED' }}>
+          <Button className = "pfLogin" style={{ alignSelf: 'center', backgroundColor: '#F4F4ED' }}>
             Add a Listing
           </Button><br /><br />
         </section>
