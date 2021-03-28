@@ -38,7 +38,7 @@ const dataSelling = {
 	price: 56,
 	shipping: "?????",
 	shipTo: "NYC",
-	date: 42354
+	date: new Date(2017, 11, 24)
 }
 
 const dataSelling1 = {
@@ -48,7 +48,7 @@ const dataSelling1 = {
 	price: 66666,
 	shipping: "?????",
 	shipTo: "NYC",
-	date: 43
+	date: new Date(2013, 11, 24)
 }
 const dataSelling2 = {
 	picture: "https://stylecaster.com/wp-content/uploads/2019/12/black-pink.jpg",
@@ -57,7 +57,7 @@ const dataSelling2 = {
 	price: 333,
 	shipping: "?????",
 	shipTo: "NYC",
-	date: 466
+	date: new Date(202, 11, 24)
 }
 const dataSelling3 = {
 	picture: "https://stylecaster.com/wp-content/uploads/2019/12/black-pink.jpg",
@@ -66,7 +66,7 @@ const dataSelling3 = {
 	price: 8,
 	shipping: "?????",
 	shipTo: "NYC",
-	date: 3
+	date: new Date(2033, 11, 24)
 }
 
 const dataTrading = {
@@ -75,7 +75,7 @@ const dataTrading = {
 	loc: "NY",
 	want: "?????",
 	shipTo: "NYC",
-	date: "4124"
+	date: new Date(2077, 11, 24)
 }
 const dataTrading2 = {
 	picture: "https://stylecaster.com/wp-content/uploads/2019/12/black-pink.jpg",
@@ -83,7 +83,7 @@ const dataTrading2 = {
 	loc: "NY",
 	want: "?????",
 	shipTo: "NYC",
-	date: "3"
+	date: new Date(248, 11, 24)
 }
 
 const dataTrading3 = {
@@ -92,7 +92,7 @@ const dataTrading3 = {
 	loc: "NY",
 	want: "?????",
 	shipTo: "NYC",
-	date: "32"
+	date: new Date(206, 11, 24)
 }
 const dataLookingFor = {
 	picture: "https://stylecaster.com/wp-content/uploads/2019/12/black-pink.jpg",
@@ -100,7 +100,7 @@ const dataLookingFor = {
 	loc: "NY",
 	offer: "?????",
 	shipTo: "NYC",
-	date: "3"
+	date: new Date(2068, 11, 24)
 }
 
 const dataLookingFor1 = {
@@ -109,7 +109,7 @@ const dataLookingFor1 = {
 	loc: "NY",
 	offer: "?????",
 	shipTo: "NYC",
-	date: "5553"
+	date: new Date(2048, 11, 24)
 }
 
 const dataLookingFor2 = {
@@ -118,7 +118,7 @@ const dataLookingFor2 = {
 	loc: "NY",
 	offer: "?????",
 	shipTo: "NYC",
-	date: "35"
+	date: new Date(2012, 11, 24)
 }
 
 const dataS = [dataSelling, dataSelling1, dataSelling2,dataSelling3]
@@ -225,7 +225,7 @@ const CardLookingFor = (props) => {
 			<address class = "loc">Location: {props.data.loc}</address>
 			<p class = "offer">Offer: {props.data.offer}</p>
 			<p class = "shipTo">Ship To: {props.data.shipTo}</p>
-			<p class = "date">Date: {props.data.date}</p>
+			<p class = "date">Date: {props.data.date.toDateString()}</p>
 		</div>
 	)
 }
@@ -240,7 +240,7 @@ const CardTrading = (props) => {
 			<address class = "loc">Location: {props.data.loc}</address>
 			<p class = "want">Want: {props.data.want}</p>
 			<p class = "shipTo">Ship To: {props.data.shipTo}</p>
-			<p class = "date">Date: {props.data.date}</p>
+			<p class = "date">Date: {props.data.date.toDateString()}</p>
 		</div>
 	)
 }
@@ -256,7 +256,7 @@ const CardSelling= (props) => {
 			<p class = "price">Price: {props.data.price}</p>
 			<p class = "shipping">Shipping: {props.data.shipping}</p>
 			<p class = "shipTo">Ship To: {props.data.shipTo}</p>
-			<p class = "date">Date: {props.data.date}</p>
+			<p class = "date">Date: {props.data.date.toDateString()}</p>
 		</div>
 	)
 }
