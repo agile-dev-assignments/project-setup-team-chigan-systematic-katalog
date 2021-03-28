@@ -1,0 +1,37 @@
+.EditProfile #this-part{
+    border: 5px solid #B388EB;
+}
+
+.EditProfile #side{
+    float: right;
+    font-size: 10px;
+    color: white;
+    background-color: #8093f1; 
+    border-radius: 100px; 
+    margin: 5px;
+    margin-top: 0px; 
+    padding: 10px;
+
+}
+
+.EditProfile #button{
+  font-size: 10px;
+  color: white;
+  background-color: #8093f1; 
+  border-radius: 100px; 
+  margin: 5px;
+  margin-right: 100px;
+  margin-top: 0px;
+}
+
+.EditProfile #spacing{
+    padding: 15px;
+}
+
+.EditProfile #save{
+    margin-left: 250px;
+    font-size: 10px;
+    color: white;
+    background-color: #8093f1; 
+    border-radius: 100px; 
+}
