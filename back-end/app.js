@@ -122,6 +122,38 @@ app.post("/upload-example", upload.array("my_files", 3), (req, res, next) => {
   }
 })
 
+app.get("/photocarddata", (req, res, next) => {
+  
+  axios
+    .get("https://my.api.mockaroo.com/photocard.json?key=49083ca0")
+    .then(apiResponse => res.json(apiResponse.data)) 
+    .catch(err => next(err)) 
+})
+
+app.get("/tradingdata", (req, res, next) => {
+  
+  axios
+    .get("https://my.api.mockaroo.com/photocardtrading.json?key=49083ca0")
+    .then(apiResponse => res.json(apiResponse.data)) 
+    .catch(err => next(err)) 
+})
+
+app.get("/sellingdata", (req, res, next) => {
+  
+  axios
+    .get("https://my.api.mockaroo.com/photocardselling.json?key=49083ca0")
+    .then(apiResponse => res.json(apiResponse.data)) 
+    .catch(err => next(err)) 
+})
+
+app.get("/lookingfordata", (req, res, next) => {
+  
+  axios
+    .get("https://my.api.mockaroo.com/photocardlookingfor.json?key=49083ca0")
+    .then(apiResponse => res.json(apiResponse.data)) 
+    .catch(err => next(err)) 
+})
+
 // proxy requests to/from an API
 app.get("/proxy-example", (req, res, next) => {
   // use axios to make a request to an API for animal data
