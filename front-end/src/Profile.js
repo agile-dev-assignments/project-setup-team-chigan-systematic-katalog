@@ -62,10 +62,10 @@ const Profile = (props) => {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/profile`)
+    axios.get(`http://localhost:4000/profile/`)
       .then(response => {
         setData(response.data)
-        console.log(response.data)
+        //console.log(response.data)
       })
       .catch((error) => {
         console.log(error)
