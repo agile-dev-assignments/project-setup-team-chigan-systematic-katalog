@@ -102,7 +102,6 @@ const Profile = (props) => {
           </Button><br /><br />
         </section>
         <section>
-          {console.log("This is data:" + data)}
           <h3>{data.username}</h3>
           <p>
             {data.bio}
