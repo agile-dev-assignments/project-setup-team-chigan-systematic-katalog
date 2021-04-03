@@ -20,6 +20,10 @@ function Login(props) {
     event.preventDefault();
   }
 
+  function setToken() {
+    localStorage.setItem("token", true)
+  }
+
   return (
     <div className="Login">
       <h1>Login</h1>
@@ -50,7 +54,7 @@ function Login(props) {
         
         <Checkboxes className='center'/>
         <br/>
-        <Button block size="lg" type="submit" disabled={!validateForm()}>
+        <Button block size="lg" type="submit" disabled={!validateForm()} onClick={setToken} href="/profile">
           Login
         </Button>
         <br/>
