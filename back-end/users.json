@@ -1,0 +1,29 @@
+[
+    {
+        "Username" : "Rocky",
+        "Name" : "Asap",
+        "Bio" : "This is my bio",
+        "Venmo" : "RockysVenmo",
+        "Email" : "rocky@gmail.com",
+        "PhoneNum" : "0123456789",
+        "Password" : "Rockyspassword"
+    },
+    {
+        "Username" : "BrunoMars",
+        "Name" : "Bruno",
+        "Bio" : "This is Bruno's bio",
+        "Venmo" : "BrunosVenmo",
+        "Email" : "bruno@gmail.com",
+        "PhoneNum" : "9876543210",
+        "Password" : "Brunospassword"
+    },
+    {
+        "Username" : "Frank",
+        "Name" : "Frank Dommer",
+        "Bio" : "This is Frank's bio",
+        "Venmo" : "FranksVenmo",
+        "Email" : "Frank@gmail.com",
+        "PhoneNum" : "7685943210",
+        "Password" : "Frankspassword"
+    }
+]
