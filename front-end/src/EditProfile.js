@@ -3,6 +3,7 @@ import React from 'react';
 import './EditProfile.css';
 import { Button } from "react-bootstrap";
 import FileUploader from './FileUploader';
+import PopupModal from './Popup';
 
 const EditProfile = (props) => {
 
@@ -57,6 +58,7 @@ const EditProfile = (props) => {
                 <button id="button">
                     Edit Phone Number
                 </button>
+                <PopupModal />
             </section>
 
         </section >

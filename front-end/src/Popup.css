@@ -1,0 +1,40 @@
+.Popup #categoriestext {
+    margin-top: 10px;
+    color: #72DDF7;
+    float: right;
+    font-size: large;
+    justify-content: right;
+    border-color: #72DDF7;
+
+    
+}
+
+#categoriestext:hover {
+  background-color: #72DDF7;
+  color: white;
+  opacity: 100%;
+}
+
+.position {
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.filterTitle {
+  margin: 0 auto;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.filters {
+  margin: 10px;
+}
+
+.Popup #button {
+    font-size: 10px;
+    color: white;
+    background-color: #8093f1; 
+    border-radius: 100px;
+}
