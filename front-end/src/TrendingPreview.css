@@ -1,0 +1,17 @@
+.TrendingPreview { 
+  text-align: center;
+  border: 5px #8093f1;
+  width: 150px;
+  height: 150px;
+  padding: 4px;
+}
+
+.TrendingPreview img{
+    text-align: center;
+    border: 5px #8093f1;
+    width: 150px;
+    height: 150px;
+    padding: 4px;
+}
+.TrendingPreview h2 {
+}
