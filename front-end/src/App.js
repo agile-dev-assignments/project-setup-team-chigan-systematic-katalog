@@ -5,6 +5,7 @@ import Footer from './Footer'
 import Home from './Home'
 import Search from './Search'
 import Profile from './Profile'
+import Wishlist from './Wishlist'
 import FAQ from './FAQ'
 import About from './About'
 import Login from './Login'
@@ -54,6 +55,12 @@ const App = (props) => {
           <Route path="/profile">
             <PrimaryNav />
             <Profile />
+            <Footer />
+          </Route>
+
+          <Route path="/wishlist">
+            <PrimaryNav />
+            <Wishlist />
             <Footer />
           </Route>
 
