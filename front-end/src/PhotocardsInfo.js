@@ -50,7 +50,7 @@ const Trading = (props) => {
 	const [sort, setSort] = React.useState('');
 	const [data, setData] = React.useState([]);
 	useEffect(() => {
-		axios.get('http://localhost:3000/tradingdata').then(response => {
+		axios.get('http://localhost:4000/tradingdata').then(response => {
 			setData(response.data)
 		})
 	}, [])
@@ -79,10 +79,10 @@ const Trading = (props) => {
 const Selling = (props) => {
 
 
-	const [sort, setSort] = React.useState('');
+	const [sort, setSort] = React.useState("0");
 	const [data, setData] = React.useState([]);
 	useEffect(() => {
-		axios.get('http://localhost:3000/sellingdata').then(response => {
+		axios.get('http://localhost:4000/sellingdata').then(response => {
 			setData(response.data)
 		})
 	}, [])
@@ -114,7 +114,7 @@ const LookingFor = (props) => {
 	const [data, setData] = React.useState([]);
 	
 	useEffect(() => {
-		axios.get('http://localhost:3000/lookingfordata').then(response => {
+		axios.get('http://localhost:4000/lookingfordata').then(response => {
 			setData(response.data)
 		})
 	}, [])
