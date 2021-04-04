@@ -1,6 +1,9 @@
 // import and instantiate express
 const express = require("express") // CommonJS import style!
 const app = express() // instantiate an Express object
+const cors = require('cors')
+const profileRouter = require('./profile')
+
 
 // import some useful middleware
 // const bodyParser = require("body-parser") // middleware to help parse incoming HTTP POST data
@@ -18,12 +21,18 @@ const morgan = require("morgan") // middleware for nice logging of incoming HTTP
 // use the morgan middleware to log all incoming http requests
 app.use(morgan("dev")) // morgan has a few logging default styles - dev is a nice concise color-coded style
 
+app.use(cors())
+
 // use the bodyparser middleware to parse any data included in a request
 app.use(express.json()) // decode JSON-formatted incoming POST data
 app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming POST data
 
 // make 'public' directory publicly readable with static content
 app.use("/static", express.static("public"))
+
+
+// use profile router
+app.use("/profile", profileRouter)
 
 // route for HTTP GET requests to the root document
 app.get("/", (req, res) => {
