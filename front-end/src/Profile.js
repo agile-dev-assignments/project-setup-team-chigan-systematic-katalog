@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 // import logo from './logo.svg';
 import './Profile.css'
 import { Button } from "react-bootstrap";
 import { Grid } from "@material-ui/core"
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
+import axios from 'axios'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -58,6 +59,31 @@ const Profile = (props) => {
       </React.Fragment>
     );
   }
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    axios.get(`http://localhost:4000/profile/`)
+      .then(response => {
+        setData(response.data)
+        //console.log(response.data)
+      })
+      .catch((error) => {
+        console.log(error)
+        const backupData = [
+          {
+            id: 2,
+            username: 'BackupName',
+            email: 'backupemail@gmail.com',
+            bio:
+              'Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.',
+          },
+        ]
+
+        setData(backupData[0])
+      })
+  }, [])
+    
+  
   return (
     <div className="Profile">
       <h1>Profile</h1>
@@ -76,14 +102,9 @@ const Profile = (props) => {
           </Button><br /><br />
         </section>
         <section>
-          <h3>Name</h3>
+          <h3>{data.username}</h3>
           <p>
-            Brownie toffee jujubes tiramisu sugar plum macaroon wafer danish
-            icing. Cotton candy jelly-o topping ice cream tart oat cake
-            gingerbread jelly halvah. Marshmallow gummies danish jelly-o sesame
-            snaps fruitcake candy chocolate bar. Sweet pie sweet powder ice cream
-            cookie apple pie. Powder chocolate bear claw candy lemon drops jelly.
-            Biscuit halvah cookie.
+            {data.bio}
             </p><br/><br/>
           <h5>Showcase</h5>
           <div className={classes.root}>
