@@ -50,11 +50,10 @@ const Trading = (props) => {
 	const [sort, setSort] = React.useState('');
 	const [data, setData] = React.useState([]);
 	useEffect(() => {
-		axios('https://my.api.mockaroo.com/photocardtrading.json?key=49083ca0')
-		  .then((response) => {
+		axios.get('http://localhost:4000/tradingdata').then(response => {
 			setData(response.data)
-		  })
-		}, [])
+		})
+	}, [])
 	return (
 		<div className = "content">
 			<div className = "sort">
@@ -80,14 +79,13 @@ const Trading = (props) => {
 const Selling = (props) => {
 
 
-	const [sort, setSort] = React.useState('');
+	const [sort, setSort] = React.useState("0");
 	const [data, setData] = React.useState([]);
 	useEffect(() => {
-		axios('https://my.api.mockaroo.com/photocardselling.json?key=49083ca0')
-		  .then((response) => {
+		axios.get('http://localhost:4000/sellingdata').then(response => {
 			setData(response.data)
-		  })
-		}, [])
+		})
+	}, [])
 	return (
 		<div className = "content">
 			<div className = "sort">
@@ -116,11 +114,10 @@ const LookingFor = (props) => {
 	const [data, setData] = React.useState([]);
 	
 	useEffect(() => {
-		axios('https://my.api.mockaroo.com/photocardlookingfor.json?key=49083ca0')
-		  .then((response) => {
+		axios.get('http://localhost:4000/lookingfordata').then(response => {
 			setData(response.data)
-		  })
-		}, [])
+		})
+	}, [])
 	return (
 		<div className = "content">
 			<div className = "sort">
