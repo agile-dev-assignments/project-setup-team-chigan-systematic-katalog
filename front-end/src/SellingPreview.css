@@ -1,15 +1,6 @@
-.SellingPreview {
-  text-align: center;
-  border: 5px #8093f1;
-  width: 150px;
-  height: 150px;
-  padding: 4px;
-}
-
 .SellingPreview img{
     text-align: center;
-    border: 5px #8093f1;
-    width: 150px;
-    height: 150px;
-    padding: 4px;
+    width: 250px;
+    height: 250px;
+    padding: 5px;
 }

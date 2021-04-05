@@ -8,9 +8,8 @@ const SellingPreview = (props) => {
 
   return (
     <article className="SellingPreview">
-      <Link to={`/photocard/${props.details.id}`}>
+      <Link to={`/photocarddata/${props.details.id}`}>
         <img alt={props.details.title} src={imgSrc} />
-        <h2>{props.details.title}</h2>
       </Link>
     </article>
   )
