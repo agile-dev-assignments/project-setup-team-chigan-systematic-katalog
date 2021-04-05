@@ -6,6 +6,7 @@ import { Grid } from "@material-ui/core"
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import axios from 'axios'
+import AddListingModal from './AddListingModal'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -82,8 +83,8 @@ const Profile = (props) => {
         setData(backupData[0])
       })
   }, [])
-    
-  
+
+
   return (
     <div className="Profile">
       <h1>Profile</h1>
@@ -114,9 +115,7 @@ const Profile = (props) => {
               </Grid>
             </Grid>
           </div> <br/><br/>
-          <Button className = "pfLogin" style={{ alignSelf: 'center', backgroundColor: '#F4F4ED' }}>
-            Add a Listing
-          </Button><br /><br />
+          <AddListingModal />
         </section>
       </section>
 
