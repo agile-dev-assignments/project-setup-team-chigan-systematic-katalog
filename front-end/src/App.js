@@ -16,6 +16,7 @@ import './App.css'
 import Results from './Results'
 import PhotocardPage from './PhotocardPage'
 import EditProfile from './EditProfile'
+import ListingDetail from './ListingDetail'
 
 
 // this is used in one of the routes below for a specific animal with a specific id
@@ -81,6 +82,12 @@ const App = (props) => {
           <Route path="/photocard">
             <PrimaryNav />
             <PhotocardPage />
+            <Footer />
+          </Route>
+
+          <Route path="/photocard/listing">
+            <PrimaryNav />
+            <ListingDetail />
             <Footer />
           </Route>
 
