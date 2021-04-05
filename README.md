@@ -52,7 +52,11 @@ Information and instructions about how to contribute to the project here: [CONTR
 
 
 ## Instructions for Building and Testing 
-Will be updated with that information once the project reaches that stage. 
+To run the front-end: cd into the front-end directory and enter `npm start` in the terminal. Go to localhost:3000 to see website. 
+
+To run the back-end: cd into the back-end directory and enter `npm start`. Go to localhost:4000 to see backend GET/POST apis. 
+
+To run front-end with back-end, run `npm start` on both the front-end and the back-end simutaneously in two terminals. Go to localhost:3000 to see website with back-end.
 
 ## Additional Links to Markdown documents
 [Project Proposal](https://github.com/agile-dev-assignments/project-proposal-jyn229/blob/main/README.md) — initial proposal and concept idea
