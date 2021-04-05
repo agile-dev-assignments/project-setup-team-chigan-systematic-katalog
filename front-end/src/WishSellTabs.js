@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react';
 import ReactDOM from 'react-dom'
 import Wishlist from './Wishlist'
+import Selling from './Selling'
 
 
 const WishSellTabs = () => {
@@ -19,8 +20,8 @@ const WishSellTabs = () => {
       <Tab eventKey="wishlist" title="Wishlist">
         <Wishlist />
       </Tab>
-    <Tab eventKey="selling" title="Selling" disabled>
-        <Wishlist />
+    <Tab eventKey="selling" title="Selling">
+        <Selling />
       </Tab>
     </Tabs>
     </div>
