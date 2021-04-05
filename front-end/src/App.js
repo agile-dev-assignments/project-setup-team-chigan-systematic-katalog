@@ -16,6 +16,7 @@ import './App.css'
 import Results from './Results'
 import PhotocardPage from './PhotocardPage'
 import EditProfile from './EditProfile'
+import WishSellTabs from './WishSellTabs'
 
 
 // this is used in one of the routes below for a specific animal with a specific id
@@ -93,6 +94,12 @@ const App = (props) => {
           <Route path="/editprofile">
             <PrimaryNav />
             <EditProfile />
+            <Footer />
+          </Route>
+
+          <Route path="/wishselltabs">
+            <PrimaryNav />
+            <WishSellTabs />
             <Footer />
           </Route>
 
