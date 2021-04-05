@@ -79,15 +79,15 @@ const App = (props) => {
 
           <Route path="/animals/:id" component={AnimalWrapper} />
 
-          <Route path="/photocard">
-            <PrimaryNav />
-            <PhotocardPage />
-            <Footer />
-          </Route>
-
           <Route path="/photocard/listing">
             <PrimaryNav />
             <ListingDetail />
+            <Footer />
+          </Route>
+
+          <Route path="/photocard">
+            <PrimaryNav />
+            <PhotocardPage />
             <Footer />
           </Route>
 
