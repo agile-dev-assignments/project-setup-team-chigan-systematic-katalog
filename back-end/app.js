@@ -3,6 +3,7 @@ const express = require("express") // CommonJS import style!
 const app = express() // instantiate an Express object
 const cors = require('cors')
 const profileRouter = require('./profile')
+const photocards = require('./photocards.json');
 
 
 // import some useful middleware
@@ -45,18 +46,6 @@ app.get("/html-example", (req, res) => {
 })
 
 // route for HTTP GET requests to /json-example
-app.get("/json-example", (req, res) => {
-  // assemble an object with the data we want to send
-  const body = {
-    title: "Hello!",
-    heading: "Hello!",
-    message: "Welcome to this JSON document, served up by Express",
-    imagePath: "/static/images/donkey.jpg",
-  }
-
-  // send the response as JSON to the client
-  res.json(body)
-})
 
 // custom middleware - first
 app.use((req, res, next) => {
@@ -131,6 +120,19 @@ app.post("/upload-example", upload.array("my_files", 3), (req, res, next) => {
   }
 })
 
+//search
+app.get('/search', (req,res)=> {
+  const parsedInfo = {}; 
+
+  if(req.query.name !== undefined){
+      if (req.query.name.length !== 0){
+          parsedInfo.name = req.query.name;
+      }
+  }
+  
+  res.send(photocards);
+});
+
 app.get("/photocarddata", (req, res, next) => {
   
   axios
@@ -204,10 +206,34 @@ app.get("/parameter-example/:animalId", async (req, res) => {
   // send the data in the response
   res.json(responseData)
 })
-app.post("/hello", (req,res,next) => {
-  res.json({message:"hello"})
-  console.log("api is hit");
-  console.log(req.body);
-})
+
+// for search page to search results
+app.get('/search', (req,res)=> {
+  const parsedInfo = {}; 
+
+  if(req.query.name !== undefined){
+      if (req.query.name.length !== 0){
+          parsedInfo.name = req.query.name;
+      }
+      if (req.query.element.length !== 0){
+        parsedInfo.element = req.query.element;
+      }
+      if (req.query.weapon.length !== 0){
+          parsedInfo.weapon = req.query.weapon;
+      }
+      if (req.query.rarity.length !== 0){
+        parsedInfo.rarity = parseInt(req.query.rarity,10);
+    }
+  }
+  
+  Character.find(parsedInfo, function(err, characters) {
+      if (err){
+          console.log("error from db.reviews.find");
+      }else {
+          res.render('search', {characters: characters});
+      }
+  });
+});
+
 // export the express app we created to make it available to other modules
 module.exports = app // CommonJS export style!
