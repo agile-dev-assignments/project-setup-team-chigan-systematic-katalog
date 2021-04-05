@@ -3,7 +3,13 @@ import React from 'react';
 import './EditProfile.css';
 import { Button } from "react-bootstrap";
 import FileUploader from './FileUploader';
-import PopupModal from './Popup';
+
+import PopupModalUsername from './PopupUsername';
+import PopupModalName from './PopupName';
+import PopupModalBio from './PopupBio';
+import PopupModalVenmo from './PopupVenmo';
+import PopupModalEmail from './PopupEmail';
+import PopupModalNumber from './PopupNumber';
 
 const EditProfile = (props) => {
 
@@ -25,47 +31,30 @@ const EditProfile = (props) => {
 
                 <h1>Settings</h1>
 
-                <button id="button">
-                    Edit Username 
-                </button>
+                <PopupModalUsername />
                 <button id="side">
                     Change Password 
                 </button>
                 <br />
-                <button id="button">
-                    Edit Name 
-                </button>
-                <br />
+                <PopupModalName />
 
-                <button id="button">
-                    Edit Bio 
-                </button>
+                <PopupModalBio />
                 <button id="side">
                     Edit Listings 
                 </button>
                 <br />
-                <button id="button">
-                    Edit Venmo 
-                </button>
-                <br />
+                <PopupModalVenmo />
 
-                <button id="button">
-                    Edit Email 
-                </button>
+                <PopupModalEmail />
                 <button id="side">
                     Edit Browsing History
                 </button>
-                <button id="button">
-                    Edit Phone Number
-                </button>
-                <PopupModal />
+                <PopupModalNumber />
+
             </section>
 
         </section >
         
-        <button id="save">
-            Save Changes
-        </button>
         
     </div>
 

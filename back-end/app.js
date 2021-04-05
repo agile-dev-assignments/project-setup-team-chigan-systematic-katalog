@@ -204,6 +204,10 @@ app.get("/parameter-example/:animalId", async (req, res) => {
   // send the data in the response
   res.json(responseData)
 })
-
+app.post("/hello", (req,res,next) => {
+  res.json({message:"hello"})
+  console.log("api is hit");
+  console.log(req.body);
+})
 // export the express app we created to make it available to other modules
 module.exports = app // CommonJS export style!
