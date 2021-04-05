@@ -1,0 +1,120 @@
+// // import logo from './logo.svg';
+// import './Search.css'
+// import Photocard from './Photocard'
+// import axios from 'axios'
+// import React, { useState, useEffect } from 'react'
+// // import IconButton from "@material-ui/core/IconButton";
+// // import InputAdornment from "@material-ui/core/InputAdornment";
+// // import SearchIcon from "@material-ui/icons/Search";
+// // import TextField from "@material-ui/core/TextField";
+// import { Grid } from "@material-ui/core"
+// // import { Form, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+// // import { Router } from 'react-router';
+// import CategoriesModal from './CategoriesModal'
+// import { Link } from 'react-router-dom';
+
+
+
+// const Search = (props) => {
+//   const [data, setData] = React.useState([]);
+//   const testData = {
+//       id:1,
+//       photocard_name:"Bang Chan Double Sided #2 Photocard",
+//       group:"Stray Kids",
+//       member:"Bang Chan",
+//       album:"GO生(GO LIVE)",
+//       picture:"images/image1.jpg",
+//       picture2:"images/image2.jpg"
+//     }
+
+//     useEffect(() => {
+//       axios.get('http://localhost:4000/photocarddata').then(response => {
+//         setData(response.data)
+//       })
+//     }, [])
+//   return (
+//     <div className="Search">
+
+//       <h1>Search</h1>
+//       <Grid container direction="column" alignItems="center" justify="center">
+
+//         {/* <TextField
+//           id="outlined-basic"
+//           variant="outlined"
+//           label="Search..."
+//           method = "GET"
+//           action="/search"
+//           margin = "normal"
+//           InputProps={{
+//             endAdornment: (
+//               <InputAdornment position="start">
+//                 <IconButton type = "submit">
+//                   <SearchIcon />
+//                 </IconButton>
+//               </InputAdornment>
+//           )
+//         }}
+//           /> */}
+
+//         <form method="GET" action="/search"  
+//         variant="outlined" 
+//         id="outlined-basic"  
+//         margin = "normal">
+//           Search: <input type="text" name="name" />
+//           <input type="submit" value="Search" style={{
+//                 "color": "#8093f1",
+//                 "letter-spacing": "normal",
+//                 "word-spacing": "normal",
+//                 "text-transform": "none",
+//                 "text-indent": "0px",
+//                 "text-shadow": "none",
+//                 "display": "inline-block",
+//                 "text-align": "center",
+//                 "margin": "0em",
+//                 "font": "400 11px system-ui",
+//                 "padding": "1px 7px 2px",
+//                 "border-width": "1px",
+//                 "border-style": "solid",
+//                 "border-color": "#8093f1",
+//           }} />
+//         </form>
+//         <br />
+//         <CategoriesModal />
+    
+
+//       {/* <h3>Trending</h3>
+//       <section className="main-content">
+//         <img alt="Photocard 1" src="images/image1.jpg" />
+//         <img alt="Photocard 1" src="images/image3.jpg" />
+//         <img alt="Photocard 1" src="images/image4.jpg" />
+//       </section> */}
+//       <p> Filter 1 <a></a> Filter 2 <a></a> Filter 3</p>
+//       </Grid>
+//         <Link to={{
+//           pathname: "/photocard",
+//           state: testData
+//         }}>
+//         <section id="main-content">
+//           <img alt="Photocard 1" src="images/image1.jpg" />
+//           <p4>Member<br />Album<br />Group</p4>
+
+//         </section>
+//       </Link>
+//         {data.map(item =>  (
+//           <Link to={{
+//             pathname: "/photocard",
+//             state: item
+//           }}>
+//         <section id="main-content">
+//           <img src = {item.picture} />
+//           <p4>{item.member}<br />{item.album}<br />{item.group}</p4>
+
+//         </section>
+//       </Link>
+//         ))}
+      
+//     </div>
+//   )
+// }
+
+// export default Search
