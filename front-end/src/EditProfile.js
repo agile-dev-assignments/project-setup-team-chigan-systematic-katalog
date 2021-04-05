@@ -10,6 +10,7 @@ import PopupModalBio from './PopupBio';
 import PopupModalVenmo from './PopupVenmo';
 import PopupModalEmail from './PopupEmail';
 import PopupModalNumber from './PopupNumber';
+import PopupModalPassword from './PopupPassword';
 
 const EditProfile = (props) => {
 
@@ -28,29 +29,31 @@ const EditProfile = (props) => {
             </section>
 
             <section id="this-part">
-
+                <section>
                 <h1>Settings</h1>
 
                 <PopupModalUsername />
-                <button id="side">
+                <PopupModalPassword />
+                {/* <button id="side">
                     Change Password 
                 </button>
-                <br />
+                <br /> */}
                 <PopupModalName />
 
                 <PopupModalBio />
-                <button id="side">
+                {/* <button id="side">
                     Edit Listings 
                 </button>
-                <br />
+                <br /> */}
                 <PopupModalVenmo />
 
                 <PopupModalEmail />
-                <button id="side">
+                {/* <button id="side">
                     Edit Browsing History
-                </button>
+                </button> */}
                 <PopupModalNumber />
-
+                </section>
+                
             </section>
 
         </section >
