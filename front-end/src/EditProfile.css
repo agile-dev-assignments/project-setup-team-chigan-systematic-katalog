@@ -27,11 +27,7 @@
 .EditProfile #spacing{
     padding: 15px;
 }
-
-.EditProfile #save{
-    margin-left: 250px;
-    font-size: 10px;
-    color: white;
-    background-color: #8093f1; 
-    border-radius: 100px; 
+.EditProfile #right{
+    justify-content: right;
+    float: right;
 }
