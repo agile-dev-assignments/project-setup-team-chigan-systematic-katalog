@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 // import logo from './logo.svg';
 import './Results.css'
 import Photocard from './PhotocardPage'
@@ -16,6 +17,22 @@ import FilterModal from './FilterModal'
 
 
 const Results = (props) => {
+  const [data, setData] = React.useState([]);
+  const testData = {
+      id:1,
+      photocard_name:"Bang Chan Double Sided #2 Photocard",
+      group:"Stray Kids",
+      member:"Bang Chan",
+      album:"GO生(GO LIVE)",
+      picture:"images/image1.jpg",
+      picture2:"images/image2.jpg"
+    }
+
+    useEffect(() => {
+      axios.get('http://localhost:4000/photocarddata').then(response => {
+        setData(response.data)
+      })
+    }, [])
   return (
     <div className="Results">
 
@@ -44,30 +61,30 @@ const Results = (props) => {
 
         </Grid>
         <p> Filter 1 <a></a> Filter 2 <a></a> Filter 3</p>
-
-      <Link to="/photocard">
+        <Link to={{
+          pathname: "/photocard",
+          state: testData
+        }}>
         <section id="main-content">
           <img alt="Photocard 1" src="images/image1.jpg" />
           <p4>Member<br />Album<br />Group</p4>
 
         </section>
       </Link>
+        {data.map(item =>  (
+          <Link to={{
+            pathname: "/photocard",
+            state: item
+          }}>
+        <section id="main-content">
+          <img src = {item.picture} />
+          <p4>{item.member}<br />{item.album}<br />{item.group}</p4>
 
-      <section id="middle-content"></section>
+        </section>
+      </Link>
+        ))}
+      
 
-      <section id="main-content">
-        <img alt="Photocard 2" src="images/image3.jpg" />
-        <p4>Member<br />Album<br />Group</p4>
-
-      </section>
-
-      <section id="middle-content"></section>
-
-      <section id="main-content">
-        <img alt="Photocard 3" src="images/image4.jpg" />
-        <p4>Member <br /> Album <br /> Group</p4>
-
-      </section>
     </div>
   )
 }

@@ -5,6 +5,7 @@ import Footer from './Footer'
 import Home from './Home'
 import Search from './Search'
 import Profile from './Profile'
+import Wishlist from './Wishlist'
 import FAQ from './FAQ'
 import About from './About'
 import Login from './Login'
@@ -15,6 +16,8 @@ import './App.css'
 import Results from './Results'
 import PhotocardPage from './PhotocardPage'
 import EditProfile from './EditProfile'
+import WishSellTabs from './WishSellTabs'
+import Selling from './Selling'
 
 
 // this is used in one of the routes below for a specific animal with a specific id
@@ -57,6 +60,12 @@ const App = (props) => {
             <Footer />
           </Route>
 
+          <Route path="/wishlist">
+            <PrimaryNav />
+            <Wishlist />
+            <Footer />
+          </Route>
+
           <Route path="/faq">
             <PrimaryNav />
             <FAQ />
@@ -86,6 +95,18 @@ const App = (props) => {
           <Route path="/editprofile">
             <PrimaryNav />
             <EditProfile />
+            <Footer />
+          </Route>
+
+          <Route path="/wishselltabs">
+            <PrimaryNav />
+            <WishSellTabs />
+            <Footer />
+          </Route>
+
+          <Route path="/selling">
+            <PrimaryNav />
+            <Selling />
             <Footer />
           </Route>
 
