@@ -22,7 +22,7 @@ const Home = (props) => {
 
   useEffect(() => {
     console.log('fetching photocards...')
-    axios("https://my.api.mockaroo.com/photocard.json?key=49083ca0")
+    axios.get('http://localhost:4000/photocarddata')
       .then((response) => {
         setData(response.data)
       })

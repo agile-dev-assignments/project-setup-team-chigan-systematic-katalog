@@ -8,9 +8,12 @@ const TrendingPreview = (props) => {
 
   return (
     <article className="TrendingPreview">
-      <Link to={`/photocard/${props.details.id}`}>
-        <img alt={props.details.title} src={imgSrc} />
-        <h2>{props.details.title}</h2>
+      <Link to={{
+            pathname: `/photocard/${props.details.id}`,
+            state: props.details
+          }}>
+        <img alt={props.details.photocard_name} src={imgSrc} />
+        <h2>{props.details.photocard_name}</h2>
       </Link>
     </article>
   )
