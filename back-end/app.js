@@ -129,7 +129,7 @@ app.get('/search', (req,res)=> {
           parsedInfo.name = req.query.name;
       }
   }
-  
+
   res.send(photocards);
 });
 
