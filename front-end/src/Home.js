@@ -56,23 +56,12 @@ const Home = (props) => {
       <p style={{
             'white-space': 'pre-wrap'
             }}>{" \n "}</p>
-        <TextField
-          id="outlined-basic"
-          variant="outlined"
-          label="Search..."
-          margin = "normal"
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="start">
-                <IconButton>
-                  <Link to="/results">
-                    <SearchIcon />
-                  </Link>
-                </IconButton>
-              </InputAdornment>
-          )
-        }}
-          /> <br/>
+        
+        <form method="GET" action="/search">
+          Search: <input type="text" name="name" className="rcorners"/>
+          <input type="submit" value="Search" className="rcorners"/>
+        </form>
+        <br/>
           <CategoriesModal />
 
             <div className="Trending">

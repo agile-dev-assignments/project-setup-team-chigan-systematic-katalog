@@ -39,9 +39,21 @@
 .Home p {
     padding:0;
     margin:0;
+    color:#8093f1
 }
 
 .Home div {
     padding:0;
     margin:0;
+}
+
+.Home input{
+    margin: 2px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #8093f1;
+}
+
+.Home form{
+    color: #8093f1;
 }
