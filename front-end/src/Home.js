@@ -56,7 +56,6 @@ const Home = (props) => {
       <p style={{
             'white-space': 'pre-wrap'
             }}>{" \n "}</p>
-
         <TextField
           id="outlined-basic"
           variant="outlined"
@@ -73,8 +72,7 @@ const Home = (props) => {
               </InputAdornment>
           )
         }}
-          />
-
+          /> <br/>
           <CategoriesModal />
 
             <div className="Trending">
