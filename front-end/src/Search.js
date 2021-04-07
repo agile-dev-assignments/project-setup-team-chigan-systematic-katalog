@@ -17,13 +17,13 @@ import FilterModal from './FilterModal'
 const Search = (props) => {
   const [data, setData] = React.useState([]);
   const testData = {
-    id: 1,
+    id: 0,
     photocard_name: "Bang Chan Double Sided #2 Photocard",
     group: "Stray Kids",
     member: "Bang Chan",
     album: "GO生(GO LIVE)",
-    picture: "images/image1.jpg",
-    picture2: "images/image2.jpg"
+    picture: "../images/image1.jpg",
+    picture2: "../images/image2.jpg"
   }
 
   useEffect(() => {
@@ -84,18 +84,18 @@ const Search = (props) => {
         <br></br>
       </div>
       <Link to={{
-        pathname: "/photocard",
+        pathname: `/photocard/${testData.id}`,
         state: testData
       }}>
         <section id="main-content">
-          <img alt="Photocard 1" src="images/image1.jpg" />
-          <p4>Member<br />Album<br />Group</p4>
+          <img src={testData.picture} />
+          <p4>{testData.member}<br />{testData.album}<br />{testData.group}</p4>
 
         </section>
       </Link>
       {data.map(item => (
         <Link to={{
-          pathname: "/photocard",
+          pathname: `/photocard/${item.id}`,
           state: item
         }}>
           <section id="main-content">
