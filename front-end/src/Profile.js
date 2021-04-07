@@ -63,11 +63,12 @@ const Profile = (props) => {
   }
   const [data, setData] = useState([])
 
+  const randomNum = Math.floor(Math.random() * 3); 
+
   useEffect(() => {
     axios.get(`http://localhost:4000/profile/`)
       .then(response => {
-        setData(response.data)
-        //console.log(response.data)
+        setData(response.data[randomNum])
       })
       .catch((error) => {
         console.log(error)
@@ -85,6 +86,7 @@ const Profile = (props) => {
       })
   }, [])
 
+  //console.log(data)
 
   return (
     <div className="Profile">
@@ -104,9 +106,9 @@ const Profile = (props) => {
           </Button><br /><br />
         </section>
         <section>
-          <h3>{data.username}</h3>
+          <h3>{data.Username}</h3>
           <p>
-            {data.bio}
+            {data.Bio}
             </p><br/><br/>
           <h5>Showcase</h5>
           <div className={classes.root}>
