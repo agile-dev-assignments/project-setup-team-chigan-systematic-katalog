@@ -12,12 +12,12 @@
 }
 
 .twitter {
-    color: black;
+    color: rgba(255,255,255,.5);
     margin-right: 10px;
 }
 
 .instagram {
-    color: black;
+    color: rgba(255,255,255,.5);
 }
 
 a:hover {
