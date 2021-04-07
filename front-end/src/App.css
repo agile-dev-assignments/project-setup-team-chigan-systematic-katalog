@@ -39,8 +39,13 @@ h1{
   justify-content: center;
   font-family: Arial, Helvetica, sans-serif;
   color: #B388EB;
+  padding: 5px;
+}
+
+h3{
+  color:#8093f1;
 }
 
 p {
-  font-family: helvetica;
+  font-family: Arial, Helvetica, sans-serif;
 }
