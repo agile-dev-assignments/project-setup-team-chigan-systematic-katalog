@@ -49,3 +49,11 @@ h3{
 p {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.rcorners {
+	border-style: solid;
+	border-radius: 5px;
+	/* background-color: rgba(255, 255, 255, 0.9); */
+	border-color: rgba(255, 255, 255, 0.7);
+	color: #8093f1;
+}
