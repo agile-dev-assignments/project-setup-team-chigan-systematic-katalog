@@ -14,6 +14,7 @@ const TrendingPreview = (props) => {
           }}>
         <img alt={props.details.photocard_name} src={imgSrc} />
         <h3>{props.details.photocard_name}</h3>
+
       </Link>
     </article>
   )
