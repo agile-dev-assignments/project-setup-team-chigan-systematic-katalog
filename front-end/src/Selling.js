@@ -56,7 +56,7 @@ const Selling = () => {
           <img id="photocard" alt={item.name} src={item.pic1} />
           <h4>{item.name}</h4>
           </section>
-        </Link>
+        </Link> 
       ))}
       </section>
 
