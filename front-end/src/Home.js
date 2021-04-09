@@ -75,6 +75,14 @@ const Home = (props) => {
             'white-space': 'pre-wrap'
             }}>{" \n "}</p>
 
+        
+        <form method="GET" action="/search">
+          Search: <input type="text" name="name" className="rcorners"/>
+          <input type="submit" value="Search" className="rcorners"/>
+        </form>
+        <br/>
+
+
 
 <form method="GET" action="/search"
           variant="outlined"
@@ -98,6 +106,7 @@ const Home = (props) => {
             "border-color": "#8093f1",
           }} />
         </form>
+
           <CategoriesModal />
 
             <div className="Trending">

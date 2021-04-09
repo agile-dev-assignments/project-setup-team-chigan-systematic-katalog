@@ -17,13 +17,13 @@ import FilterModal from './FilterModal'
 const Search = (props) => {
   const [data, setData] = React.useState([]);
   const testData = {
-    id: 0,
+    id: 1,
     photocard_name: "Bang Chan Double Sided #2 Photocard",
     group: "Stray Kids",
     member: "Bang Chan",
     album: "GO生(GO LIVE)",
-    picture: "../images/image1.jpg",
-    picture2: "../images/image2.jpg"
+    picture: "images/image1.jpg",
+    picture2: "images/image2.jpg"
   }
 
   useEffect(() => {
@@ -54,27 +54,9 @@ const Search = (props) => {
         }}
           /> */}
 
-        <form method="GET" action="/search"
-          variant="outlined"
-          id="outlined-basic"
-          margin="normal">
-          Search: <input type="text" name="name" />
-          <input type="submit" value="Search" style={{
-            "color": "#8093f1",
-            "letter-spacing": "normal",
-            "word-spacing": "normal",
-            "text-transform": "none",
-            "text-indent": "0px",
-            "text-shadow": "none",
-            "display": "inline-block",
-            "text-align": "center",
-            "margin": "0em",
-            "font": "400 11px system-ui",
-            "padding": "1px 7px 2px",
-            "border-width": "1px",
-            "border-style": "solid",
-            "border-color": "#8093f1",
-          }} />
+        <form method="GET" action="/search">
+          Search: <input type="text" name="name" className="rcorners"/>
+          <input type="submit" value="Search" className="rcorners"/>
         </form>
 
       </Grid>
@@ -84,18 +66,18 @@ const Search = (props) => {
         <br></br>
       </div>
       <Link to={{
-        pathname: `/photocard/${testData.id}`,
+        pathname: "/photocard",
         state: testData
       }}>
         <section id="main-content">
-          <img src={testData.picture} />
-          <p4>{testData.member}<br />{testData.album}<br />{testData.group}</p4>
+          <img alt="Photocard 1" src="images/image1.jpg" />
+          <p4>Member<br />Album<br />Group</p4>
 
         </section>
       </Link>
       {data.map(item => (
         <Link to={{
-          pathname: `/photocard/${item.id}`,
+          pathname: "/photocard",
           state: item
         }}>
           <section id="main-content">

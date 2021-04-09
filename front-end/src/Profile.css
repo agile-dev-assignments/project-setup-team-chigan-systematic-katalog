@@ -20,3 +20,8 @@
     border-style: solid;
     border-color: #8093f1;
 }
+
+.Profile h1{
+    justify-content: left;
+    padding-left: 40px;
+}
