@@ -18,6 +18,7 @@ import PhotocardPage from './PhotocardPage'
 import EditProfile from './EditProfile'
 import WishSellTabs from './WishSellTabs'
 import Selling from './Selling'
+import SellingPost from './SellingPost'
 
 
 // this is used in one of the routes below for a specific animal with a specific id
@@ -107,6 +108,12 @@ const App = (props) => {
           <Route path="/selling">
             <PrimaryNav />
             <Selling />
+            <Footer />
+          </Route>
+
+          <Route path="/sellingpost">
+            <PrimaryNav />
+            <SellingPost />
             <Footer />
           </Route>
 

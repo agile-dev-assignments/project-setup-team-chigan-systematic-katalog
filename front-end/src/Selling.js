@@ -6,7 +6,6 @@ import { Form, Button, Modal, FormGroup, FormControl, ControlLabel, Tabs, Tab, C
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom'
-import SellingPreview from './TrendingPreview'
 import axios from 'axios'
 
 
@@ -16,8 +15,8 @@ const Selling = () => {
 
   useEffect(() => {
     console.log('loading selling posts')
-    axios("https://my.api.mockaroo.com/photocard.json?key=49083ca0")
-      .then((response) => {
+    axios.get(`http://localhost:4000/sellingpostback/`)
+      .then(response => {
         setData(response.data)
       })
       .catch((err) => {
@@ -45,11 +44,32 @@ const Selling = () => {
   }, [])
 
   return(
-    <div className = "Selling">
+    <Grid container direction="column" alignItems="center" justify="center">
+
+    <section className="main-content">
+      {data.map((item) => (
+        <Link to={{
+              pathname: `/sellingpost/${item.id}`,
+              state: item
+            }}>
+          <section class="sellView">
+          <img id="photocard" alt={item.name} src={item.pic1} />
+          <h4>{item.name}</h4>
+          </section>
+        </Link> 
+      ))}
+      </section>
+
+
+      </Grid>
+
+    /*<div className = "Selling">
       <h1>Selling</h1>
       <Container className = "posts">
         <Row className = "rowposts">
-          <Col><SellingPreview key={data.id} details={data} /></Col>
+          <Col>{data.map((item) => (
+            <SellingPreview key={item.id} details={item} />
+          ))}</Col>
           <Col><SellingPreview key={data.id} details={data} /></Col>
           <Col><SellingPreview key={data.id} details={data} /></Col>
         </Row>
@@ -74,7 +94,7 @@ const Selling = () => {
           <Col><SellingPreview key={data.id} details={data} /></Col>
         </Row>
       </Container>
-    </div>
+    </div>*/
   )
 };
 

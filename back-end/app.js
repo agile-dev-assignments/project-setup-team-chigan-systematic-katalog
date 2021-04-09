@@ -3,6 +3,7 @@ const express = require("express") // CommonJS import style!
 const app = express() // instantiate an Express object
 const cors = require('cors')
 const profileRouter = require('./profile')
+const sellingpostbackRouter = require('./sellingpostback')
 const photocards = require('./photocards.json');
 
 
@@ -34,6 +35,9 @@ app.use("/static", express.static("public"))
 
 // use profile router
 app.use("/profile", profileRouter)
+
+//use sellingpostback router
+app.use("/sellingpostback", sellingpostbackRouter)
 
 // route for HTTP GET requests to the root document
 app.get("/", (req, res) => {
@@ -122,47 +126,47 @@ app.post("/upload-example", upload.array("my_files", 3), (req, res, next) => {
 
 //search
 app.get('/search', (req,res)=> {
-  const parsedInfo = {}; 
+  const parsedInfo = {};
 
   if(req.query.name !== undefined){
       if (req.query.name.length !== 0){
           parsedInfo.name = req.query.name;
       }
   }
-  
+
   res.send(photocards);
 });
 
 app.get("/photocarddata", (req, res, next) => {
-  
+
   axios
     .get("https://my.api.mockaroo.com/photocard.json?key=49083ca0")
-    .then(apiResponse => res.json(apiResponse.data)) 
-    .catch(err => next(err)) 
+    .then(apiResponse => res.json(apiResponse.data))
+    .catch(err => next(err))
 })
 
 app.get("/tradingdata", (req, res, next) => {
-  
+
   axios
     .get("https://my.api.mockaroo.com/photocardtrading.json?key=49083ca0")
-    .then(apiResponse => res.json(apiResponse.data)) 
-    .catch(err => next(err)) 
+    .then(apiResponse => res.json(apiResponse.data))
+    .catch(err => next(err))
 })
 
 app.get("/sellingdata", (req, res, next) => {
-  
+
   axios
     .get("https://my.api.mockaroo.com/photocardselling.json?key=49083ca0")
-    .then(apiResponse => res.json(apiResponse.data)) 
-    .catch(err => next(err)) 
+    .then(apiResponse => res.json(apiResponse.data))
+    .catch(err => next(err))
 })
 
 app.get("/lookingfordata", (req, res, next) => {
-  
+
   axios
     .get("https://my.api.mockaroo.com/photocardlookingfor.json?key=49083ca0")
-    .then(apiResponse => res.json(apiResponse.data)) 
-    .catch(err => next(err)) 
+    .then(apiResponse => res.json(apiResponse.data))
+    .catch(err => next(err))
 })
 
 // proxy requests to/from an API
@@ -209,7 +213,7 @@ app.get("/parameter-example/:animalId", async (req, res) => {
 
 // for search page to search results
 app.get('/search', (req,res)=> {
-  const parsedInfo = {}; 
+  const parsedInfo = {};
 
   if(req.query.name !== undefined){
       if (req.query.name.length !== 0){
@@ -225,7 +229,7 @@ app.get('/search', (req,res)=> {
         parsedInfo.rarity = parseInt(req.query.rarity,10);
     }
   }
-  
+
   Character.find(parsedInfo, function(err, characters) {
       if (err){
           console.log("error from db.reviews.find");

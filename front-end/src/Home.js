@@ -39,10 +39,29 @@ const Home = (props) => {
   // }, []) 
 
   useEffect(() => {
-    axios.get('http://localhost:4000/photocarddata').then(response => {
-      setData(response.data)
-    })
-  }, [])
+    console.log('fetching photocards...')
+    axios.get('http://localhost:4000/photocarddata')
+      .then((response) => {
+        setData(response.data)
+      })
+      .catch((err) => {
+        console.log(`No more requests allowed today!`)
+        console.error(err) 
+        const backupData = [
+          {
+            id: 1,
+            name: 'BTS V',
+            price: '$10.51'
+          },
+          {
+            id: 2,
+            name: 'BTS Jimin',
+            price: '$12'
+          },
+        ]
+        setData(backupData)
+      })
+  }, []) 
 
   return (
     <div>

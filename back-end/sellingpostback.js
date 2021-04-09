@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
     //   .catch(err => console.log(err))
     // res.json(apiResponse.data)
 
-  res.sendFile("/public/users.json", { root: __dirname })
+  res.sendFile("/public/sellingpostdata.json", { root: __dirname })
 
 })
 
