@@ -13,7 +13,8 @@ const TrendingPreview = (props) => {
             state: props.details
           }}>
         <img alt={props.details.photocard_name} src={imgSrc} />
-        <h2>{props.details.photocard_name}</h2>
+        <h3>{props.details.photocard_name}</h3>
+
       </Link>
     </article>
   )

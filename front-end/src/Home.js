@@ -5,6 +5,7 @@ import './Home.css'
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import TrendingPreview from './TrendingPreview'
+import PhotocardPage from './PhotocardPage'
 import NewlyAddedPreview from './NewlyAddedPreview'
 import IconButton from "@material-ui/core/IconButton";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -18,7 +19,24 @@ import { Link } from 'react-router-dom';
 const logo = ["logo.png"]
 
 const Home = (props) => {
-  const [data, setData] = useState([])
+  const [data, setData] = React.useState([])
+
+  const testData = {
+    id: 1,
+    photocard_name: "Bang Chan Double Sided #2 Photocard",
+    group: "Stray Kids",
+    member: "Bang Chan",
+    album: "GO生(GO LIVE)",
+    picture: "images/image1.jpg",
+    picture2: "images/image2.jpg"}
+
+  //useEffect(() => {
+
+  // axios("https://my.api.mockaroo.com/photocard.json?key=49083ca0")
+  //    .then((response) => {
+  //      setData(response.data)
+  //    })
+  // }, []) 
 
   useEffect(() => {
     console.log('fetching photocards...')
@@ -56,12 +74,39 @@ const Home = (props) => {
       <p style={{
             'white-space': 'pre-wrap'
             }}>{" \n "}</p>
+
         
         <form method="GET" action="/search">
           Search: <input type="text" name="name" className="rcorners"/>
           <input type="submit" value="Search" className="rcorners"/>
         </form>
         <br/>
+
+
+
+<form method="GET" action="/search"
+          variant="outlined"
+          id="outlined-basic"
+          margin="normal">
+          Search: <input type="text" name="name" />
+          <input type="submit" value="Search" style={{
+            "color": "#8093f1",
+            "letter-spacing": "normal",
+            "word-spacing": "normal",
+            "text-transform": "none",
+            "text-indent": "0px",
+            "text-shadow": "none",
+            "display": "inline-block",
+            "text-align": "center",
+            "margin": "0em",
+            "font": "400 11px system-ui",
+            "padding": "1px 7px 2px",
+            "border-width": "1px",
+            "border-style": "solid",
+            "border-color": "#8093f1",
+          }} />
+        </form>
+
           <CategoriesModal />
 
             <div className="Trending">
@@ -69,6 +114,7 @@ const Home = (props) => {
             <p style={{
             'white-space': 'pre-wrap'
             }}>{" \n \n \n "}</p>
+            
               <h3> Top 5 Trending Photocards</h3>
               <section className="main-content">
                 {data.map((item) => (
@@ -83,9 +129,12 @@ const Home = (props) => {
             }}>{" \n \n "}</p>
               <h3> Newly Added</h3>
               <section className="main-content">
-              {data.map((item) => (
+              {
+              data.map((item) => (
                   <NewlyAddedPreview key={item.id} details={item} />
                 ))}
+
+
           </section>
             </div>
         </Grid>
