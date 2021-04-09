@@ -10,6 +10,7 @@ function Photocard(props){
     // let [month, date] = new Date().toLocaleDateString("en-US").split("/")
     // const todayDate = month + "/" + date
 
+    console.log(props.image[1])
     const data = [{name: "3/12", price: 8, pv: 2400, amt: 2400}, {name: "3/13", price: 7, pv: 2400, amt: 2400}, {name: "3/14", price: 10, pv: 2400, amt: 2400}]
     
     const totalPrice = data.reduce((priceTotal, dataPoint) => priceTotal + dataPoint.price, 0)

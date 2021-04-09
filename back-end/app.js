@@ -3,8 +3,11 @@ const express = require("express") // CommonJS import style!
 const app = express() // instantiate an Express object
 const cors = require('cors')
 const profileRouter = require('./profile')
+<<<<<<< HEAD
 const sellingpostbackRouter = require('./sellingpostback')
 const photocards = require('./photocards.json');
+=======
+>>>>>>> 74953e936e4a11d635cf89fb6a2789e2ec43ea06
 
 
 // import some useful middleware
@@ -137,12 +140,14 @@ app.get('/search', (req,res)=> {
   res.send(photocards);
 });
 
-app.get("/photocarddata", (req, res, next) => {
+const photocard_json = require("./public/photocards.json")
 
-  axios
-    .get("https://my.api.mockaroo.com/photocard.json?key=49083ca0")
-    .then(apiResponse => res.json(apiResponse.data))
-    .catch(err => next(err))
+app.get("/photocarddata", (req, res, next) => {
+  // axios
+  //   .get("https://my.api.mockaroo.com/photocard.json?key=49083ca0")
+  //   .then(apiResponse => res.json(apiResponse.data))
+  //   .catch(err => next(err))
+  res.json(photocard_json)
 })
 
 app.get("/tradingdata", (req, res, next) => {

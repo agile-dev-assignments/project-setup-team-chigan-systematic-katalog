@@ -11,11 +11,6 @@
 
 }
 
-.Search h1 {
-    justify-content: left;
-
-}
-
 .Search #Searchtext {
     color: #B388EB;
     float: left;
@@ -70,4 +65,17 @@
 
 .Search form {
     margin-left: 200px;
+    color: #8093f1;
+}
+
+.Search input{
+    margin: 2px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #8093f1;
+}
+.Home p {
+    padding:0;
+    margin:0;
+    color:#8093f1;
 }
