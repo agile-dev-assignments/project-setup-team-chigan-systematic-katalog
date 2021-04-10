@@ -3,11 +3,8 @@ const express = require("express") // CommonJS import style!
 const app = express() // instantiate an Express object
 const cors = require('cors')
 const profileRouter = require('./profile')
-<<<<<<< HEAD
 const sellingpostbackRouter = require('./sellingpostback')
 const photocards = require('./photocards.json');
-=======
->>>>>>> 74953e936e4a11d635cf89fb6a2789e2ec43ea06
 
 
 // import some useful middleware
