@@ -5,6 +5,7 @@ import './Home.css'
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import TrendingPreview from './TrendingPreview'
+import PhotocardPage from './PhotocardPage'
 import NewlyAddedPreview from './NewlyAddedPreview'
 import IconButton from "@material-ui/core/IconButton";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -18,11 +19,28 @@ import { Link } from 'react-router-dom';
 const logo = ["logo.png"]
 
 const Home = (props) => {
-  const [data, setData] = useState([])
+  const [data, setData] = React.useState([])
+
+  const testData = {
+    id: 1,
+    photocard_name: "Bang Chan Double Sided #2 Photocard",
+    group: "Stray Kids",
+    member: "Bang Chan",
+    album: "GO生(GO LIVE)",
+    picture: "images/image1.jpg",
+    picture2: "images/image2.jpg"}
+
+  //useEffect(() => {
+
+  // axios("https://my.api.mockaroo.com/photocard.json?key=49083ca0")
+  //    .then((response) => {
+  //      setData(response.data)
+  //    })
+  // }, []) 
 
   useEffect(() => {
     console.log('fetching photocards...')
-    axios("https://my.api.mockaroo.com/photocard.json?key=49083ca0")
+    axios.get('http://localhost:4000/photocarddata')
       .then((response) => {
         setData(response.data)
       })
@@ -57,23 +75,12 @@ const Home = (props) => {
             'white-space': 'pre-wrap'
             }}>{" \n "}</p>
 
-        <TextField
-          id="outlined-basic"
-          variant="outlined"
-          label="Search..."
-          margin = "normal"
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="start">
-                <IconButton>
-                  <Link to="/results">
-                    <SearchIcon />
-                  </Link>
-                </IconButton>
-              </InputAdornment>
-          )
-        }}
-          />
+        
+        <form method="GET" action="/search">
+          Search: <input type="text" name="name" className="rcorners"/>
+          <input type="submit" value="Search" className="rcorners"/>
+        </form>
+        <br/>
 
           <CategoriesModal />
 
@@ -82,6 +89,7 @@ const Home = (props) => {
             <p style={{
             'white-space': 'pre-wrap'
             }}>{" \n \n \n "}</p>
+            
               <h3> Top 5 Trending Photocards</h3>
               <section className="main-content">
                 {data.map((item) => (
@@ -89,16 +97,18 @@ const Home = (props) => {
                 ))}
           </section>
             </div>
-
             <div className="Newly Added">
             <p style={{
             'white-space': 'pre-wrap'
             }}>{" \n \n "}</p>
               <h3> Newly Added</h3>
               <section className="main-content">
-              {data.map((item) => (
+              {
+              data.map((item) => (
                   <NewlyAddedPreview key={item.id} details={item} />
                 ))}
+
+
           </section>
             </div>
         </Grid>

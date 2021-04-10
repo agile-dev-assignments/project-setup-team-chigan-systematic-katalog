@@ -4,6 +4,14 @@ import './EditProfile.css';
 import { Button } from "react-bootstrap";
 import FileUploader from './FileUploader';
 
+import PopupModalUsername from './PopupUsername';
+import PopupModalName from './PopupName';
+import PopupModalBio from './PopupBio';
+import PopupModalVenmo from './PopupVenmo';
+import PopupModalEmail from './PopupEmail';
+import PopupModalNumber from './PopupNumber';
+import PopupModalPassword from './PopupPassword';
+
 const EditProfile = (props) => {
 
     return (
@@ -21,49 +29,35 @@ const EditProfile = (props) => {
             </section>
 
             <section id="this-part">
-
+                <section>
                 <h1>Settings</h1>
 
-                <button id="button">
-                    Edit Username 
-                </button>
-                <button id="side">
+                <PopupModalUsername />
+                <PopupModalPassword />
+                {/* <button id="side">
                     Change Password 
                 </button>
-                <br />
-                <button id="button">
-                    Edit Name 
-                </button>
-                <br />
+                <br /> */}
+                <PopupModalName />
 
-                <button id="button">
-                    Edit Bio 
-                </button>
-                <button id="side">
+                <PopupModalBio />
+                {/* <button id="side">
                     Edit Listings 
                 </button>
-                <br />
-                <button id="button">
-                    Edit Venmo 
-                </button>
-                <br />
+                <br /> */}
+                <PopupModalVenmo />
 
-                <button id="button">
-                    Edit Email 
-                </button>
-                <button id="side">
+                <PopupModalEmail />
+                {/* <button id="side">
                     Edit Browsing History
-                </button>
-                <button id="button">
-                    Edit Phone Number
-                </button>
+                </button> */}
+                <PopupModalNumber />
+                </section>
+                
             </section>
 
         </section >
         
-        <button id="save">
-            Save Changes
-        </button>
         
     </div>
 

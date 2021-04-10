@@ -6,13 +6,6 @@
     border-width: 5;
 }
 
-.Home h1{
-    display: flex;
-    justify-content: center;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #B388EB;
-}
-
 .Home h3{
     display: flex;
     justify-content: center;
@@ -41,4 +34,26 @@
 .logo {
     margin: 20px;
     width: 15%;
+}
+
+.Home p {
+    padding:0;
+    margin:0;
+    color:#8093f1
+}
+
+.Home div {
+    padding:0;
+    margin:0;
+}
+
+.Home input{
+    margin: 2px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #8093f1;
+}
+
+.Home form{
+    color: #8093f1;
 }

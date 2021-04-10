@@ -11,12 +11,6 @@
 
 }
 
-.Results h1 {
-    justify-content: left;
-    font-size: large;
-
-}
-
 .Results #resultstext {
     color: #B388EB;
     float: left;
@@ -28,9 +22,9 @@
 }
 
 .Results p4{
-    text-align: left;
-    float:right;
-    padding-right: 400px;
+    text-align: right;
+    float: right;
+    padding-right: 5%;
     padding-top: 50px;
     margin: auto;
     font-size: large;
@@ -44,6 +38,7 @@
 
 .Results #main-content{
     border: 5px solid #B388EB;
+    margin-bottom: 5px;
 
 }
 

@@ -1,14 +1,18 @@
 import React from 'react'
 import Photocard from './Photocard'
 import PhotocardInfo from './PhotocardsInfo'
+import { Link,useLocation} from 'react-router-dom';
 
 
-const image = ["images/image1.jpg", "images/image2.jpg"]
 
-function PhotocardPage(){
+
+function PhotocardPage(props){
+    const location = useLocation()
+    const data = location.state
+    const image = [data.picture, data.picture2]
     return (
         <div>
-            <Photocard image={image} name="Bang Chan Double Sided #2 Photocard" grp="Stray Kids" member="Bang Chan" album="GO生(GO LIVE)"/>
+            <Photocard image={image} name={data.photocard_name} grp={data.group} member={data.member} album={data.album}/>
             <PhotocardInfo/>
         </div>
     )

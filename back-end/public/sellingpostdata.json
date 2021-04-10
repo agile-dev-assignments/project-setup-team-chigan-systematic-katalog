@@ -1,0 +1,30 @@
+[
+    {
+        "id" : 1,
+        "name" : "Bang Chan Double Side",
+        "group" : "Stray Kids",
+        "member" : "Bang Chan",
+        "album" : "GO生(GO LIVE)",
+        "pic1" : "/images/image1.jpg",
+        "price" : "$12.25"
+    },
+    {
+        "id" : 2,
+        "name" : "Haechan Reload Rollin",
+        "group" : "NCT Dream",
+        "member" : "Haechan",
+        "album" : "Reload",
+        "pic1" : "/images/image5.jpg",
+        "price" : "$10.50"
+    },
+    {
+        "id" : 3,
+        "name" : "V 4 pc Set",
+        "group" : "BTS",
+        "member" : "V",
+        "album" : "Map of The Soul",
+        "pic1" : "/images/image6.jpg",
+        "price" : "$40.75"
+    }
+
+]

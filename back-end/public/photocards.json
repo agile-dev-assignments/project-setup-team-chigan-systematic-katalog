@@ -1,0 +1,40 @@
+[
+    {   
+        "id": "1",
+        "photocard_name" : "Bang Chan Double Sided #2 Photocard",
+        "group" : "Stray Kids",
+        "member" : "Bang Chan",
+        "album" : "GO生(GO LIVE)",
+        "picture" : "../images/image1.jpg",
+        "picture2" : "../images/image2.jpg"
+    },
+    
+    {   
+        "id": "2",
+        "photocard_name" : "Lisa #3 Photocard",
+        "group" : "Blackpink",
+        "member" : "Lisa",
+        "album" : "album_name",
+        "picture" : "../images/image5.jpg",
+        "picture2" : "../images/image6.jpg"
+    },
+    {
+        "id": "3",
+        "photocard_name" : "Haechan Reload Rollin ver Photocard",
+        "group" : "NCT Dream",
+        "member" : "Haechan",
+        "album" : "Reload",
+        "picture" : "../images/image3.jpg",
+        "picture2" : "../images/image4.jpg"
+    },
+    {
+        "id": "4",
+        "photocard_name": "4th Photocard",
+        "group" : "Blackpink",
+        "member" : "Lisa",
+        "album" : "another album",
+        "picture" : "../images/image7.jpg",
+        "picture2" : "../images/image8.jpg"
+    }
+
+]

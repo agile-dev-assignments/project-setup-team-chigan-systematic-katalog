@@ -1,5 +1,5 @@
 [
-    {
+    {   
         "Username" : "Rocky",
         "Name" : "Asap",
         "Bio" : "This is my bio",
@@ -8,7 +8,7 @@
         "PhoneNum" : "0123456789",
         "Password" : "Rockyspassword"
     },
-    {
+    {   
         "Username" : "BrunoMars",
         "Name" : "Bruno",
         "Bio" : "This is Bruno's bio",
