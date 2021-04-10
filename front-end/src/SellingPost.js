@@ -15,7 +15,7 @@ const SellingPost = (props) => {
   const data = location.state
 
   return (
-      <div>
+      <div className="SellingPost">
           <h3>{data.name}</h3>
           <img id="photocard" alt={data.name} src={data.pic1} />
           <h4>Group: {data.group}</h4>
