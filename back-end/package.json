@@ -4,8 +4,8 @@
   "description": "An example of a basic Express.js web server",
   "main": "server.js",
   "scripts": {
-    "test": "mocha test --exit",
     "coverage": "nyc npm run test",
+    "test": "nyc mocha --timeout 3000",
     "server": "nodemon server.js"
   },
   "author": "Foo Barstein",
@@ -24,5 +24,6 @@
     "nodemon": "^2.0.2",
     "nyc": "^15.1.0",
     "supertest": "^6.1.3"
+    "chai-http": "^4.3.0"
   }
 }

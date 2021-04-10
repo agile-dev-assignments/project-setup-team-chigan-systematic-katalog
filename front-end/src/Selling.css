@@ -1,13 +1,11 @@
-.posts {
-  margin: 0 auto;
-  width: 80%;
-}
-
-.rowposts {
-  padding-bottom: 20px;
+.Selling h1 {
+    padding-top: 20px;
 }
 
 
-.sellView {
-  text-align: center;
+.Selling img{
+    border: 5px #8093f1;
+    width: 150px;
+    height: 150px;
+    
 }
