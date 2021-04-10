@@ -20,7 +20,10 @@
 .Search a{
     padding: 15px;
 }
-
+.Search Link:hover {
+    color: #8093F1;
+  }
+  
 .Search p4{
     text-align: right;
     float: right;
