@@ -5,7 +5,7 @@ import {Grid} from "@material-ui/core"
 import { Form, Button, Modal, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
-
+import axios from 'axios';
 
 function PopupModalNumber() {
 
@@ -16,6 +16,12 @@ function PopupModalNumber() {
 
   const [input, setInput] = useState("");
   const handleSubmit = async (e) => {
+    await axios.post("http://localhost:4000/hello",{number:input})
+    .then((response) => {
+      console.log(response);
+    }, (error) => {
+      console.log(error);
+    });
     setShow(false);
   } 
   return (

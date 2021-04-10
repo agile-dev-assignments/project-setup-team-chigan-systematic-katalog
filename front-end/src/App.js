@@ -15,10 +15,11 @@ import Animal from './Animal'
 import './App.css'
 import Results from './Results'
 import PhotocardPage from './PhotocardPage'
-import EditProfile from './EditProfile'
 import WishSellTabs from './WishSellTabs'
 import Selling from './Selling'
 import SellingPost from './SellingPost'
+import ListingDetail from './ListingDetail'
+import EditProfile from './EditProfile'
 
 
 // this is used in one of the routes below for a specific animal with a specific id
@@ -80,6 +81,12 @@ const App = (props) => {
           </Route>
 
           <Route path="/animals/:id" component={AnimalWrapper} />
+
+          <Route path="/photocard/listing">
+            <PrimaryNav />
+            <ListingDetail />
+            <Footer />
+          </Route>
 
           <Route path="/photocard">
             <PrimaryNav />

@@ -4,7 +4,7 @@ import './TrendingPreview.css'
 
 const TrendingPreview = (props) => {
 
-  const imgSrc = `https://picsum.photos/200?id=${props.details.id}` 
+  const imgSrc = `https://picsum.photos/200?id=${props.details.id}`
 
   return (
     <article className="TrendingPreview">

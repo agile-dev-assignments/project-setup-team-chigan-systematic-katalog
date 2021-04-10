@@ -4,7 +4,7 @@
   "description": "An example of a basic Express.js web server",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "nyc mocha --timeout 3000",
     "server": "nodemon server.js"
   },
   "author": "Foo Barstein",
@@ -25,5 +25,11 @@
     "mocha-sinon": "^2.1.2",
     "nodemon": "^2.0.2",
     "sinon": "^10.0.1"
+
+    "chai": "^3.5.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^8.3.2",
+    "nodemon": "^2.0.2",
+    "nyc": "^15.1.0"
   }
 }

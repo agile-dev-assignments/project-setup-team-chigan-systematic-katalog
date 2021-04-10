@@ -46,7 +46,7 @@ const PrimaryNav = () => {
               <Navbar className="nav-color" variant="dark" expand="lg">
                 <Navbar.Brand href="/">
                   <img
-                    src="favicon.ico"
+                    src="/favicon.ico"
                     width="30"
                     height="30"
                     className="d-inline-block align-top"

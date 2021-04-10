@@ -19,12 +19,14 @@ function PopupModalPassword() {
 
   const [input, setInput] = useState("");
   const handleSubmit = async (e) => {
-    //console.log("hello")
-    //post or patch
-    //let x = await axios.post("http://localhost:4000/hello",{username:input})
-    //console.log("90",x.data)
+    await axios.post("http://localhost:4000/hello",{password:input})
+    .then((response) => {
+      console.log(response);
+    }, (error) => {
+      console.log(error);
+    });
     setShow(false);
-  }
+  } 
  
   //event passed to fxn call
   
