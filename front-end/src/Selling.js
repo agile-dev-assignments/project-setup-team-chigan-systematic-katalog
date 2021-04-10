@@ -44,7 +44,9 @@ const Selling = () => {
   }, [])
 
   return(
-    <Grid container direction="column" alignItems="center" justify="center">
+    <div className = "Selling">
+    <h1>My Posts</h1>
+    <Grid container spacing={3}>
 
     <section className="main-content">
       {data.map((item) => (
@@ -56,12 +58,13 @@ const Selling = () => {
           <img id="photocard" alt={item.name} src={item.pic1} />
           <h4>{item.name}</h4>
           </section>
-        </Link> 
+        </Link>
       ))}
       </section>
 
 
       </Grid>
+      </div>
 
     /*<div className = "Selling">
       <h1>Selling</h1>
