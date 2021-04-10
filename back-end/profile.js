@@ -1,5 +1,6 @@
 const router = require("express").Router()
 const axios = require("axios")
+const data = require("./public/users.json")
 
 
 router.get("/", async (req, res) => {
@@ -13,7 +14,7 @@ router.get("/", async (req, res) => {
     //   .catch(err => console.log(err))
     // res.json(apiResponse.data)
 
-  res.sendFile("/public/users.json", { root: __dirname })
+  res.json(data)
 
 })
 
