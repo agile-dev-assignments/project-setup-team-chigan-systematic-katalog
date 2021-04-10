@@ -18,6 +18,12 @@
     "multer": "^1.4.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.2"
+    "chai": "^4.3.4",
+    "eslint": "^7.24.0",
+    "eslint-plugin-mocha": "^8.1.0",
+    "mocha": "^8.3.2",
+    "mocha-sinon": "^2.1.2",
+    "nodemon": "^2.0.2",
+    "sinon": "^10.0.1"
   }
 }

@@ -4,7 +4,7 @@ const app = express() // instantiate an Express object
 const cors = require('cors')
 const profileRouter = require('./profile')
 const sellingpostbackRouter = require('./sellingpostback')
-const photocards = require('./photocards.json');
+const photocards = require('./public/photocards.json');
 
 
 // import some useful middleware
@@ -39,103 +39,46 @@ app.use("/profile", profileRouter)
 //use sellingpostback router
 app.use("/sellingpostback", sellingpostbackRouter)
 
-// route for HTTP GET requests to the root document
-app.get("/", (req, res) => {
-  res.send("Hello!")
-})
-
-// route for HTTP GET requests to /html-example
-app.get("/html-example", (req, res) => {
-  res.sendFile("/public/some-page.html", { root: __dirname })
-})
-
-// route for HTTP GET requests to /json-example
-
-// custom middleware - first
-app.use((req, res, next) => {
-  // make a modification to either the req or res objects
-  res.addedStuff = "First middleware function run!"
-  // run the next middleware function, if any
-  next()
-})
-
-// custom middleware - second
-app.use((req, res, next) => {
-  // make a modification to either the req or res objects
-  res.addedStuff += " Second middleware function run!"
-  // run the next middleware function, if any
-  next()
-})
-
-// route for HTTP GET requests to /middleware-example
-app.get("/middleware-example", (req, res) => {
-  // grab data passed by the middleware, if available
-  const message = res.addedStuff
-    ? res.addedStuff
-    : "Sorry, the middleware did not work!"
-  // use the data added by the middleware in some way
-  res.send(message)
-})
-
-// receive POST data from the client
-app.post("/post-example", (req, res) => {
-  // now do something amazing with the data we received from the client
-  const data = {
-    status: "amazing success!",
-    message: "congratulations on send us this data!",
-    your_data: {
-      name: req.body.your_name,
-      email: req.body.your_email,
-      agree: req.body.agree,
-    },
-  }
-  // ... then send a response of some kind to client
-  res.json(data)
-})
-
-// enable file uploads saved to disk in a directory named 'public/uploads'
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "public/uploads")
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.fieldname + "-" + Date.now())
-  },
-})
-const upload = multer({ storage: storage })
-
-// route for HTTP POST requests for /upload-example
-app.post("/upload-example", upload.array("my_files", 3), (req, res, next) => {
-  // check whether anything was uploaded
-  if (!req.files) {
-    // failure!
-    const error = new Error("Please upload some files!")
-    error.httpStatusCode = 400
-    return next(error)
-  } else {
-    // success
-    // send a message back to the client, for example, a simple JSON object
-    const data = {
-      status: "all good",
-      message: "files were uploaded!!!",
-      files: req.files,
-    }
-    res.json(data)
-  }
-})
-
 //search
 app.get('/search', (req,res)=> {
   const parsedInfo = {};
+  let filtered = [];
+  const all = photocards;
 
   if(req.query.name !== undefined){
       if (req.query.name.length !== 0){
           parsedInfo.name = req.query.name;
       }
+      all.forEach(card =>{
+        if (card.photocard_name.toLowerCase().match(parsedInfo.name.toLowerCase())){
+            filtered.push(card);
+        }
+      });
+  }else{
+    filtered = all;
   }
 
-  res.send(photocards);
+  res.send(filtered);
 });
+
+// app.get('/api/search', (req,res)=> {
+//   const parsedInfo = {};
+
+//   if(req.query.name !== undefined){
+//       if (req.query.name.length !== 0){
+//           parsedInfo.name = req.query.name;
+//       }
+//   }
+//   const filtered = [];
+  
+//   photocards.forEach(card =>{
+//     if (card.photocard_name.toLowerCase().match(parsedInfo.name)){
+//         filtered.push(card);
+//     }
+//   });
+  
+//   res.send(filtered);
+// });
 
 const photocard_json = require("./public/photocards.json")
 
@@ -170,76 +113,6 @@ app.get("/lookingfordata", (req, res, next) => {
     .then(apiResponse => res.json(apiResponse.data))
     .catch(err => next(err))
 })
-
-// proxy requests to/from an API
-app.get("/proxy-example", (req, res, next) => {
-  // use axios to make a request to an API for animal data
-  axios
-    .get("https://my.api.mockaroo.com/animals.json?key=d9ddfc40&num=10")
-    .then(apiResponse => res.json(apiResponse.data)) // pass data along directly to client
-    .catch(err => next(err)) // pass any errors to express
-})
-
-// same route as above, but using environmental variables for secret credentials
-app.get("/dotenv-example", (req, res, next) => {
-  // insert the environmental variable into the URL we're requesting
-  axios
-    .get(`${process.env.API_BASE_URL}?key=${process.env.API_SECRET_KEY}&num=10`)
-    .then(apiResponse => res.json(apiResponse.data)) // pass data along directly to client
-    .catch(err => next(err)) // pass any errors to express
-})
-
-// a route with parameter ... animalId is a parameter
-// the code here is similar to the dotenv-example route above... but...
-// using async/await in this route to show another way of dealing with asynchronous requests to an external API or database
-app.get("/parameter-example/:animalId", async (req, res) => {
-  // use axios to make a request to an API to fetch a single animal's data
-  // we use a Mock API here, but imagine we passed the animalId to a real API and received back data about that animal
-  const apiResponse = await axios
-    .get(
-      `${process.env.API_BASE_URL}?key=${process.env.API_SECRET_KEY}&num=1&id=${req.params.animalId}`
-    )
-    .catch(err => next(err)) // pass any errors to express
-
-  // express places parameters into the req.params object
-  const responseData = {
-    status: "wonderful",
-    message: `Imagine we got the data from the API for animal #${req.params.animalId}`,
-    animalId: req.params.animalId,
-    animal: apiResponse.data,
-  }
-
-  // send the data in the response
-  res.json(responseData)
-})
-
-// for search page to search results
-app.get('/search', (req,res)=> {
-  const parsedInfo = {};
-
-  if(req.query.name !== undefined){
-      if (req.query.name.length !== 0){
-          parsedInfo.name = req.query.name;
-      }
-      if (req.query.element.length !== 0){
-        parsedInfo.element = req.query.element;
-      }
-      if (req.query.weapon.length !== 0){
-          parsedInfo.weapon = req.query.weapon;
-      }
-      if (req.query.rarity.length !== 0){
-        parsedInfo.rarity = parseInt(req.query.rarity,10);
-    }
-  }
-
-  Character.find(parsedInfo, function(err, characters) {
-      if (err){
-          console.log("error from db.reviews.find");
-      }else {
-          res.render('search', {characters: characters});
-      }
-  });
-});
 
 // export the express app we created to make it available to other modules
 module.exports = app // CommonJS export style!
