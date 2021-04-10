@@ -4,7 +4,8 @@
   "description": "An example of a basic Express.js web server",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha test --exit",
+    "coverage": "nyc npm run test",
     "server": "nodemon server.js"
   },
   "author": "Foo Barstein",
@@ -18,6 +19,10 @@
     "multer": "^1.4.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.2"
+    "chai": "^4.3.4",
+    "mocha": "^8.3.2",
+    "nodemon": "^2.0.2",
+    "nyc": "^15.1.0",
+    "supertest": "^6.1.3"
   }
 }
