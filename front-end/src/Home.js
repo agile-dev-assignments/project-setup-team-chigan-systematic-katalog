@@ -82,31 +82,6 @@ const Home = (props) => {
         </form>
         <br/>
 
-
-
-<form method="GET" action="/search"
-          variant="outlined"
-          id="outlined-basic"
-          margin="normal">
-          Search: <input type="text" name="name" />
-          <input type="submit" value="Search" style={{
-            "color": "#8093f1",
-            "letter-spacing": "normal",
-            "word-spacing": "normal",
-            "text-transform": "none",
-            "text-indent": "0px",
-            "text-shadow": "none",
-            "display": "inline-block",
-            "text-align": "center",
-            "margin": "0em",
-            "font": "400 11px system-ui",
-            "padding": "1px 7px 2px",
-            "border-width": "1px",
-            "border-style": "solid",
-            "border-color": "#8093f1",
-          }} />
-        </form>
-
           <CategoriesModal />
 
             <div className="Trending">
@@ -122,7 +97,6 @@ const Home = (props) => {
                 ))}
           </section>
             </div>
-
             <div className="Newly Added">
             <p style={{
             'white-space': 'pre-wrap'
