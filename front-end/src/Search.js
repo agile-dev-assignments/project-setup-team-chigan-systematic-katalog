@@ -16,46 +16,44 @@ import FilterModal from './FilterModal'
 
 const Search = (props) => {
   const [data, setData] = React.useState([]);
-  const testData = {
-    id: 1,
-    photocard_name: "Bang Chan Double Sided #2 Photocard",
-    group: "Stray Kids",
-    member: "Bang Chan",
-    album: "GO生(GO LIVE)",
-    picture: "images/image1.jpg",
-    picture2: "images/image2.jpg"
-  }
+
+  const [query, setQuery] = React.useState('');
 
   useEffect(() => {
     axios.get('http://localhost:4000/photocarddata').then(response => {
       setData(response.data)
     })
   }, [])
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log("handle sumbit called");
+    let url = "http://localhost:4000/search"
+    const name = query;
+    // const name = document.getElementById("search").name;
+    console.log(event.target);
+    if (name){
+      url += "?name=" + name;
+    }
+    console.log(url);
+    const data = await axios.get(url);
+    console.log(data);
+    
+    setData(data.data);
+  }
+  
+  // const handleQueryChange = (event) => {
+  //   setQuery(event.target.value);
+  // }
+
   return (
     <div className="Search">
       <h1>Search</h1>
       <FilterModal />
 
       <Grid container direction="column" alignItems="left" justify="left">
-
-        {/* <TextField
-          id="outlined-basic"
-          variant="outlined"
-          label="Search..."
-          margin = "normal"
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="start">
-                <IconButton>
-                  <SearchIcon />
-                </IconButton>
-              </InputAdornment>
-          )
-        }}
-          /> */}
-
-        <form method="GET" action="/search">
-          Search: <input type="text" name="name" className="rcorners"/>
+        <form onSubmit={handleSubmit}>
+          Search: <input type="text" id="search" name="name" className="rcorners" onChange={(event)=>setQuery(event.target.value)}/>
           <input type="submit" value="Search" className="rcorners"/>
         </form>
 
@@ -65,23 +63,14 @@ const Search = (props) => {
         <button>Boy Group</button> <button>Girl Group</button> <button>Solo</button>
         <br></br>
       </div>
-      <Link to={{
-        pathname: "/photocard",
-        state: testData
-      }}>
-        <section id="main-content">
-          <img alt="Photocard 1" src="images/image1.jpg" />
-          <p4>Member<br />Album<br />Group</p4>
-
-        </section>
-      </Link>
+      
       {data.map(item => (
         <Link to={{
           pathname: "/photocard",
           state: item
         }}>
           <section id="main-content">
-            <img src={item.picture} />
+            <img alt="card" src={item.picture} />
             <p4>{item.member}<br />{item.album}<br />{item.group}</p4>
 
           </section>
