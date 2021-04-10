@@ -4,7 +4,8 @@ const app = express() // instantiate an Express object
 const cors = require('cors')
 const profileRouter = require('./profile')
 const sellingpostbackRouter = require('./sellingpostback')
-const photocards = require('./photocards.json');
+const photocards = require('./public/photocards.json');
+
 
 
 // import some useful middleware
@@ -140,6 +141,7 @@ app.get('/search', (req,res)=> {
 const photocard_json = require("./public/photocards.json")
 
 app.get("/photocarddata", (req, res, next) => {
+
   // axios
   //   .get("https://my.api.mockaroo.com/photocard.json?key=49083ca0")
   //   .then(apiResponse => res.json(apiResponse.data))
