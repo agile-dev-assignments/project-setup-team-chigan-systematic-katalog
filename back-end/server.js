@@ -17,6 +17,4 @@ const close = () => {
 }
 
 // export the close function
-module.exports = {
-  close: close,
-}
+module.exports = server
