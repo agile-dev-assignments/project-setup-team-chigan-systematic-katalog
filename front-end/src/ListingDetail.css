@@ -27,6 +27,10 @@ ul.alice-carousel__dots{
     margin-left: 20px;
 }
 
+.details > h5 {
+    text-align: center;
+}
+
 .description {
     margin-left: 20px;
 }
