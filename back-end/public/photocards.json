@@ -15,7 +15,7 @@
         "group" : "Blackpink",
         "member" : "Lisa",
         "album" : "album_name",
-        "picture" : "../images/image5.jpg",
+        "picture" : "../images/image3.jpg",
         "picture2" : "../images/image6.jpg"
     },
     {
@@ -24,12 +24,12 @@
         "group" : "NCT Dream",
         "member" : "Haechan",
         "album" : "Reload",
-        "picture" : "../images/image3.jpg",
+        "picture" : "../images/image5.jpg",
         "picture2" : "../images/image4.jpg"
     },
     {
         "id": "4",
-        "photocard_name": "4th Photocard",
+        "photocard_name": "Lisa",
         "group" : "Blackpink",
         "member" : "Lisa",
         "album" : "another album",

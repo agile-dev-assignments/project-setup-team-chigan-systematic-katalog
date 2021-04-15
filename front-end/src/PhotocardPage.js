@@ -13,7 +13,7 @@ function PhotocardPage(props){
     return (
         <div>
             <Photocard image={image} name={data.photocard_name} grp={data.group} member={data.member} album={data.album}/>
-            <PhotocardInfo/>
+            <PhotocardInfo name={data.photocard_name}/>
         </div>
     )
 }
