@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 // import logo from './logo.svg'
 import './PhotocardsInfo.css'
+import { Link } from 'react-router-dom'
 
 
 
@@ -17,15 +18,15 @@ const Photocards = (props) => {
 				<p onClick = {() => setActivePage(2)}>Looking For</p>
 			</div>
 			{
-  				activePage===1 && <Trading/>
+  				activePage===1 && <Trading photocardName={props.name}/>
 			}
 
 			{
-  				activePage===0 && <Selling/>
+  				activePage===0 && <Selling photocardName={props.name}/>
 			}
 
 			{
-  				activePage===2 && <LookingFor/>
+  				activePage===2 && <LookingFor photocardName={props.name}/>
 			}
 			
 		</div>
@@ -66,7 +67,7 @@ const Trading = (props) => {
 			<div>
 				<div className = "cards">
 					{data.map((item) => (
-						<CardTrading data = {item}/>
+						<CardTrading data = {item} photocardName={props.photocardName}/>
 					))}
 				</div>
 			</div>
@@ -100,7 +101,7 @@ const Selling = (props) => {
 			<div>
 				<div className = "cards">
 					{data.map((item) => (
-							<CardSelling data = {item}/>
+							<CardSelling data = {item} photocardName={props.photocardName}/>
 					))}
 				</div>
 			</div>
@@ -130,7 +131,7 @@ const LookingFor = (props) => {
 			<div>
 				<div className = "cards">
 					{data.map((item) => (
-						<CardLookingFor data = {item}/>
+						<CardLookingFor data = {item} photocardName={props.photocardName}/>
 					))}
 				</div>
 			</div>
@@ -140,53 +141,68 @@ const LookingFor = (props) => {
 
 const CardLookingFor = (props) => {
 	return (
-		<div className = "card">
-			<div className = "image">
-				<img alt = "photocard1" src={props.data.picture}/>
+		<Link to={{
+            pathname: `/photocard/listing/${props.data.id}`,
+            state: {data: props.data, listingType: "Looking", photocardName: props.photocardName}
+        }}>
+			<div className = "card">
+				<div className = "image">
+					<img alt = "photocard1" src={props.data.picture}/>
+				</div>
+				<div className = "text">
+					<p class = "username">Username: {props.data.username}</p>
+					<address class = "loc">Location: {props.data.loc}</address>
+					<p class = "offer">Offer: {props.data.offer}</p>
+					<p class = "shipTo">Ship To: {props.data.shipTo}</p>
+					<p class = "date">Date: {new Date(props.data.date).toDateString()}</p>
+				</div>
 			</div>
-			<div className = "text">
-				<p class = "username">Username: {props.data.username}</p>
-				<address class = "loc">Location: {props.data.loc}</address>
-				<p class = "offer">Offer: {props.data.offer}</p>
-				<p class = "shipTo">Ship To: {props.data.shipTo}</p>
-				<p class = "date">Date: {new Date(props.data.date).toDateString()}</p>
-			</div>
-		</div>
+		</Link>
 	)
 }
 
 const CardTrading = (props) => {
 	return (
-		<div className = "card">
-			<div className = "image">
-				<img alt = "photocard1" src={props.data.picture}/>
+		<Link to={{
+            pathname: `/photocard/listing/${props.data.id}`,
+            state: {data: props.data, listingType: "Trade", photocardName: props.photocardName}
+        }}>
+			<div className = "card">
+				<div className = "image">
+					<img alt = "photocard1" src={props.data.picture}/>
+				</div>
+				<div className = "text">
+					<p class = "username">Username: {props.data.username}</p>
+					<address class = "loc">Location: {props.data.loc}</address>
+					<p class = "want">Want: {props.data.want}</p>
+					<p class = "shipTo">Ship To: {props.data.shipTo}</p>
+					<p class = "date">Date: {new Date(props.data.date).toDateString()}</p>
+				</div>
 			</div>
-			<div className = "text">
-				<p class = "username">Username: {props.data.username}</p>
-				<address class = "loc">Location: {props.data.loc}</address>
-				<p class = "want">Want: {props.data.want}</p>
-				<p class = "shipTo">Ship To: {props.data.shipTo}</p>
-				<p class = "date">Date: {new Date(props.data.date).toDateString()}</p>
-			</div>
-		</div>
+		</Link>
 	)
 }
 
 const CardSelling= (props) => {
 	return (
-		<div className = "card">
-			<div className = "image">
-				<img alt = "photocard1" src={props.data.picture}/>
+		<Link to={{
+            pathname: `/photocard/listing/${props.data.id}`,
+            state: {data: props.data, listingType: "Sale", photocardName: props.photocardName}
+        }}>
+			<div className = "card">
+				<div className = "image">
+					<img alt = "photocard1" src={props.data.picture}/>
+				</div>
+				<div className = "text">
+					<p class = "username">Username: {props.data.username}</p>
+					<address class = "loc">Location: {props.data.loc}</address>
+					<p class = "price">Price: {props.data.price}</p>
+					<p class = "shipping">Shipping: {props.data.shipping}</p>
+					<p class = "shipTo">Ship To: {props.data.shipTo}</p>
+					<p class = "date">Date: {new Date(props.data.date).toDateString()}</p>
+				</div>
 			</div>
-			<div className = "text">
-				<p class = "username">Username: {props.data.username}</p>
-				<address class = "loc">Location: {props.data.loc}</address>
-				<p class = "price">Price: {props.data.price}</p>
-				<p class = "shipping">Shipping: {props.data.shipping}</p>
-				<p class = "shipTo">Ship To: {props.data.shipTo}</p>
-				<p class = "date">Date: {new Date(props.data.date).toDateString()}</p>
-			</div>
-		</div>
+		</Link>
 	)
 }
 export default Photocards
