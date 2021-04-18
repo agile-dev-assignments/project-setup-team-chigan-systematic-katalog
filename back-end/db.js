@@ -10,3 +10,5 @@ const User = new mongoose.Schema({
 });
 
 mongoose.model('User', User);
+
+//mongo "mongodb+srv://cluster0.jw5bn.mongodb.net/myFirstDatabase" --username <username>
