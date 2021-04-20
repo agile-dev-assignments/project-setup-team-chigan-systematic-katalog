@@ -78,7 +78,7 @@ app.get('/search', (req,res)=> {
   const parsedInfo = {};
   let filtered = [];
   
-  const all = await Photocard.find({});
+  const all = photocards //await Photocard.find({});
 
   if(req.query.name !== undefined){
       if (req.query.name.length !== 0){
