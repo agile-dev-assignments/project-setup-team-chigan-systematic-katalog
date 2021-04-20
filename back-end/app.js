@@ -4,8 +4,9 @@ const app = express() // instantiate an Express object
 const cors = require('cors')
 const profileRouter = require('./profile')
 const sellingpostbackRouter = require('./sellingpostback')
+const listingRouter = require('./listingRoute')
 const photocards = require('./public/photocards.json');
-
+const mongoose = require('mongoose')
 
 
 let users = [
@@ -53,6 +54,15 @@ const morgan = require("morgan") // middleware for nice logging of incoming HTTP
  * This is to match the order of the accompanying slides
  */
 
+// connect to MongoDB
+const uri = process.env.ATLAS_URI
+mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+const connection = mongoose.connection;
+connection.once('open', () => {
+  console.log("MongoDB database connection established successfully");
+})
+
+
 // use the morgan middleware to log all incoming http requests
 app.use(morgan("dev")) // morgan has a few logging default styles - dev is a nice concise color-coded style
 
@@ -68,6 +78,9 @@ app.use("/static", express.static("public"))
 
 // use profile router
 app.use("/profile", profileRouter)
+
+// use listing router
+app.use("/listing", listingRouter)
 
 //use sellingpostback router
 app.use("/sellingpostback", sellingpostbackRouter)
