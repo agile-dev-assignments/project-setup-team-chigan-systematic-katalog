@@ -7,14 +7,8 @@ const Photocard = new Schema({
   group: String,
   member: String,
   album: String,
-  picture: { 
-    data: Buffer, 
-    contentType: String 
-  },
-  picture2: { 
-    data: Buffer, 
-    contentType: String 
-  }
+  picture: String,
+  picture2: String,
 });
 
 mongoose.model('Photocard', Photocard);
