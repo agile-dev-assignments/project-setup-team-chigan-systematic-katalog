@@ -5,8 +5,8 @@ const cors = require('cors')
 const profileRouter = require('./profile')
 const sellingpostbackRouter = require('./sellingpostback')
 const photocards = require('./public/photocards.json');
-
-
+const Photocard = require('./models/Photocard');
+require('./db');
 
 let users = [
   {   
@@ -37,7 +37,6 @@ let users = [
       "Password" : "Frankspassword"
   }
 ];
-
 
 
 // import some useful middleware
