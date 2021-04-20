@@ -1,10 +1,11 @@
 // import and instantiate express
 const express = require("express") // CommonJS import style!
 const app = express() // instantiate an Express object
+
 const cors = require('cors')
 const profileRouter = require('./profile')
-const sellingpostbackRouter = require('./sellingpostback')
-const photocards = require('./public/photocards.json');
+const sellingpostbackRouter = require('./sellingpostback');
+const photocard_json = require("./public/photocards.json")
 const Photocard = require('./models/Photocard');
 const mongoose = require("mongoose");
 const db = require('./db');
@@ -77,8 +78,8 @@ app.use("/sellingpostback", sellingpostbackRouter)
 app.get('/search', (req,res)=> {
   const parsedInfo = {};
   let filtered = [];
-  
-  const all = await Photocard.find({});
+  const all = photocard_json;
+  // const all = await Photocard.find({});
 
   if(req.query.name !== undefined){
       if (req.query.name.length !== 0){
@@ -96,34 +97,13 @@ app.get('/search', (req,res)=> {
   res.send(filtered);
 });
 
-// app.get('/api/search', (req,res)=> {
-//   const parsedInfo = {};
-
-//   if(req.query.name !== undefined){
-//       if (req.query.name.length !== 0){
-//           parsedInfo.name = req.query.name;
-//       }
-//   }
-//   const filtered = [];
-  
-//   photocards.forEach(card =>{
-//     if (card.photocard_name.toLowerCase().match(parsedInfo.name)){
-//         filtered.push(card);
-//     }
-//   });
-  
-//   res.send(filtered);
-// });
-
-const photocard_json = require("./public/photocards.json")
-
 app.get("/photocarddata", (req, res, next) => {
 
   // axios
   //   .get("https://my.api.mockaroo.com/photocard.json?key=49083ca0")
   //   .then(apiResponse => res.json(apiResponse.data))
   //   .catch(err => next(err))
-  res.json(photocard_json)
+  res.json(photocard_json);
 })
 
 app.get("/tradingdata", (req, res, next) => {
@@ -150,34 +130,8 @@ app.get("/lookingfordata", (req, res, next) => {
     .catch(err => next(err))
 })
 
-// for search page to search results
-app.get('/search', (req,res)=> {
-  const parsedInfo = {};
 
-  if(req.query.name !== undefined){
-      if (req.query.name.length !== 0){
-          parsedInfo.name = req.query.name;
-      }
-      if (req.query.element.length !== 0){
-        parsedInfo.element = req.query.element;
-      }
-      if (req.query.weapon.length !== 0){
-          parsedInfo.weapon = req.query.weapon;
-      }
-      if (req.query.rarity.length !== 0){
-        parsedInfo.rarity = parseInt(req.query.rarity,10);
-    }
-  }
-
-  Character.find(parsedInfo, function(err, characters) {
-      if (err){
-          console.log("error from db.reviews.find");
-      }else {
-          res.render('search', {characters: characters});
-      }
-  });
-});
-  app.post("/hello", (req,res,next) => {
+app.post("/hello", (req,res,next) => {
     res.json({message:"hello"})
     console.log("api is hit");
     // console.log(req.body);

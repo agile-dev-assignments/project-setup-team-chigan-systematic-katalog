@@ -1,10 +1,11 @@
 //mongo "mongodb+srv://cluster0.jw5bn.mongodb.net/myFirstDatabase" --username <username>
-const uri = "mongodb+srv://user:hlHnISkEhvdfEJDz@cluster0.jw5bn.mongodb.net/katalog?retryWrites=true&w=majority";
+
 const mongoose = require("mongoose");
+require('dotenv').config()
 
 const connectDB = async () => {
 	try {
-		await mongoose.connect(uri, {
+		await mongoose.connect(process.env.URI.toString(), {
 			useNewUrlParser: true,
 			useCreateIndex: true,
 			useFindAndModify: false,
