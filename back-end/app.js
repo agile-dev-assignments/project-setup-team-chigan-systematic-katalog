@@ -6,7 +6,9 @@ const profileRouter = require('./profile')
 const sellingpostbackRouter = require('./sellingpostback')
 const photocards = require('./public/photocards.json');
 const Photocard = require('./models/Photocard');
-require('./db');
+const mongoose = require("mongoose");
+const db = require('./db');
+db();
 
 let users = [
   {   
@@ -75,7 +77,8 @@ app.use("/sellingpostback", sellingpostbackRouter)
 app.get('/search', (req,res)=> {
   const parsedInfo = {};
   let filtered = [];
-  const all = photocards;
+  
+  const all = await Photocard.find({});
 
   if(req.query.name !== undefined){
       if (req.query.name.length !== 0){
