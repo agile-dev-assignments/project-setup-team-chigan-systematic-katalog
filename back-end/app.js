@@ -65,44 +65,28 @@ app.use("/profile", profileRouter)
 app.use("/sellingpostback", sellingpostbackRouter)
 //search
 app.get('/search', async (req,res)=> {
-  console.log('api hit')
-  let parsedInfo = "";
-  // const all = photocard_json;
-  if(req.query.name !== undefined){
-      if (req.query.name.length !== 0){
-          parsedInfo = req.query.name;
-  //         all.map(card => {
-  //           if (card.photocard_name.toLowerCase().match(parsedInfo.name.toLowerCase())) {
-  //             filtered.push(card);
-  //           }
-  //         });
-      }
-  // }else{
-  //   filtered = all;
-  }
-  const photoCardData = {
-    // id=  "1", // don't need it, mongoose automatically generates a unique id
-      photocard_name : "Bang Chan Double Sided #2 Photocard",
-      group : "Stray Kids",
-      member : "Bang Chan",
-      album : "GO生(GO LIVE)",
-      picture: "https://i.imgur.com/xVMtAsz.jpg",
-      picture2 : "https://i.imgur.com/ZKLgDUH.jpg"
-  }
+  // console.log('api hit')
+  // let parsedInfo = "";
+  // // const all = photocard_json;
+  // if(req.query.name !== undefined){
+  //     if (req.query.name.length !== 0){
+  //         parsedInfo = req.query.name;
+  // //         all.map(card => {
+  // //           if (card.photocard_name.toLowerCase().match(parsedInfo.name.toLowerCase())) {
+  // //             filtered.push(card);
+  // //           }
+  // //         });
+  //     }
+  // // }else{
+  // //   filtered = all;
+  // }
   // const newPC = new Photocard(photoCardData);
   // console.log(newPC);
   // let x = await newPC.save();
-  console.log(parsedInfo);
+  // console.log(parsedInfo);
   const photocards = await Photocard.find({ photocard_name: new RegExp(req.query.name, 'gi') });
-  console.log(photocards)
-  // Photocard.find(parsedInfo,function(err, photocards){
-  //   if (err){
-  //     console.log("error from db characters.find");
-  //   }else{
-  //     console.log(parsedInfo);
-  //     res.send(photocards);
-  //   }
-  // })
+  // console.log(photocards)
+
   res.send(photocards);
 });
 app.get("/photocarddata", (req, res, next) => {
