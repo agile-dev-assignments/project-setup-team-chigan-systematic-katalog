@@ -4,6 +4,7 @@ const app = express() // instantiate an Express object
 const cors = require('cors')
 const profileRouter = require('./profile')
 const sellingpostbackRouter = require('./sellingpostback')
+const listingRouter = require('./listingRoute')
 const photocards = require('./public/photocards.json');
 const Photocard = require('./models/Photocard');
 const mongoose = require("mongoose");
@@ -54,6 +55,7 @@ const morgan = require("morgan") // middleware for nice logging of incoming HTTP
  * This is to match the order of the accompanying slides
  */
 
+
 // use the morgan middleware to log all incoming http requests
 app.use(morgan("dev")) // morgan has a few logging default styles - dev is a nice concise color-coded style
 
@@ -69,6 +71,9 @@ app.use("/static", express.static("public"))
 
 // use profile router
 app.use("/profile", profileRouter)
+
+// use listing router
+app.use("/listing", listingRouter)
 
 //use sellingpostback router
 app.use("/sellingpostback", sellingpostbackRouter)
