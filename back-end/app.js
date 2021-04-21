@@ -82,9 +82,9 @@ app.get('/search', async (req,res)=> {
   const parsedInfo = {};
   // const all = photocard_json;
 
-  if(req.query.name !== undefined){
-      if (req.query.name.length !== 0){
-          parsedInfo.photocard_name = "$regex: " +req.query.name;
+  if(req.query.photocard_name !== undefined){
+      if (req.query.photocard_name.length !== 0){
+          parsedInfo.photocard_name = req.query.photocard_name;
   //         all.map(card => {
   //           if (card.photocard_name.toLowerCase().match(parsedInfo.name.toLowerCase())) {
   //             filtered.push(card);
@@ -106,7 +106,7 @@ app.get('/search', async (req,res)=> {
   // });
   // console.log(newPC);
   // newPC.save();
-
+  console.log(parsedInfo);
   const photocards = await Photocard.find(parsedInfo);
 
   // Photocard.find(parsedInfo,function(err, photocards){
@@ -120,6 +120,28 @@ app.get('/search', async (req,res)=> {
   res.send(photocards);
 });
 
+// app.get("/insertdata", function(req, res) {
+//   Photocard.insert(
+//     [{
+//         id: "1",
+//         photocard_name : "Bang chan Double Sided #2 Photocard",
+//         group : "Stray Kids",
+//         member : "Bang Chan",
+//         album : "GO生(GO LIVE)",
+//         picture : "https://i.imgur.com/xVMtAsz.jpg",
+//         picture2 : "https://i.imgur.com/ZKLgDUH.jpg"
+//     }],
+//     function(err, result) {
+//       if (err) {
+//         res.send(err);
+//       } else {
+//         res.send(result);
+//       }
+//     }
+//   );
+// });
+
+
 app.get("/photocarddata", (req, res, next) => {
 
   // axios
@@ -130,7 +152,6 @@ app.get("/photocarddata", (req, res, next) => {
 })
 
 app.get("/tradingdata", (req, res, next) => {
-
   axios
     .get("https://my.api.mockaroo.com/photocardtrading.json?key=49083ca0")
     .then(apiResponse => res.json(apiResponse.data))

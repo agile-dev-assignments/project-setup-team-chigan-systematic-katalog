@@ -8,6 +8,6 @@ const Photocard = new mongoose.Schema({
   album: String,
   picture: String,
   picture2: String,
-});
+},{ collection : 'photocards' });
 
 module.export = Photocard;
