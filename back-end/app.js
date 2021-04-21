@@ -1,14 +1,16 @@
 // import and instantiate express
 const express = require("express") // CommonJS import style!
 const app = express() // instantiate an Express object
-
+const mongoose = require('mongoose');
 const cors = require('cors')
 const profileRouter = require('./profile')
 const sellingpostbackRouter = require('./sellingpostback');
 const photocard_json = require("./public/photocards.json")
-const Photocard = require('./models/Photocard');
-const mongoose = require("mongoose");
+const pc = require('./models/Photocard');
 const db = require('./db');
+
+const Photocard = mongoose.model('Photocard', pc);
+
 db();
 
 let users = [
@@ -47,7 +49,8 @@ let users = [
 const multer = require("multer") // middleware to handle HTTP POST requests with file uploads
 const axios = require("axios") // middleware for making requests to APIs
 require("dotenv").config({ silent: true }) // load environmental variables from a hidden file named .env
-const morgan = require("morgan") // middleware for nice logging of incoming HTTP requests
+const morgan = require("morgan"); // middleware for nice logging of incoming HTTP requests
+const { parse } = require("dotenv");
 
 /**
  * Typically, all middlewares would be included before routes
@@ -75,26 +78,46 @@ app.use("/profile", profileRouter)
 app.use("/sellingpostback", sellingpostbackRouter)
 
 //search
-app.get('/search', (req,res)=> {
+app.get('/search', async (req,res)=> {
   const parsedInfo = {};
-  let filtered = [];
-  const all = photocard_json;
-  // const all = await Photocard.find({});
+  // const all = photocard_json;
 
   if(req.query.name !== undefined){
       if (req.query.name.length !== 0){
-          parsedInfo.name = req.query.name;
+          parsedInfo.photocard_name = "$regex: " +req.query.name;
+  //         all.map(card => {
+  //           if (card.photocard_name.toLowerCase().match(parsedInfo.name.toLowerCase())) {
+  //             filtered.push(card);
+  //           }
+  //         });
       }
-      all.forEach(card =>{
-        if (card.photocard_name.toLowerCase().match(parsedInfo.name.toLowerCase())){
-            filtered.push(card);
-        }
-      });
-  }else{
-    filtered = all;
+  // }else{
+  //   filtered = all;
   }
+  const id=  "1",
+      photocard_name = "Bang Chan Double Sided #2 Photocard",
+      group = "Stray Kids",
+      member = "Bang Chan",
+      album = "GO生(GO LIVE)",
+      picture= "https://i.imgur.com/xVMtAsz.jpg",
+      picture2 = "https://i.imgur.com/ZKLgDUH.jpg";
+  const newPC = new Photocard({
+    id, photocard_name, group, member, album, picture, picture2,
+  });
+  console.log(newPC);
+  newPC.save();
 
-  res.send(filtered);
+  const photocards = await Photocard.find(parsedInfo);
+
+  // Photocard.find(parsedInfo,function(err, photocards){
+  //   if (err){
+  //     console.log("error from db characters.find");
+  //   }else{
+  //     console.log(parsedInfo);
+  //     res.send(photocards);
+  //   }
+  // })
+  res.send(photocards);
 });
 
 app.get("/photocarddata", (req, res, next) => {

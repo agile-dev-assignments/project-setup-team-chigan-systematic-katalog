@@ -10,4 +10,4 @@ const Photocard = new mongoose.Schema({
   picture2: String,
 });
 
-module.export = mongoose.model('Photocard', Photocard);
+module.export = Photocard;
