@@ -1,6 +1,7 @@
-//mongo "mongodb+srv://cluster0.jw5bn.mongodb.net/myFirstDatabase" --username <username>
-const uri = "mongodb+srv://user:hlHnISkEhvdfEJDz@cluster0.jw5bn.mongodb.net/katalog?retryWrites=true&w=majority";
+require("dotenv").config({ silent: true })
 const mongoose = require("mongoose");
+
+const uri = process.env.URI
 
 const connectDB = async () => {
 	try {
@@ -14,10 +15,10 @@ const connectDB = async () => {
 		console.log('MongoDB Connected...');
 	} catch (err) {
 		console.error(err.message);
+        console.log("There is an error connecting")
 		// Exit process with failure
 		process.exit(1);
 	}
 };
 
 module.exports = connectDB;
-
