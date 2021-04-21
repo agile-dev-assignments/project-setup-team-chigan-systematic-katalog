@@ -66,11 +66,11 @@ app.use("/sellingpostback", sellingpostbackRouter)
 //search
 app.get('/search', async (req,res)=> {
   console.log('api hit')
-  const parsedInfo = {};
+  let parsedInfo = "";
   // const all = photocard_json;
   if(req.query.name !== undefined){
       if (req.query.name.length !== 0){
-          parsedInfo.photocard_name = "$regex: " +req.query.name;
+          parsedInfo = req.query.name;
   //         all.map(card => {
   //           if (card.photocard_name.toLowerCase().match(parsedInfo.name.toLowerCase())) {
   //             filtered.push(card);
@@ -92,8 +92,8 @@ app.get('/search', async (req,res)=> {
   // const newPC = new Photocard(photoCardData);
   // console.log(newPC);
   // let x = await newPC.save();
-  // console.log(x)
-  const photocards = await Photocard.find({});
+  console.log(parsedInfo);
+  const photocards = await Photocard.find({photocard_name:{ $regex: parsedInfo.toString() }});
   console.log(photocards)
   // Photocard.find(parsedInfo,function(err, photocards){
   //   if (err){
