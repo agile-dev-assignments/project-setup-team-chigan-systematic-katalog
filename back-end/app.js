@@ -94,18 +94,18 @@ app.get('/search', async (req,res)=> {
   // }else{
   //   filtered = all;
   }
-  const id=  "1",
-      photocard_name = "Bang Chan Double Sided #2 Photocard",
-      group = "Stray Kids",
-      member = "Bang Chan",
-      album = "GO生(GO LIVE)",
-      picture= "https://i.imgur.com/xVMtAsz.jpg",
-      picture2 = "https://i.imgur.com/ZKLgDUH.jpg";
-  const newPC = new Photocard({
-    id, photocard_name, group, member, album, picture, picture2,
-  });
-  console.log(newPC);
-  newPC.save();
+  // const id=  "1",
+  //     photocard_name = "Bang Chan Double Sided #2 Photocard",
+  //     group = "Stray Kids",
+  //     member = "Bang Chan",
+  //     album = "GO生(GO LIVE)",
+  //     picture= "https://i.imgur.com/xVMtAsz.jpg",
+  //     picture2 = "https://i.imgur.com/ZKLgDUH.jpg";
+  // const newPC = new Photocard({
+  //   id, photocard_name, group, member, album, picture, picture2,
+  // });
+  // console.log(newPC);
+  // newPC.save();
 
   const photocards = await Photocard.find(parsedInfo);
 
