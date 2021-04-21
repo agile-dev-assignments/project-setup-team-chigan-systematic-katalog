@@ -38,13 +38,19 @@ function SignUp(props) {
   //   }
   // }
 
+  // const handleSubmit = async (e) => {
+  //   await axios.post("http://localhost:4000/signup", {data: {
+  //     username: setUsername,
+  //     password: setPassword,
+  //   }}) 
+  // }
 
   return (
     <div className="SignUp">
       <h1>SignUp</h1>
       {/* <Form onSubmit={handleSubmit}> */}
-      {/* <Form action="/signup" method="POST">  */}
-      <Form > 
+      <Form action="/signup" method="POST"> 
+      {/* <Form >  */}
         <Form.Group size="lg" controlId="username">
           <p>Username</p>
           <Form.Control
@@ -88,7 +94,7 @@ function SignUp(props) {
     
         <br/>
         {/* disabled={!validateForm()} */}
-        <Button block size="lg" onClick={signUp} >
+        <Button block size="lg" type="submit" >
           SignUp
         </Button>
         <br/>

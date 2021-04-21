@@ -11,4 +11,5 @@ const Photocard = new Schema({
   picture2: String,
 });
 
+
 mongoose.model('Photocard', Photocard);

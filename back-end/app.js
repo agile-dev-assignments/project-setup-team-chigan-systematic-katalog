@@ -13,8 +13,17 @@ const bcrypt = require('bcrypt')
 const passport = require ('passport')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
-const passportLocal = require("passport-local").Strategy
+const LocalStrategy = require("passport-local").Strategy
 const User = require('./models/User')
+const passportLocalMongoose = require('passport-local-mongoose');
+const connectEnsureLogin = require('connect-ensure-login');
+const flash = require("express-flash");
+const path = require('path');
+const expressSession = require('express-session')({
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: false
+  });
 
 let users = [
   {   
@@ -235,54 +244,142 @@ app.get("/hello", (req,res,next) => {
   res.json({users})
 });
 
-app.use(session({
-  secret: "secretcode",
-  resave: true,
-  saveUninitialized: true
-}))
-
-app.use(cookieParser("secretcode"))
-app.use(passport.initialize())
-app.use(passport.session())
-require('./passport-config')(passport)
+// const User = mongoose.model('User');
+// const Photocard = mongoose.model('Photocard');
 
 
-//Routes
-app.post("/login", (req, res) => {
-  console.log(req.body)
-  passport.authenticate("local", (err, user, info) => {
-    if (err) throw err;
-    if (!user) res.send("No User Exists")
-    else {
-      req.logIn(user, err => {
-        if (err) throw err
-        res.send('Successful Authentication')
-        console.log(req.user)
-      })
-    }
-  })(req, res, next)
+app.use(express.static(path.join(__dirname, 'public')));
+// app.set('view engine', 'hbs');
 
-})
+app.use(express.json());
+app.use(express.urlencoded({ extended: true}));
+app.use(expressSession);
 
-app.post("/signup", (req, res) => {
-  console.log(req.body)
-  User.findOne({username: req.body.username}, async (err,doc) => {
-    if (err) throw err
-    if (doc) res.send("User Already Exists")
-    if (!doc) {
-        const hashedPassword = await bcrypt.hash(req.body.password, 10)
+passport.use(User.createStrategy());
 
-      const newUser = new User({
-        username: req.body.username,
-        password: hashedPassword,
-      })
-      await newUser.save()
-      res.send("User Created")
-    }
-  })
-})
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
+});
+passport.deserializeUser(function(id, done) {
+    User.findOne({
+        _id: id
+    }, '-password -salt', function(err, user) {
+        done(err, user);
+    });
+});
 
-app.post("/user", (req, res) => {})
+passport.use(new LocalStrategy(function(username, password, done) {
+    User.findOne({
+        username: username,
+        password: password
+    }, function(err, user) {
+        if (err) return done(err);
+        if (!user) return done(null, false);
+        if (!user.authenticate(password)) return done(null, false);
+        return done(null, user);
+     });
+}));
+
+//passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+app.get('/', function(req, res) {
+res.redirect('/login');
+});
+
+app.get('/signup', (req, res) => {
+res.render('signup', {error: ''});
+});
+
+app.post('/signup', (req, res, next) => {
+  const obj = {
+ username: req.body.username,
+ password: req.body.password
+ };
+ 
+   const u = new User(obj);
+ 
+   u.save((err, savedUser) => {
+     console.log(err, savedUser);
+     if(err) {
+       User.find({}, (err, users) => {
+       res.render('signup', {error: 'there was an error in your submission'});
+       });
+     } 
+     else {
+       res.redirect('/search');
+     }
+   });
+ 
+ });
+ 
+ app.get('/login', (req, res) => {
+ res.render('login', {error: ''});
+ });
+ 
+ app.post('/login', (req, res, next) => {
+   passport.authenticate('local', 
+   (err, user, info) => {
+     if (err) {
+       return next(err);
+     }
+ 
+     if (!user) {
+       return res.redirect('/login');
+       // res.render('login', {error: 'username or password not found'});
+     }
+ 
+     req.logIn(user, function(err) {
+   if (err) {
+     return next(err);
+  }
+ 
+   return res.redirect('/search');
+     });
+ 
+   })(req, res, next);
+ });
+
+//  app.listen(process.env.PORT || 3000);
+
+// //Routes
+// app.post("/login", (req, res) => {
+//   console.log(req.body)
+//   passport.authenticate("local", (err, user, info) => {
+//     if (err) throw err;
+//     if (!user) res.send("No User Exists")
+//     else {
+//       req.logIn(user, err => {
+//         if (err) throw err
+//         res.send('Successful Authentication')
+//         console.log(req.user)
+//       })
+//     }
+//   })(req, res, next)
+
+// })
+
+// app.post("/signup", (req, res) => {
+//   console.log(req.body)
+//   User.findOne({username: req.body.username}, async (err,doc) => {
+//     if (err) throw err
+//     if (doc) res.send("User Already Exists")
+//     if (!doc) {
+//         const hashedPassword = await bcrypt.hash(req.body.password, 10)
+
+//       const newUser = new User({
+//         username: req.body.username,
+//         password: hashedPassword,
+//       })
+//       await newUser.save()
+//       res.send("User Created")
+//     }
+//   })
+// })
+
+// app.post("/user", (req, res) => {})
 
 // export the express app we created to make it available to other modules
 module.exports = app // CommonJS export style!
