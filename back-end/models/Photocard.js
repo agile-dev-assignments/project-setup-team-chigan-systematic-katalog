@@ -1,13 +1,24 @@
 const mongoose = require('mongoose');
-
-const Photocard = new mongoose.Schema({
-  id: Number,
-  photocard_name: String,
-  group: String,
-  member: String,
-  album: String,
-  picture: String,
-  picture2: String,
-},{ collection : 'photocards' });
-
-module.export = Photocard;
+const Schema = mongoose.Schema;
+const PhotoCardSchema = new Schema({
+	photocard_name: {
+		type: String,
+		// required: true,
+	},
+	group: {
+		type: String,
+	},
+	member: {
+		type: String,
+	},
+	album: {
+		type: String,
+	},
+	picture: {
+		type: String,
+	},
+	picture2: {
+		type: String,
+	},
+});
+module.exports = mongoose.model('photoCard', PhotoCardSchema);
