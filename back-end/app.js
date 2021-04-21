@@ -78,7 +78,7 @@ app.use("/static", express.static("public"))
 app.use("/profile", profileRouter)
 
 //use sellingpostback router
-app.use("/sellingpostback", sellingpostbackRouter)
+app.use("/sellingpostback", sellingpostbackRouter) 
 
 //search
 app.get('/search', (req,res)=> {
