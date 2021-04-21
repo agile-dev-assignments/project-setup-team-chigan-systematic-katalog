@@ -10,8 +10,6 @@ import FAQ from './FAQ'
 import About from './About'
 import Login from './Login'
 import SignUp from './SignUp'
-// import AnimalsList from './AnimalsList'
-import Animal from './Animal'
 import './App.css'
 import Results from './Results'
 import PhotocardPage from './PhotocardPage'
@@ -21,17 +19,6 @@ import SellingPost from './SellingPost'
 import ListingDetail from './ListingDetail'
 import EditProfile from './EditProfile'
 
-
-// this is used in one of the routes below for a specific animal with a specific id
-// there's no nicer way to pass props to a component in a route
-const AnimalWrapper = ({ match }) => {
-  return (
-    <>
-      <PrimaryNav />
-      <Animal animalId={match.params.id} />
-    </>
-  )
-}
 
 // set up routes so different URL routes load up different main components
 const App = (props) => {
@@ -79,8 +66,6 @@ const App = (props) => {
             <About />
             <Footer />
           </Route>
-
-          <Route path="/animals/:id" component={AnimalWrapper} />
 
           <Route path="/photocard/listing">
             <PrimaryNav />
