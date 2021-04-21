@@ -233,12 +233,20 @@ app.post("/hello2", async (req,res,next) => {
 
   let newUsername = req.body.username
   //users1.create
-  let newVar = new User({username:"lee"})
-  await newVar.save()
+  //let newVar = new User({username:"lee"})
+  //await newVar.save()
+
+
 //give frontend the id
 //get req to update users name, look for the user with the id and update
-let newName = await User.find();
-console.log(newName)
+
+//let newName = await User.find({_id:"607f3995aec3658bd8c4af7b"}); 
+
+//once user auth is complete, this line above will be replaced with this.user._id
+
+User.findOneAndUpdate({_id:"607f3995aec3658bd8c4af7b"},{"username":"Helllooooo"});
+//User.update({name:"Asap"},{$set:{"username":"Helllooooo"}});
+//console.log(newName)
 });
 
 //findone takes user id and update takes username to update with
