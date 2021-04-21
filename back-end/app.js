@@ -9,6 +9,12 @@ const Photocard = require('./models/Photocard');
 const mongoose = require("mongoose");
 const db = require('./db');
 db();
+const bcrypt = require('bcrypt')
+const passport = require ('passport')
+const cookieParser = require('cookie-parser')
+const session = require('express-session')
+const passportLocal = require("passport-local").Strategy
+const User = require('./models/User')
 
 let users = [
   {   
@@ -228,5 +234,55 @@ app.get('/search', (req,res)=> {
 app.get("/hello", (req,res,next) => {
   res.json({users})
 });
+
+app.use(session({
+  secret: "secretcode",
+  resave: true,
+  saveUninitialized: true
+}))
+
+app.use(cookieParser("secretcode"))
+app.use(passport.initialize())
+app.use(passport.session())
+require('./passport-config')(passport)
+
+
+//Routes
+app.post("/login", (req, res) => {
+  console.log(req.body)
+  passport.authenticate("local", (err, user, info) => {
+    if (err) throw err;
+    if (!user) res.send("No User Exists")
+    else {
+      req.logIn(user, err => {
+        if (err) throw err
+        res.send('Successful Authentication')
+        console.log(req.user)
+      })
+    }
+  })(req, res, next)
+
+})
+
+app.post("/signup", (req, res) => {
+  console.log(req.body)
+  User.findOne({username: req.body.username}, async (err,doc) => {
+    if (err) throw err
+    if (doc) res.send("User Already Exists")
+    if (!doc) {
+        const hashedPassword = await bcrypt.hash(req.body.password, 10)
+
+      const newUser = new User({
+        username: req.body.username,
+        password: hashedPassword,
+      })
+      await newUser.save()
+      res.send("User Created")
+    }
+  })
+})
+
+app.post("/user", (req, res) => {})
+
 // export the express app we created to make it available to other modules
 module.exports = app // CommonJS export style!
