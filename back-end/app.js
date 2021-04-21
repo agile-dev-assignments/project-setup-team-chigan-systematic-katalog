@@ -9,6 +9,7 @@ const sellingpostbackRouter = require('./sellingpostback');
 const photocard_json = require("./public/photocards.json")
 
 const Photocard = require('./models/Photocard');
+const Listing = require('./models/listing');
 const db = require('./db');
 
 // const Photocard = mongoose.model('Photocard', pc);
@@ -105,23 +106,17 @@ app.get("/photocarddata", (req, res, next) => {
   //   .catch(err => next(err))
   res.json(photocard_json);
 })
-app.get("/tradingdata", (req, res, next) => {
-  axios
-    .get("https://my.api.mockaroo.com/photocardtrading.json?key=49083ca0")
-    .then(apiResponse => res.json(apiResponse.data))
-    .catch(err => next(err))
+app.get("/tradingdata", async (req, res, next) => {
+  const trading = await Listing.find({listedFor: "trading"});
+  res.send(trading);
 })
-app.get("/sellingdata", (req, res, next) => {
-  axios
-    .get("https://my.api.mockaroo.com/photocardselling.json?key=49083ca0")
-    .then(apiResponse => res.json(apiResponse.data))
-    .catch(err => next(err))
+app.get("/sellingdata", async (req, res) => {
+  const selling = await Listing.find({listedFor: "selling"});
+  res.send(selling);
 })
-app.get("/lookingfordata", (req, res, next) => {
-  axios
-    .get("https://my.api.mockaroo.com/photocardlookingfor.json?key=49083ca0")
-    .then(apiResponse => res.json(apiResponse.data))
-    .catch(err => next(err))
+app.get("/lookingfordata", async (req, res, next) => {
+  const lookingfor = await Listing.find({listedFor: "looking"});
+  res.send(lookingfor);
 })
 app.post("/hello", (req,res,next) => {
     res.json({message:"hello"})
