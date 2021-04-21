@@ -17,7 +17,7 @@ function PopupModalBio() {
 
   const [input, setInput] = useState("");
   const handleSubmit = async (e) => {
-    await axios.post("http://localhost:4000/hello",{bio:input})
+    await axios.post("http://localhost:4000/update",{bio:input})
     .then((response) => {
       console.log(response);
     }, (error) => {

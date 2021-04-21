@@ -11,38 +11,8 @@ const photocard_json = require("./public/photocards.json")
 const Photocard = require('./models/Photocard');
 const db = require('./db');
 
-// const Photocard = mongoose.model('Photocard', pc);
-
 db();
-let users = [
-  {   
-      "Username" : "Rocky",
-      "Name" : "Asap",
-      "Bio" : "This is my bio",
-      "Venmo" : "RockysVenmo",
-      "Email" : "rocky@gmail.com",
-      "Number" : "0123456789",
-      "Password" : "Rockyspassword"
-  },
-  {   
-      "Username" : "BrunoMars",
-      "Name" : "Bruno",
-      "Bio" : "This is Bruno's bio",
-      "Venmo" : "BrunosVenmo",
-      "Email" : "bruno@gmail.com",
-      "Number" : "9876543210",
-      "Password" : "Brunospassword"
-  },
-  {
-      "Username" : "Frank",
-      "Name" : "Frank Dommer",
-      "Bio" : "This is Frank's bio",
-      "Venmo" : "FranksVenmo",
-      "Email" : "Frank@gmail.com",
-      "Number" : "7685943210",
-      "Password" : "Frankspassword"
-  }
-];
+
 // import some useful middleware
 // const bodyParser = require("body-parser") // middleware to help parse incoming HTTP POST data
 const multer = require("multer") // middleware to handle HTTP POST requests with file uploads
@@ -123,6 +93,39 @@ app.get("/lookingfordata", (req, res, next) => {
     .then(apiResponse => res.json(apiResponse.data))
     .catch(err => next(err))
 })
+
+app.post("/update", async (req,res,next) => {
+
+  console.log(req.body)
+  res.status(200).json({ok:true})
+
+  //once user auth is complete, this line below will be replaced with this.user._id
+  if (User.find({_id:"607f3995aec3658bd8c4af7b"})) { //for now, searches to see this user exists, using this condition until user auth is fully implemented
+    console.log("api is hit")
+    if (req.body.username!=null) {
+      await User.findOneAndUpdate({_id:"607f3995aec3658bd8c4af7b"},{username:req.body.username});  //use await before bc its a promise
+    }
+    if (req.body.name!=null) {
+      await User.findOneAndUpdate({_id:"607f3995aec3658bd8c4af7b"},{name:req.body.name});
+    }
+    if (req.body.bio!=null) {
+      await User.findOneAndUpdate({_id:"607f3995aec3658bd8c4af7b"},{bio:req.body.bio});
+    }
+    if (req.body.venmo!=null) {
+      await User.findOneAndUpdate({_id:"607f3995aec3658bd8c4af7b"},{venmo:req.body.venmo});
+    }
+    if (req.body.email!=null) {
+      await User.findOneAndUpdate({_id:"607f3995aec3658bd8c4af7b"},{email:req.body.email});
+    }
+    if (req.body.number!=null) {
+      await User.findOneAndUpdate({_id:"607f3995aec3658bd8c4af7b"},{phoneNum:req.body.number});
+    }
+    if (req.body.password!=null) {
+      await User.findOneAndUpdate({_id:"607f3995aec3658bd8c4af7b"},{password:req.body.password});
+    }
+  }
+});
+
 app.post("/hello", (req,res,next) => {
     res.json({message:"hello"})
     console.log("api is hit");

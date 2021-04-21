@@ -7,9 +7,6 @@ import { Form, Button, Modal} from "react-bootstrap";
 import { useState } from 'react';
 import axios from 'axios';
 
-
-
-
 function PopupModalUsername() {
   
   const [show, setShow] = useState(false);
@@ -19,7 +16,7 @@ function PopupModalUsername() {
 
   const [input, setInput] = useState("");
   const handleSubmit = async (e) => {
-    await axios.post("http://localhost:4000/hello2",{username:input})
+    await axios.post("http://localhost:4000/update",{username:input})
     .then((response) => {
       console.log(response);
     }, (error) => {

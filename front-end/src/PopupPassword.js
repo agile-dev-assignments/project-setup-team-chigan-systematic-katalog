@@ -8,8 +8,6 @@ import { useState } from 'react';
 import axios from 'axios';
 
 
-
-
 function PopupModalPassword() {
   
   const [show, setShow] = useState(false);
@@ -19,7 +17,7 @@ function PopupModalPassword() {
 
   const [input, setInput] = useState("");
   const handleSubmit = async (e) => {
-    await axios.post("http://localhost:4000/hello",{password:input})
+    await axios.post("http://localhost:4000/update",{password:input})
     .then((response) => {
       console.log(response);
     }, (error) => {
