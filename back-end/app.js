@@ -228,28 +228,36 @@ app.get('/search', (req,res)=> {
 });
 
 app.post("/hello2", async (req,res,next) => {
+
   console.log(req.body)
   res.status(200).json({ok:true})
 
-  let newUsername = req.body.username
-  //users1.create
-  //let newVar = new User({username:"lee"})
-  //await newVar.save()
-
-
-//give frontend the id
-//get req to update users name, look for the user with the id and update
-
-//let newName = await User.find({_id:"607f3995aec3658bd8c4af7b"}); 
-
-//once user auth is complete, this line above will be replaced with this.user._id
-
-User.findOneAndUpdate({_id:"607f3995aec3658bd8c4af7b"},{"username":"Helllooooo"});
-//User.update({name:"Asap"},{$set:{"username":"Helllooooo"}});
-//console.log(newName)
+  //once user auth is complete, this line below will be replaced with this.user._id
+  if (User.find({_id:"607f3995aec3658bd8c4af7b"})) { //for now, searches to see this user exists, using this condition until user auth is fully implemented
+    console.log("api is hit")
+    if (req.body.username!=null) {
+      await User.findOneAndUpdate({_id:"607f3995aec3658bd8c4af7b"},{username:req.body.username});  //use await before bc its a promise
+    }
+    if (req.body.name!=null) {
+      await User.findOneAndUpdate({_id:"607f3995aec3658bd8c4af7b"},{name:req.body.name});
+    }
+    if (req.body.bio!=null) {
+      await User.findOneAndUpdate({_id:"607f3995aec3658bd8c4af7b"},{bio:req.body.bio});
+    }
+    if (req.body.venmo!=null) {
+      await User.findOneAndUpdate({_id:"607f3995aec3658bd8c4af7b"},{venmo:req.body.venmo});
+    }
+    if (req.body.email!=null) {
+      await User.findOneAndUpdate({_id:"607f3995aec3658bd8c4af7b"},{email:req.body.email});
+    }
+    if (req.body.number!=null) {
+      await User.findOneAndUpdate({_id:"607f3995aec3658bd8c4af7b"},{phoneNum:req.body.number});
+    }
+    if (req.body.password!=null) {
+      await User.findOneAndUpdate({_id:"607f3995aec3658bd8c4af7b"},{password:req.body.password});
+    }
+  }
 });
-
-//findone takes user id and update takes username to update with
 
 app.get("/hello", (req,res,next) => {
   res.json({users})

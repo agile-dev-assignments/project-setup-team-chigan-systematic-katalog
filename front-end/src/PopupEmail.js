@@ -16,7 +16,7 @@ function PopupModalEmail() {
 
   const [input, setInput] = useState("");
   const handleSubmit = async (e) => {
-    await axios.post("http://localhost:4000/hello",{email:input})
+    await axios.post("http://localhost:4000/hello2",{email:input})
     .then((response) => {
       console.log(response);
     }, (error) => {

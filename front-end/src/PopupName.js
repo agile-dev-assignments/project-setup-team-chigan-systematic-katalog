@@ -16,7 +16,7 @@ function PopupModalName() {
 
   const [input, setInput] = useState("");
   const handleSubmit = async (e) => {
-    await axios.post("http://localhost:4000/hello",{name:input})
+    await axios.post("http://localhost:4000/hello2",{name:input})
     .then((response) => {
       console.log(response);
     }, (error) => {
