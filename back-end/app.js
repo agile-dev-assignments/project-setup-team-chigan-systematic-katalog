@@ -2,9 +2,9 @@
 const express = require("express") // CommonJS import style!
 const app = express() // instantiate an Express object
 const mongoose = require('mongoose');
-const cors = require('cors')
-const profileRouter = require('./profile')
-
+const cors = require('cors'); 
+const profileRouter = require('./profile');
+const listingRouter = require('./listingRoute');
 const sellingpostbackRouter = require('./sellingpostback');
 const photocard_json = require("./public/photocards.json")
 const User = require('./models/User');
@@ -37,6 +37,9 @@ app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming P
 app.use("/static", express.static("public"))
 // use profile router
 app.use("/profile", profileRouter)
+
+// use listing router
+app.use("/listing", listingRouter)
 
 //use sellingpostback router
 app.use("/sellingpostback", sellingpostbackRouter)
@@ -95,7 +98,6 @@ app.get("/lookingfordata", (req, res, next) => {
 })
 
 app.post("/update", async (req,res,next) => {
-
   console.log(req.body)
   res.status(200).json({ok:true})
 
