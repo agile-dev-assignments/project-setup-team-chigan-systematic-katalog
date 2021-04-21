@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react'
+import React, {useEffect } from 'react'
 import axios from 'axios'
 // import logo from './logo.svg'
 import './PhotocardsInfo.css'
@@ -43,7 +43,7 @@ const sortAccording = {
 
 const sortData = (type, setData, data) => {
 	const sortType =sortAccording[type]
-	const sorted = (type == 1 || type == 3 ) ? [...data].sort((a, b) => b[sortType] - a[sortType]) : [...data].sort((b, a) => b[sortType] - a[sortType])
+	const sorted = (type === 1 || type === 3 ) ? [...data].sort((a, b) => b[sortType] - a[sortType]) : [...data].sort((b, a) => b[sortType] - a[sortType])
 	setData(sorted)
 }
 

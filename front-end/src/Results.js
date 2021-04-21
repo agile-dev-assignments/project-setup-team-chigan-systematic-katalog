@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import axios from 'axios'
-// import logo from './logo.svg';
 import './Results.css'
-import Photocard from './PhotocardPage'
+// import Photocard from './PhotocardPage'
 
 import IconButton from "@material-ui/core/IconButton";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import SearchIcon from "@material-ui/icons/Search";
 import TextField from "@material-ui/core/TextField";
 import {Grid} from "@material-ui/core"
-import { Form, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+// import { Form, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import { Link } from 'react-router-dom'
-import PhotocardPage from './PhotocardPage';
+// import PhotocardPage from './PhotocardPage';
 import FilterModal from './FilterModal'
 
 
@@ -60,7 +59,7 @@ const Results = (props) => {
           />
 
         </Grid>
-        <p> Filter 1 <a></a> Filter 2 <a></a> Filter 3</p>
+        {/* <p> Filter 1 <a></a> Filter 2 <a></a> Filter 3</p> */}
         <Link to={{
           pathname: "/photocard",
           state: testData
@@ -77,7 +76,7 @@ const Results = (props) => {
             state: item
           }}>
         <section id="main-content">
-          <img src = {item.picture} />
+          <img src = {item.picture} alt=""/>
           <p4>{item.member}<br />{item.album}<br />{item.group}</p4>
 
         </section>

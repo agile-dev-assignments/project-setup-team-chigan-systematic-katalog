@@ -1,9 +1,8 @@
+// import { Button } from "react-bootstrap";
+
 import React from 'react';
-
 import './EditProfile.css';
-import { Button } from "react-bootstrap";
 import FileUploader from './FileUploader';
-
 import PopupModalUsername from './PopupUsername';
 import PopupModalName from './PopupName';
 import PopupModalBio from './PopupBio';
@@ -21,7 +20,7 @@ const EditProfile = (props) => {
         <section className="main-content">
 
             <section id="spacing">
-                <h1></h1>
+                {/* <h1>Edit Profile</h1> */}
                 <img alt="welcome!" src="https://picsum.photos/200?page=profile" />
                 <br />
                 <FileUploader />
@@ -63,9 +62,6 @@ const EditProfile = (props) => {
 
     )
 }
-
-
-
 
 
 export default EditProfile

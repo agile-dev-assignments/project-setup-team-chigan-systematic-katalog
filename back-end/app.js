@@ -4,11 +4,15 @@ const app = express() // instantiate an Express object
 const mongoose = require('mongoose');
 const cors = require('cors')
 const profileRouter = require('./profile')
+
 const sellingpostbackRouter = require('./sellingpostback');
 const photocard_json = require("./public/photocards.json")
+
 const Photocard = require('./models/Photocard');
 const db = require('./db');
+
 // const Photocard = mongoose.model('Photocard', pc);
+
 db();
 let users = [
   {   
@@ -51,6 +55,7 @@ const { parse } = require("dotenv");
  * In this file, however, most middlewares are after most routes
  * This is to match the order of the accompanying slides
  */
+
 // use the morgan middleware to log all incoming http requests
 app.use(morgan("dev")) // morgan has a few logging default styles - dev is a nice concise color-coded style
 app.use(cors())
@@ -58,12 +63,15 @@ app.use(cors())
 app.use(express.json()) // decode JSON-formatted incoming POST data
 app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming POST data
 // make 'public' directory publicly readable with static content
+
 app.use("/static", express.static("public"))
 // use profile router
 app.use("/profile", profileRouter)
+
 //use sellingpostback router
 app.use("/sellingpostback", sellingpostbackRouter)
 //search
+
 app.get('/search', async (req,res)=> {
   // console.log('api hit')
   // let parsedInfo = "";
@@ -89,6 +97,7 @@ app.get('/search', async (req,res)=> {
 
   res.send(photocards);
 });
+
 app.get("/photocarddata", (req, res, next) => {
   // axios
   //   .get("https://my.api.mockaroo.com/photocard.json?key=49083ca0")
@@ -155,6 +164,8 @@ app.post("/hello", (req,res,next) => {
     }});
     console.log(users);
 });
+
+
 app.get("/hello", (req,res,next) => {
   res.json({users})
 });

@@ -1,10 +1,8 @@
 import React from 'react'
 import Photocard from './Photocard'
 import PhotocardInfo from './PhotocardsInfo'
-import { Link,useLocation} from 'react-router-dom';
-
-
-
+import {useLocation} from 'react-router-dom';
+import AddListingModal from './AddListingModal'
 
 function PhotocardPage(props){
     const location = useLocation()
@@ -13,6 +11,7 @@ function PhotocardPage(props){
     return (
         <div>
             <Photocard image={image} name={data.photocard_name} grp={data.group} member={data.member} album={data.album}/>
+            <AddListingModal name={data.photocard_name} grp={data.group} member={data.member} album={data.album}/>
             <PhotocardInfo name={data.photocard_name}/>
         </div>
     )

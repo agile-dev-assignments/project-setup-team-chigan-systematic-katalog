@@ -1,8 +1,8 @@
 // import logo from './logo.svg';
 import './Search.css'
-import Photocard from './Photocard'
+// import Photocard from './Photocard'
 import axios from 'axios'
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 // import IconButton from "@material-ui/core/IconButton";
 // import InputAdornment from "@material-ui/core/InputAdornment";
 // import SearchIcon from "@material-ui/icons/Search";
@@ -10,7 +10,7 @@ import React, { useState, useEffect } from 'react'
 import { Grid } from "@material-ui/core"
 // import { Form, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 // import { Router } from 'react-router';
-import CategoriesModal from './CategoriesModal'
+// import CategoriesModal from './CategoriesModal'
 import { Link } from 'react-router-dom';
 import FilterModal from './FilterModal'
 
