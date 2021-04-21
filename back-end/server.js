@@ -138,54 +138,54 @@ app.use(cors({
   credentials: true
 }))
 
-app.use(session({
-  secret: "secretcode",
-  resave: true,
-  saveUninitialized: true
-}))
+// app.use(session({
+//   secret: "secretcode",
+//   resave: true,
+//   saveUninitialized: true
+// }))
 
-app.use(cookieParser("secretcode"))
-app.use(passport.initialize())
-app.use(passport.session())
-require('./passport-config')(passport)
+// app.use(cookieParser("secretcode"))
+// app.use(passport.initialize())
+// app.use(passport.session())
+// require('./passport-config')(passport)
 
 
-//Routes
-app.post("/login", (req, res) => {
-  console.log(req.body)
-  passport.authenticate("local", (err, user, info) => {
-    if (err) throw err;
-    if (!user) res.send("No User Exists")
-    else {
-      req.logIn(user, err => {
-        if (err) throw err
-        res.send('Successful Authentication')
-        console.log(req.user)
-      })
-    }
-  })(req, res, next)
+// //Routes
+// app.post("/login", (req, res) => {
+//   console.log(req.body)
+//   passport.authenticate("local", (err, user, info) => {
+//     if (err) throw err;
+//     if (!user) res.send("No User Exists")
+//     else {
+//       req.logIn(user, err => {
+//         if (err) throw err
+//         res.send('Successful Authentication')
+//         console.log(req.user)
+//       })
+//     }
+//   })(req, res, next)
 
-})
+// })
 
-app.post("/signup", (req, res) => {
-  console.log(req.body)
-  User.findOne({username: req.body.username}, async (err,doc) => {
-    if (err) throw err
-    if (doc) res.send("User Already Exists")
-    if (!doc) {
-        const hashedPassword = await bcrypt.hash(req.body.password, 10)
+// app.post("/signup", (req, res) => {
+//   console.log(req.body)
+//   User.findOne({username: req.body.username}, async (err,doc) => {
+//     if (err) throw err
+//     if (doc) res.send("User Already Exists")
+//     if (!doc) {
+//         const hashedPassword = await bcrypt.hash(req.body.password, 10)
 
-      const newUser = new User({
-        username: req.body.username,
-        password: hashedPassword,
-      })
-      await newUser.save()
-      res.send("User Created")
-    }
-  })
-})
+//       const newUser = new User({
+//         username: req.body.username,
+//         password: hashedPassword,
+//       })
+//       await newUser.save()
+//       res.send("User Created")
+//     }
+//   })
+// })
 
-app.post("/user", (req, res) => {})
+// app.post("/user", (req, res) => {})
 
 
 // a function to stop listening to the port
