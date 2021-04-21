@@ -36,10 +36,8 @@ function AddListingModal(props) {
   const [listedForInput, setListedForInput] = useState({})
   
   const setListedFor = async () => {
-    console.log("Ran")
     if (sell == true){
       setListedForInput({
-        ...listedForInput,
         selling: {
           price: priceInput,
           shipping: shippingInput
@@ -61,7 +59,6 @@ function AddListingModal(props) {
         }
       })   
     }
-    console.log(listedForInput)
   }
 
   const listing = {
@@ -77,24 +74,14 @@ function AddListingModal(props) {
     listedFor: listedForInput
   }
 
-  console.log(listing)
 
-  const handleChange = (e) => {
-    console.log(e.target.value)
-    if (e.target.value == 'sell'){
-      setSell(true)
-      setTrade(false)
-      setLook(false)
+  useEffect(() => {
+    if(Object.keys(listedForInput).length != 0){
+      handleSubmit()
     }
-    console.log(sell, trade, look)
-  }
+  }, [listedForInput])
 
   const handleSubmit = async (e) => {
-    console.log(sell, trade, look)
-    console.log(listedForInput)
-    console.log("Handle")
-    await setListedFor()
-    console.log(listing)
     await axios.post("http://localhost:4000/listing", listing)
     .then((response) => {
       console.log(response)
@@ -135,7 +122,11 @@ function AddListingModal(props) {
             name="typeRadio"
             label="Selling"
             value="sell"
-            onChange={handleChange}
+            onClick={() => {
+              setSell(true)
+              setTrade(false)
+              setLook(false)
+            }}
           />
           <Form.Check
             className="form-check-inline"
@@ -143,7 +134,7 @@ function AddListingModal(props) {
             id="typeRadio"
             name="typeRadio"
             label="Trading"
-            onChange={() => {
+            onClick={() => {
               setSell(false)
               setTrade(true)
               setLook(false)
@@ -155,7 +146,7 @@ function AddListingModal(props) {
             id="typeRadio"
             name="typeRadio"
             label="Looking For"
-            onChange={() => {
+            onClick={() => {
               setSell(false)
               setTrade(false)
               setLook(true)
@@ -229,7 +220,7 @@ function AddListingModal(props) {
             Cancel
           </Button>
           <Button className="filter-button" variant="light" onClick={
-              handleSubmit
+              setListedFor
           }>
             Submit
           </Button>

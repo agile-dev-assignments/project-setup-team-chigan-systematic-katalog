@@ -15,20 +15,20 @@ const listingSchema = new Schema({
     description: String,
     posted: { 
         type: Date, 
-        default: Date.now 
+        default: Date.now
     },
-    // for: {
-    //     sale: {
-    //         price: Number,
-    //         shipping: Number
-    //     },
-    //     trade: {
-    //         want: String
-    //     },
-    //     look: {
-    //         offer: String
-    //     }
-    // },
+    listedFor: {
+        selling: {
+            price: Number,
+            shipping: Number
+        },
+        trading: {
+            want: String
+        },
+        looking: {
+            offer: String
+        }
+    }
     // image1: { 
     //     data: Buffer, 
     //     contentType: String 

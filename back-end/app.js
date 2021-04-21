@@ -6,7 +6,9 @@ const profileRouter = require('./profile')
 const sellingpostbackRouter = require('./sellingpostback')
 const listingRouter = require('./listingRoute')
 const photocards = require('./public/photocards.json');
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
+const db = require('./db');
+db();
 
 
 let users = [
@@ -53,14 +55,6 @@ const morgan = require("morgan") // middleware for nice logging of incoming HTTP
  * In this file, however, most middlewares are after most routes
  * This is to match the order of the accompanying slides
  */
-
-// connect to MongoDB
-const uri = process.env.ATLAS_URI
-mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
-const connection = mongoose.connection;
-connection.once('open', () => {
-  console.log("MongoDB database connection established successfully");
-})
 
 
 // use the morgan middleware to log all incoming http requests
