@@ -11,36 +11,6 @@ const db = require('./db');
 const User = require("./models/User");
 db();
 
-let users = [
-  {   
-      "Username" : "Rocky",
-      "Name" : "Asap",
-      "Bio" : "This is my bio",
-      "Venmo" : "RockysVenmo",
-      "Email" : "rocky@gmail.com",
-      "Number" : "0123456789",
-      "Password" : "Rockyspassword"
-  },
-  {   
-      "Username" : "BrunoMars",
-      "Name" : "Bruno",
-      "Bio" : "This is Bruno's bio",
-      "Venmo" : "BrunosVenmo",
-      "Email" : "bruno@gmail.com",
-      "Number" : "9876543210",
-      "Password" : "Brunospassword"
-  },
-  {
-      "Username" : "Frank",
-      "Name" : "Frank Dommer",
-      "Bio" : "This is Frank's bio",
-      "Venmo" : "FranksVenmo",
-      "Email" : "Frank@gmail.com",
-      "Number" : "7685943210",
-      "Password" : "Frankspassword"
-  }
-];
-
 
 // import some useful middleware
 // const bodyParser = require("body-parser") // middleware to help parse incoming HTTP POST data
@@ -179,55 +149,8 @@ app.get('/search', (req,res)=> {
       }
   });
 });
-  app.post("/hello", (req,res,next) => {
-    res.json({message:"hello"})
-    console.log("api is hit");
-    // console.log(req.body);
-    users.forEach(user => {if (user.Username===users[0].Username) {
-      if (req.body.username!=null) { 
-        user.Username=req.body.username;
-      }
-    }});
 
-    users.forEach(user => {if (user.Bio===users[0].Bio) {
-      if (req.body.bio!=null) {
-        user.Bio=req.body.bio; 
-      }
-    }});
-
-    users.forEach(user => {if (user.Email===users[0].Email) {
-      if (req.body.email!=null) {
-        user.Email=req.body.email; 
-      }
-    }});
-
-    users.forEach(user => {if (user.Name===users[0].Name) {
-      if (req.body.name!=null) {
-        user.Name=req.body.name; 
-      }
-    }});
-
-    users.forEach(user => {if (user.Number===users[0].Number) {
-      if (req.body.number!=null) {
-        user.Number=req.body.number; 
-      }
-    }});
-
-    users.forEach(user => {if (user.Password===users[0].Password) {
-      if (req.body.password!=null) {
-        user.Password=req.body.password; 
-      }
-    }});
-
-    users.forEach(user => {if (user.Venmo===users[0].Venmo) {
-      if (req.body.venmo!=null) {
-        user.Venmo=req.body.venmo; 
-      }
-    }});
-    console.log(users);
-});
-
-app.post("/hello2", async (req,res,next) => {
+app.post("/update", async (req,res,next) => {
 
   console.log(req.body)
   res.status(200).json({ok:true})
@@ -259,8 +182,5 @@ app.post("/hello2", async (req,res,next) => {
   }
 });
 
-app.get("/hello", (req,res,next) => {
-  res.json({users})
-});
 // export the express app we created to make it available to other modules
 module.exports = app // CommonJS export style!
