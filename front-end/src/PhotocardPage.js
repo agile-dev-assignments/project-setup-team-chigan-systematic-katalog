@@ -1,10 +1,7 @@
 import React from 'react'
 import Photocard from './Photocard'
 import PhotocardInfo from './PhotocardsInfo'
-import { Link,useLocation} from 'react-router-dom';
-
-
-
+import {useLocation} from 'react-router-dom';
 
 function PhotocardPage(props){
     const location = useLocation()
