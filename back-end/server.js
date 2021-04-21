@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 
 // import the express app
-const app = require('./app')
-const server = require('./app')
-app.use(express.urlencoded({extended: false}))
+//const app = require('./app')
+const server = require("./app")
+const express = require("express")
+server.use(express.urlencoded({extended: false})) //app
 const users = []
 const bcrypt = require('bcrypt')
 const passport = require ('passport')
@@ -22,11 +23,11 @@ const listener = server.listen(port, function () {
   console.log(`Server running on port: ${port}`)
 })
 
-app.post('/login', (req,res) => {
+server.post('/login', (req,res) => { //app
   req.body.email
 })
 
-app.post('/signup', (req,res) => {
+server.post('/signup', (req,res) => { //app
   try{
     const hashedPassword = bcrypt.hash(req.body.password, 10)
     users.push({

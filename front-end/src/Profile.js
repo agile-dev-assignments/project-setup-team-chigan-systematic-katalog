@@ -6,7 +6,6 @@ import { Grid } from "@material-ui/core"
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import axios from 'axios'
-import AddListingModal from './AddListingModal'
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -118,7 +117,7 @@ const Profile = (props) => {
               </Grid>
             </Grid>
           </div> <br/><br/>
-          <AddListingModal />
+
         </section>
       </section>
 
