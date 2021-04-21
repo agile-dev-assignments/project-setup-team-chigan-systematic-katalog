@@ -95,6 +95,7 @@ const Home = (props) => {
           </section>
             </div>
         </Grid>
+        <br/><br/><br/>
     </div>
   </div>
   )
