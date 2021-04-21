@@ -93,7 +93,7 @@ app.get('/search', async (req,res)=> {
   // console.log(newPC);
   // let x = await newPC.save();
   console.log(parsedInfo);
-  const photocards = await Photocard.find({photocard_name:{ $regex: parsedInfo.toString() }});
+  const photocards = await Photocard.find({ photocard_name: new RegExp(req.query.name, 'gi') });
   console.log(photocards)
   // Photocard.find(parsedInfo,function(err, photocards){
   //   if (err){
