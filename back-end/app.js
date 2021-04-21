@@ -9,6 +9,7 @@ const photocards = require('./public/photocards.json');
 const Photocard = require('./models/Photocard');
 const mongoose = require("mongoose");
 const db = require('./db');
+const User = require("./models/User");
 db();
 
 let users = [
@@ -66,7 +67,7 @@ app.use(express.json()) // decode JSON-formatted incoming POST data
 app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming POST data
 
 // make 'public' directory publicly readable with static content
-app.use("/static", express.static("public"))
+//app.use("/static", express.static("public"))
 
 
 // use profile router
@@ -121,6 +122,7 @@ app.get('/search', (req,res)=> {
 // });
 
 const photocard_json = require("./public/photocards.json")
+//const app = require("./server")
 
 app.get("/photocarddata", (req, res, next) => {
 
@@ -229,6 +231,30 @@ app.get('/search', (req,res)=> {
     }});
     console.log(users);
 });
+
+app.post("/hello2", async (req,res,next) => {
+  console.log(req.body)
+  res.status(200).json({ok:true})
+
+  let newUsername = req.body.username
+  //users1.create
+  //let newVar = new User({username:"lee"})
+  //await newVar.save()
+
+
+//give frontend the id
+//get req to update users name, look for the user with the id and update
+
+//let newName = await User.find({_id:"607f3995aec3658bd8c4af7b"}); 
+
+//once user auth is complete, this line above will be replaced with this.user._id
+
+User.findOneAndUpdate({_id:"607f3995aec3658bd8c4af7b"},{"username":"Helllooooo"});
+//User.update({name:"Asap"},{$set:{"username":"Helllooooo"}});
+//console.log(newName)
+});
+
+//findone takes user id and update takes username to update with
 
 app.get("/hello", (req,res,next) => {
   res.json({users})

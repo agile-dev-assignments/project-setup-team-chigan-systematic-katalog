@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './PrimaryNav.css'
-import { Link } from 'react-router-dom'
-import { Navbar, NavItem, NavDropdown, MenuItem, Nav, Form, FormControl, Button } from 'react-bootstrap';
+// import { Link } from 'react-router-dom'
+import { Navbar, Nav, Form, Button } from 'react-bootstrap';
 //import { slide as Menu } from 'react-burger-menu'
 
 
@@ -11,10 +11,11 @@ const PrimaryNav = () => {
           localStorage.setItem("token", false)
         }
         
-        const [loggedIn, setLoggedIn] = useState(localStorage.getItem("token"))
+        // had    setLoggedIn    inside const
+        const [loggedIn] = useState(localStorage.getItem("token"))
 
         const changeNav = () =>{
-          if(loggedIn == "true"){
+          if(loggedIn === "true"){
             return [
               <Nav.Link className="user" href="/profile">Name</Nav.Link>,
               <Button className="nav-button" variant="outline-light" size="sm" onClick={logOut} href="/login">Log Out</Button>
@@ -29,7 +30,7 @@ const PrimaryNav = () => {
         }
 
         const changeProfile = () =>{
-          if(loggedIn == "true"){
+          if(loggedIn === "true"){
             return [
               <Nav.Link href="/profile">Profile</Nav.Link>
             ]
