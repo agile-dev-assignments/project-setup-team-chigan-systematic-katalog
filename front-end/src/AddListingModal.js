@@ -39,7 +39,7 @@ function AddListingModal(props) {
   const [listedForInput, setListedForInput] = useState({})
   
   const setListedFor = async () => {
-    if (sell == true){
+    if (sell === true){
       setListedForInput({
         selling: {
           price: priceInput,
@@ -47,7 +47,7 @@ function AddListingModal(props) {
         }
       }) 
     }
-    else if(trade == true){
+    else if(trade === true){
       setListedForInput({
         trading: {
           want: wantInput
@@ -55,7 +55,7 @@ function AddListingModal(props) {
       })  
       
     }
-    else if(look == true){
+    else if(look === true){
       setListedForInput({
         looking: {
           offer: offerInput
@@ -79,7 +79,7 @@ function AddListingModal(props) {
 
 
   useEffect(() => {
-    if(Object.keys(listedForInput).length != 0){
+    if(Object.keys(listedForInput).length !== 0){
       handleSubmit()
     }
   }, [listedForInput])
