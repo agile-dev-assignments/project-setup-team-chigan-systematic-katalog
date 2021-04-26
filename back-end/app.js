@@ -2,7 +2,7 @@
 const express = require("express") // CommonJS import style!
 const app = express() // instantiate an Express object
 const mongoose = require('mongoose');
-const cors = require('cors'); git
+const cors = require('cors');
 const profileRouter = require('./profile');
 const listingRouter = require('./listingRoute');
 const sellingpostbackRouter = require('./sellingpostback');
