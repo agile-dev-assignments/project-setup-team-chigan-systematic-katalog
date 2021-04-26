@@ -79,16 +79,17 @@ app.get("/photocarddata", (req, res, next) => {
   //   .catch(err => next(err))
   res.json(photocard_json);
 })
-app.get("/tradingdata", async (req, res, next) => {
-  const trading = await Listing.find({listedFor: "trading"});
+
+app.get("/tradingdata", async (req, res) => {
+  const trading = await Listing.find({"listedFor.trading": {$exists: true}});
   res.send(trading);
 })
 app.get("/sellingdata", async (req, res) => {
-  const selling = await Listing.find({listedFor: "selling"});
+  const selling = await Listing.find({"listedFor.selling": {$exists: true}});
   res.send(selling);
 })
-app.get("/lookingfordata", async (req, res, next) => {
-  const lookingfor = await Listing.find({listedFor: "looking"});
+app.get("/lookingfordata", async (req, res) => {
+  const lookingfor = await Listing.find({"listedFor.looking": {$exists: true}});
   res.send(lookingfor);
 })
 
