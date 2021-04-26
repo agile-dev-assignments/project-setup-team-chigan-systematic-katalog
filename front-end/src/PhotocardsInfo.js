@@ -151,10 +151,10 @@ const CardLookingFor = (props) => {
 				</div>
 				<div className = "text">
 					<p class = "username">Username: {props.data.username}</p>
-					<address class = "loc">Location: {props.data.loc}</address>
-					<p class = "offer">Offer: {props.data.offer}</p>
+					<address class = "loc">Location: {props.data.location}</address>
+					<p class = "offer">Offer: {props.data.listedFor.looking.offer}</p>
 					<p class = "shipTo">Ship To: {props.data.shipTo}</p>
-					<p class = "date">Date: {new Date(props.data.date).toDateString()}</p>
+					<p class = "date">Date: {new Date(props.data.posted).toDateString()}</p>
 				</div>
 			</div>
 		</Link>
@@ -173,10 +173,10 @@ const CardTrading = (props) => {
 				</div>
 				<div className = "text">
 					<p class = "username">Username: {props.data.username}</p>
-					<address class = "loc">Location: {props.data.loc}</address>
-					<p class = "want">Want: {props.data.want}</p>
+					<address class = "loc">Location: {props.data.location}</address>
+					<p class = "want">Want: {props.data.listedFor.trading.want}</p>
 					<p class = "shipTo">Ship To: {props.data.shipTo}</p>
-					<p class = "date">Date: {new Date(props.data.date).toDateString()}</p>
+					<p class = "date">Date: {new Date(props.data.posted).toDateString()}</p>
 				</div>
 			</div>
 		</Link>
@@ -195,11 +195,11 @@ const CardSelling= (props) => {
 				</div>
 				<div className = "text">
 					<p class = "username">Username: {props.data.username}</p>
-					<address class = "loc">Location: {props.data.loc}</address>
-					<p class = "price">Price: {props.data.price}</p>
-					<p class = "shipping">Shipping: {props.data.shipping}</p>
+					<address class = "loc">Location: {props.data.location}</address>
+					<p class = "price">Price: {props.data.listedFor.selling.price}</p>
+					<p class = "shipping">Shipping: {props.data.listedFor.selling.shipping}</p>
 					<p class = "shipTo">Ship To: {props.data.shipTo}</p>
-					<p class = "date">Date: {new Date(props.data.date).toDateString()}</p>
+					<p class = "date">Date: {new Date(props.data.posted).toDateString()}</p>
 				</div>
 			</div>
 		</Link>
