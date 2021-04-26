@@ -32,6 +32,8 @@ function AddListingModal(props) {
 
   const [offerInput, setOfferInput] = useState("");
 
+  const [imageInput, setImageInput] = useState("");
+
   const [sell, setSell] = useState(false);
   const [trade, setTrade] = useState(false);
   const [look, setLook] = useState(false);
@@ -64,6 +66,25 @@ function AddListingModal(props) {
     }
   }
 
+  const sendImage = async (e) => {
+    const files = e.target.files
+    const imageData = new FormData()
+    imageData.append('file', files[0])
+    imageData.append('upload_preset', process.env.REACT_APP_FOLDER)
+
+    const res = await fetch(process.env.REACT_APP_CLOUD_URL, 
+      {
+        method: 'POST',
+        body: imageData
+      }
+    )
+
+    const file = await res.json()
+
+    setImageInput(file.secure_url)
+
+  }
+
   const listing = {
     photocard: {
       name: props.name,
@@ -74,7 +95,8 @@ function AddListingModal(props) {
     location: locationInput,
     shipTo: shipToInput,
     description: descriptionInput,
-    listedFor: listedForInput
+    listedFor: listedForInput,
+    image: imageInput
   }
 
 
@@ -110,11 +132,11 @@ function AddListingModal(props) {
         </div>
         </Modal.Header>
         <Form>
-        {/* <fieldset className="filters">
+        <fieldset className="filters">
           <Form.Group controlId="imageUpload">
-          <Form.File label="Photocard Image" />
+          <Form.File label="Photocard Image" onChange={sendImage}/>
           </Form.Group>
-        </fieldset> */}
+        </fieldset>
         <fieldset className="filters">
         <Form.Label>Type of Listing:</Form.Label>
         <br />

@@ -13,6 +13,7 @@ router.post("/", async (req, res) => {
     const description = req.body.description
     const posted = req.body.posted
     const listedFor = req.body.listedFor
+    const image = req.body.image
 
     const newListing = new ListingModel({
         photocard,
@@ -20,7 +21,8 @@ router.post("/", async (req, res) => {
         shipTo,
         description,
         posted,
-        listedFor
+        listedFor,
+        image
     })
 
     //console.log(newListing)
