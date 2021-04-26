@@ -83,6 +83,7 @@ function SignUp(props) {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
+
         {/* <Form.Group size="lg" controlId="confirm">
           <p>Confirm Password</p>
           <Form.Control
@@ -94,6 +95,7 @@ function SignUp(props) {
         </Form.Group> */}
         <br />
         {/* disabled={!validateForm()} */}
+
         <Button onClick={signUpS}>
           SignUp
         </Button>
@@ -102,6 +104,7 @@ function SignUp(props) {
           <Link to="/login">Already have an account?</Link>
         </links>
       </Form>
+      
     </div>
   );
 }
