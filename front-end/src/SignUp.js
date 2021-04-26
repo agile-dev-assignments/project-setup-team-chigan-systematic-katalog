@@ -13,17 +13,31 @@ function SignUp(props) {
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
 
-  const signUp = () => {
-    axios({
-      method: "POST", 
-      data: {
-        username: setUsername,
-        password: setPassword,
-      },
-      withCredentials: true,
-      url: "http://localhost:4000/signup",
-    }).then((res) => console.log(res))
-  }
+
+  const signUpS = () => {
+    axios.post("http://localhost:4000/signups", {
+        username: username,
+        password: password,
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+}; 
+
+  // const signUp = () => {
+  //   axios({
+  //     method: "POST", 
+  //     data: {
+  //       username: setUsername,
+  //       password: setPassword,
+  //     },
+  //     withCredentials: true,
+  //     url: "http://localhost:4000/signup",
+  //   }).then((res) => console.log(res))
+  // }
 
   // function validateForm() {
   //   return username.length > 0 && email.length > 0 && password.length > 0 && confirm.length > 0;
@@ -49,8 +63,8 @@ function SignUp(props) {
     <div className="SignUp">
       <h1>SignUp</h1>
       {/* <Form onSubmit={handleSubmit}> */}
-      <Form action="/signup" method="POST"> 
-      {/* <Form >  */}
+      {/* <Form action="/signup" method="POST">  */}
+      <Form > 
         <Form.Group size="lg" controlId="username">
           <p>Username</p>
           <Form.Control
@@ -94,7 +108,7 @@ function SignUp(props) {
     
         <br/>
         {/* disabled={!validateForm()} */}
-        <Button block size="lg" type="submit" >
+        <Button block size="lg" onClick={signUpS} >
           SignUp
         </Button>
         <br/>
