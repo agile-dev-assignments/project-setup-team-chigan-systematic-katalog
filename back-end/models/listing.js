@@ -28,11 +28,8 @@ const listingSchema = new Schema({
         looking: {
             offer: String
         }
-    }
-    // image1: { 
-    //     data: Buffer, 
-    //     contentType: String 
-    // }
+    },
+    image: String
 })
 
 const Listing = mongoose.model('Listing', listingSchema)
