@@ -169,7 +169,7 @@ const CardTrading = (props) => {
         }}>
 			<div className = "card">
 				<div className = "image">
-					<img alt = "photocard1" src={props.data.picture}/>
+					<img alt = "photocard1" src={props.data.image}/>
 				</div>
 				<div className = "text">
 					<p class = "username">Username: {props.data.username}</p>
@@ -191,7 +191,7 @@ const CardSelling= (props) => {
         }}>
 			<div className = "card">
 				<div className = "image">
-					<img alt = "photocard1" src={props.data.picture}/>
+					<img alt = "photocard1" src={props.data.image}/>
 				</div>
 				<div className = "text">
 					<p class = "username">Username: {props.data.username}</p>
