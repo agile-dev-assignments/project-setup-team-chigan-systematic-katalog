@@ -68,7 +68,7 @@ const Search = (props) => {
         <Link to={{
           pathname: "/photocard",
           state: item
-        }}>
+        }} className = "searchlink">
           <section id="main-content">
             <img alt="card" src={item.picture} />
             <p4>{item.member}<br />{item.album}<br />{item.group}</p4>

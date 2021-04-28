@@ -72,6 +72,7 @@
     border: 1px solid black;
     width: 50%;
     text-align: left;
+    margin-bottom: 5px;
 }
 
 .sort {
@@ -83,4 +84,9 @@
 .content {
   width: 80%;
   margin: auto;
+}
+
+.cardlink:hover {
+    color:violet;
+    text-decoration:none;
 }
