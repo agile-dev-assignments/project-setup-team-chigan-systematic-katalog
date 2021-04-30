@@ -25,10 +25,10 @@ const UserSchema = new mongoose.Schema({
   },
   password: {
     type: String
-  },
-  confirm: {
-    type: String
   }
+  //confirm: {
+ //   type: String
+ // }
   // avatar: {
   //   type: String
   // },
