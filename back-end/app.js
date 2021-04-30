@@ -28,8 +28,6 @@ const expressSession = require('express-session')({
   saveUninitialized: false
 });
 
-db();
-
 // import some useful middleware
 // const bodyParser = require("body-parser") // middleware to help parse incoming HTTP POST data
 const multer = require("multer") // middleware to handle HTTP POST requests with file uploads
@@ -139,13 +137,6 @@ app.post("/update", async (req, res, next) => {
     }
   }
 });
-
-app.get("/hello", (req, res, next) => {
-  res.json({ users })
-});
-
-// const User = mongoose.model('User');
-// const Photocard = mongoose.model('Photocard');
 
 
 app.use(express.static(path.join(__dirname, 'public')));

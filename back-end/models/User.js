@@ -1,36 +1,7 @@
-// const mongoose = require('mongoose');
 
-// const UserSchema = new mongoose.Schema({
-//   username: String,
-//   name: String,
-//   bio: String,
-//   venmo: String,
-//   email: String,
-//   phoneNum: Number, 
-//   password: String
-// });
-
-// //mongoose.model('User', User);
-
-// module.export = mongoose.model('User', UserSchema); 
 const mongoose = require('mongoose');
 const passportLocalMongoose = require('passport-local-mongoose');
 
-// const User = new mongoose.Schema({
-//   username: String,
-//   password: String,
-//   confirm: String,
-//   bio: String,
-//   venmo: String,
-//   email: String,
-//   phoneNum: Number
-// });
-
-// mongoose.model('User', User);
-
-// User.plugin(passportLocalMongoose)
-
-// module.exports = mongoose.model('User', User)
 const UserSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -63,5 +34,7 @@ const UserSchema = new mongoose.Schema({
   //   default: Date.now
   // }
 });
+
+UserSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model('User', UserSchema); //user
