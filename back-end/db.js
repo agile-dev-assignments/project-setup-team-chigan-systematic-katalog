@@ -1,10 +1,8 @@
 
 //mongo "mongodb+srv://cluster0.jw5bn.mongodb.net/myFirstDatabase" --username <username>
 
-
 const mongoose = require("mongoose");
 require('dotenv').config()
-
 const uri = process.env.URI
 
 const connectDB = async () => {
