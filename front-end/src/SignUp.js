@@ -14,6 +14,8 @@ function SignUp(props) {
     axios.post("http://localhost:4000/signups", {
         username: username,
         password: password,
+        confirm: confirm,
+        email: email
       })
       .then((response) => {
         console.log(response);
@@ -64,7 +66,7 @@ function SignUp(props) {
             onChange={(e) => setUsername(e.target.value)}
           />
         </Form.Group>
-        {/* <Form.Group size="lg" controlId="email">
+        <Form.Group size="lg" controlId="email">
           <p>Email</p>
           <Form.Control
             autoFocus
@@ -73,7 +75,7 @@ function SignUp(props) {
             // required
             onChange={(e) => setEmail(e.target.value)}
           />
-        </Form.Group> */}
+        </Form.Group>
         <Form.Group size="lg" controlId="password">
           <p>Password</p>
           <Form.Control
@@ -83,7 +85,7 @@ function SignUp(props) {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        {/* <Form.Group size="lg" controlId="confirm">
+        <Form.Group size="lg" controlId="confirm">
           <p>Confirm Password</p>
           <Form.Control
             type="password"
@@ -91,7 +93,7 @@ function SignUp(props) {
             // required
             onChange={(e) => setConfirm(e.target.value)}
           />
-        </Form.Group> */}
+        </Form.Group>
         <br />
         {/* disabled={!validateForm()} */}
         <Button onClick={signUpS}>

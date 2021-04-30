@@ -289,14 +289,16 @@ app.get('/', function(req, res) {
 res.redirect('/login');
 });
 
-app.get('/signup', (req, res) => {
+app.get('/signups', (req, res) => {
 res.render('signup', {error: ''});
 });
 
-app.post('/signup', (req, res, next) => {
+app.post('/signups', (req, res, next) => {
   const obj = {
  username: req.body.username,
- password: req.body.password
+ password: req.body.password,
+ email: req.body.email,
+ confirm: req.body.confirm
  };
  
    const u = new User(obj);
