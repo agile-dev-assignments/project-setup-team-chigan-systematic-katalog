@@ -1,12 +1,12 @@
 import React from "react";
 import './SellingPost.css'
-import IconButton from "@material-ui/core/IconButton";
-import {Grid} from "@material-ui/core"
-import { Form, Button, Modal, FormGroup, FormControl, ControlLabel, Tabs, Tab, Container, Row, Col } from "react-bootstrap";
-import { Link, useLocation } from 'react-router-dom'
-import { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom'
-import axios from 'axios'
+// import IconButton from "@material-ui/core/IconButton";
+// import {Grid} from "@material-ui/core"
+// import { Form, Button, Modal, FormGroup, FormControl, ControlLabel, Tabs, Tab, Container, Row, Col } from "react-bootstrap";
+import { useLocation } from 'react-router-dom'
+// import { useState, useEffect } from 'react';
+// import ReactDOM from 'react-dom'
+// import axios from 'axios'
 
 
 const SellingPost = (props) => {

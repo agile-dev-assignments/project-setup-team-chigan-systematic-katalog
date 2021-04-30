@@ -5,7 +5,6 @@ var LocalStrategy = require('passport-local').Strategy;
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 
-
 module.exports = function(passport) { 
   // passport init setup 
   // serialize the user for the session 

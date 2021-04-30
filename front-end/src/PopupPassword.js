@@ -1,13 +1,8 @@
 import React from 'react'
 import './Popup.css'
-import IconButton from "@material-ui/core/IconButton";
-import {Grid} from "@material-ui/core"
-import { Form, Button, Modal, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-import { Link } from 'react-router-dom'
+import { Form, Button, Modal} from "react-bootstrap";
 import { useState } from 'react';
 import axios from 'axios';
-
-
 
 
 function PopupModalPassword() {
@@ -19,7 +14,7 @@ function PopupModalPassword() {
 
   const [input, setInput] = useState("");
   const handleSubmit = async (e) => {
-    await axios.post("http://localhost:4000/hello",{password:input})
+    await axios.post("http://localhost:4000/update",{password:input})
     .then((response) => {
       console.log(response);
     }, (error) => {
