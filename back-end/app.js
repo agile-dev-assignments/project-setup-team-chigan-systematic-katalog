@@ -105,7 +105,7 @@ app.get('/search', (req,res)=> {
         }
       });
   }else{
-    filtered = all;
+    filtered = all; 
   }
 
   res.send(filtered);
