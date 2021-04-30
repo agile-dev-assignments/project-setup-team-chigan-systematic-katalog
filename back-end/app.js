@@ -60,7 +60,7 @@ app.use("/listing", listingRouter)
 app.use("/sellingpostback", sellingpostbackRouter)
 //search
 
-app.get('/search', async (req, res) => {
+app.get('/search', async (req,res)=> {
   // console.log('api hit')
   // let parsedInfo = "";
   // // const all = photocard_json;
@@ -137,7 +137,6 @@ app.post("/update", async (req, res, next) => {
     }
   }
 });
-
 
 app.use(express.static(path.join(__dirname, 'public')));
 // app.set('view engine', 'hbs');

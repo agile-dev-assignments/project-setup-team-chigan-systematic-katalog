@@ -21,6 +21,4 @@ const PhotoCardSchema = new Schema({
 		type: String,
 	},
 });
-
 module.exports = mongoose.model('photoCard', PhotoCardSchema);
-

@@ -1,15 +1,17 @@
-import React, { useState ,useEffect} from "react";
+import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
 // import logo from './logo.svg';
-import "./SignUp.css";
-import axios from "axios";
+import './SignUp.css'
+
+
 function SignUp(props) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
+
   const signUpS = () => {
     localStorage.setItem("token", true);
     axios.post("http://localhost:4000/signups", {
@@ -54,58 +56,57 @@ function SignUp(props) {
   return (
     <div className="SignUp">
       <h1>SignUp</h1>
-      {/* <Form onSubmit={handleSubmit}> */}
-      <Form>
-        {/* <Form >  */}
+      <Form onSubmit={handleSubmit}>
         <Form.Group size="lg" controlId="username">
           <p>Username</p>
           <Form.Control
             autoFocus
             type="text"
             value={username}
-            required
             onChange={(e) => setUsername(e.target.value)}
           />
-        </Form.Group>
+          </Form.Group>
         <Form.Group size="lg" controlId="email">
           <p>Email</p>
           <Form.Control
             autoFocus
             type="email"
             value={email}
-            // required
             onChange={(e) => setEmail(e.target.value)}
           />
         </Form.Group>
+
         <Form.Group size="lg" controlId="password">
           <p>Password</p>
           <Form.Control
             type="password"
             value={password}
-            required
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
+
         <Form.Group size="lg" controlId="confirm">
           <p>Confirm Password</p>
           <Form.Control
             type="password"
             value={confirm}
-            // required
             onChange={(e) => setConfirm(e.target.value)}
           />
         </Form.Group>
         <br />
         {/* disabled={!validateForm()} */}
         <Button onClick={signUpS} href="/profile">
+
           SignUp
         </Button>
-        <br />
+        <br/>
         <links>
           <Link to="/login">Already have an account?</Link>
         </links>
       </Form>
+      
     </div>
   );
-}
-export default SignUp;
+};
+
+export default SignUp
