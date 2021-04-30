@@ -11,6 +11,7 @@ function SignUp(props) {
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const signUpS = () => {
+    localStorage.setItem("token", true);
     axios.post("http://localhost:4000/signups", {
         username: username,
         password: password,
@@ -96,7 +97,7 @@ function SignUp(props) {
         </Form.Group>
         <br />
         {/* disabled={!validateForm()} */}
-        <Button onClick={signUpS}>
+        <Button onClick={signUpS} href="/profile">
           SignUp
         </Button>
         <br />
