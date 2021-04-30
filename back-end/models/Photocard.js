@@ -21,10 +21,4 @@ const PhotoCardSchema = new Schema({
 		type: String,
 	},
 });
-
-
-
-mongoose.model('Photocard', Photocard);
-
 module.exports = mongoose.model('photoCard', PhotoCardSchema);
-

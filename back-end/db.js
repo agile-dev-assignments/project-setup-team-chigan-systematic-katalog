@@ -1,12 +1,11 @@
 
 //mongo "mongodb+srv://cluster0.jw5bn.mongodb.net/myFirstDatabase" --username <username>
 
+
 const mongoose = require("mongoose");
 require('dotenv').config()
 
 const uri = process.env.URI
-
-require('dotenv').config()  
 
 const connectDB = async () => {
 	try {
@@ -25,6 +24,5 @@ const connectDB = async () => {
 		process.exit(1);
 	}
 };
-
 
 module.exports = connectDB;
