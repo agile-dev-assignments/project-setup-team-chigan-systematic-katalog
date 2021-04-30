@@ -19,9 +19,6 @@ const PrimaryNav = () => {
             return [
               <Nav.Link className="user" href="/profile">Name</Nav.Link>,
               <Button className="nav-button" variant="outline-light" size="sm" onClick={logOut} href="/login">Log Out</Button>
-              // {/* <Form action="/logout?_mthod=DELETE" method="POST">
-              //   <Button className="nav-button" variant="outline-light" size="sm" type="submit">Log Out</Button>
-              // </Form> */}
             ]
           }
           else{

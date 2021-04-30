@@ -27,8 +27,7 @@ function Login(props) {
   return (
     <div className="Login">
       <h1>Login</h1>
-      {/* <Form onSubmit={handleSubmit}> */}
-      <Form action="/login" method="POST"> 
+      <Form onSubmit={handleSubmit}>
         <Form.Group size="lg" controlId="email">
           <p>Username/Email</p>
           <Form.Control
