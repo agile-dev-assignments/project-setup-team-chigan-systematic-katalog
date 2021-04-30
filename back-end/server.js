@@ -1,22 +1,18 @@
 #!/usr/bin/env node
 
 
-const app = require('./app')
-const server = require('./app')
-const mongoose = require("mongoose")
-const express = require('express')
-
-
+const app = require('./app');
+const mongoose = require("mongoose");
 // const app = express(); 
 
 // import the express app
 //const app = require('./app')
-const server = require("./app")
-const express = require("express")
-server.use(express.urlencoded({extended: false})) //app
-const users = []
-const bcrypt = require('bcrypt')
-const passport = require ('passport')
+const server = require("./app");
+const express = require("express");
+server.use(express.urlencoded({extended: false})); //app
+const users = [];
+const bcrypt = require('bcrypt');
+const passport = require ('passport');
 
 // const initializePassport = require('./passport-config')
 // initializePassport(
