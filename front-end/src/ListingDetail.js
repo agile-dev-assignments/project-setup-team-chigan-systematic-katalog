@@ -2,7 +2,7 @@ import React from 'react'
 import './ListingDetail.css'
 import AliceCarousel from 'react-alice-carousel'
 import "react-alice-carousel/lib/alice-carousel.css"
-import { Link,useLocation} from 'react-router-dom'
+import {useLocation} from 'react-router-dom'
 
 
 const ListingDetail = (props) => {
@@ -12,23 +12,23 @@ const ListingDetail = (props) => {
     const photocardName = location.state.photocardName
 
     const changeDetails = () =>{
-        if(listingType == "Sale"){
+        if(listingType === "Sale"){
           return [
             <p>For {listingType}</p>,
-            <p>Price: {data.price}</p>,
-            <p>Shipping: {data.shipping}</p>
+            <p>Price: {data.listedFor.selling.price}</p>,
+            <p>Shipping: {data.listedFor.selling.shipping}</p>
           ]
         }
-        else if(listingType == "Trade"){
+        else if(listingType === "Trade"){
           return [
             <p>For {listingType}</p>,
-            <p>Want: {data.want}</p>
+            <p>Want: {data.listedFor.trading.want}</p>
           ]
         }
-        else if(listingType == "Looking"){
+        else if(listingType === "Looking"){
           return [
             <p>{listingType} For: {photocardName}</p>,
-            <p>Offer: {data.offer}</p>
+            <p>Offer: {data.listedFor.looking.offer}</p>
           ]
         }
     }
@@ -37,14 +37,11 @@ const ListingDetail = (props) => {
         <div>
             <div className="top">
                 <div className="firstColumnListing">
-                    <AliceCarousel disableButtonsControls>
+                    {/* <AliceCarousel disableButtonsControls> */}
                         <div>
-                            <img src={data.picture} alt="first image" className="sliderimg"/>
+                            <img src={data.image} alt="first img" className="sliderimg"/>
                         </div>
-                        <div >
-                            <img src={data.picture} alt="second image" className="sliderimg"/>
-                        </div>
-                    </AliceCarousel>
+                    {/* </AliceCarousel> */}
                 </div>
                 <div className="secondColumnListing">
                     <h3 className="photocardTitle">{photocardName}</h3>
@@ -53,22 +50,22 @@ const ListingDetail = (props) => {
                         <h5>Details</h5>
                         {changeDetails()}
                         <p>Location: {data.location}</p>
-                        <p>Ship To: {data.ship_to}</p>
-                        <p>Posted: {data.date}</p>
+                        <p>Ship To: {data.shipTo}</p>
+                        <p>Posted: {new Date(data.posted).toDateString()}</p>
                     </div>
                     <hr className="line"></hr>
                 </div>
             </div>
             <div className="description">
-                <p>Description</p>
+                <p>{data.description}</p>
             </div>
             <hr className="line"></hr>
             <div className="profileLink">
                 <div>
-                    <img src={"https://picsum.photos/65"} alt="profile image" className="profileImage"/>
+                    <img src={"https://picsum.photos/65"} alt="profile img" className="profileImage"/>
                 </div>
                 <div className="username">
-                    <h6>{data.username}</h6>
+                    <h6>Username</h6>
                 </div>
             </div>
 

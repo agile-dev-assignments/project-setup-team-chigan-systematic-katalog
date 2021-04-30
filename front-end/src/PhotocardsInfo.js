@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react'
+import React, {useEffect } from 'react'
 import axios from 'axios'
 // import logo from './logo.svg'
 import './PhotocardsInfo.css'
@@ -43,7 +43,7 @@ const sortAccording = {
 
 const sortData = (type, setData, data) => {
 	const sortType =sortAccording[type]
-	const sorted = (type == 1 || type == 3 ) ? [...data].sort((a, b) => b[sortType] - a[sortType]) : [...data].sort((b, a) => b[sortType] - a[sortType])
+	const sorted = (type === 1 || type === 3 ) ? [...data].sort((a, b) => b[sortType] - a[sortType]) : [...data].sort((b, a) => b[sortType] - a[sortType])
 	setData(sorted)
 }
 
@@ -147,14 +147,14 @@ const CardLookingFor = (props) => {
         }}>
 			<div className = "card">
 				<div className = "image">
-					<img alt = "photocard1" src={props.data.picture}/>
+					<img alt = "photocard" src={props.data.image}/>
 				</div>
 				<div className = "text">
 					<p class = "username">Username: {props.data.username}</p>
-					<address class = "loc">Location: {props.data.loc}</address>
-					<p class = "offer">Offer: {props.data.offer}</p>
+					<address class = "loc">Location: {props.data.location}</address>
+					<p class = "offer">Offer: {props.data.listedFor.looking.offer}</p>
 					<p class = "shipTo">Ship To: {props.data.shipTo}</p>
-					<p class = "date">Date: {new Date(props.data.date).toDateString()}</p>
+					<p class = "date">Date: {new Date(props.data.posted).toDateString()}</p>
 				</div>
 			</div>
 		</Link>
@@ -169,14 +169,14 @@ const CardTrading = (props) => {
         }}>
 			<div className = "card">
 				<div className = "image">
-					<img alt = "photocard1" src={props.data.picture}/>
+					<img alt = "photocard1" src={props.data.image}/>
 				</div>
 				<div className = "text">
 					<p class = "username">Username: {props.data.username}</p>
-					<address class = "loc">Location: {props.data.loc}</address>
-					<p class = "want">Want: {props.data.want}</p>
+					<address class = "loc">Location: {props.data.location}</address>
+					<p class = "want">Want: {props.data.listedFor.trading.want}</p>
 					<p class = "shipTo">Ship To: {props.data.shipTo}</p>
-					<p class = "date">Date: {new Date(props.data.date).toDateString()}</p>
+					<p class = "date">Date: {new Date(props.data.posted).toDateString()}</p>
 				</div>
 			</div>
 		</Link>
@@ -191,15 +191,15 @@ const CardSelling= (props) => {
         }}>
 			<div className = "card">
 				<div className = "image">
-					<img alt = "photocard1" src={props.data.picture}/>
+					<img alt = "photocard1" src={props.data.image}/>
 				</div>
 				<div className = "text">
 					<p class = "username">Username: {props.data.username}</p>
-					<address class = "loc">Location: {props.data.loc}</address>
-					<p class = "price">Price: {props.data.price}</p>
-					<p class = "shipping">Shipping: {props.data.shipping}</p>
+					<address class = "loc">Location: {props.data.location}</address>
+					<p class = "price">Price: {props.data.listedFor.selling.price}</p>
+					<p class = "shipping">Shipping: {props.data.listedFor.selling.shipping}</p>
 					<p class = "shipTo">Ship To: {props.data.shipTo}</p>
-					<p class = "date">Date: {new Date(props.data.date).toDateString()}</p>
+					<p class = "date">Date: {new Date(props.data.posted).toDateString()}</p>
 				</div>
 			</div>
 		</Link>
