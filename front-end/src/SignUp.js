@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import { Link } from 'react-router-dom'
 // import logo from './logo.svg';
 import './SignUp.css'
+import axios from "axios";
 
 
 function SignUp(props) {
@@ -56,7 +57,8 @@ function SignUp(props) {
   return (
     <div className="SignUp">
       <h1>SignUp</h1>
-      <Form onSubmit={handleSubmit}>
+      {/* <Form onSubmit={handleSubmit}> */}
+      <Form>
         <Form.Group size="lg" controlId="username">
           <p>Username</p>
           <Form.Control
