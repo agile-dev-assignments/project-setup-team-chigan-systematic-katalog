@@ -1,0 +1,79 @@
+import React, { useEffect } from 'react'
+import { useState } from 'react'
+import {Button} from "react-bootstrap"
+import './AddWishlist.css'
+import axios from 'axios'
+
+function AddWishlist(props) {
+
+    const [added, setAdded] = useState(false)
+    const [addBtn, setAddBtn] = useState({title: "Add to Wishlist", style: "#8093f1"})
+    const [clicked, setClicked] = useState(false)
+
+    const photocard = [{
+        id: props.id,
+        name: props.name
+    }]
+
+    const changeBtn = () => {
+        
+        if (added == true){
+            setAddBtn({title: "Added to Wishlist", style: "#F7AEF8"})
+            
+        }
+        else if (added == false){
+            setAddBtn({title: "Add to Wishlist", style: "#8093f1"})
+            
+        }
+        
+        updateWishlist()
+        
+    }
+
+    const updateWishlist = async () => {
+        
+        if (added == true && clicked == true){
+            // adds photocard to wishlist
+            await axios.post("http://localhost:4000/addtowishlist", photocard)
+            .then((response) => {
+            console.log(response)
+            }, (error) => {
+            console.log(error)
+            })
+
+        }
+        
+    }
+
+    const addedToWishlist = () => {
+        setClicked(true)
+        setAdded(true)
+    }
+
+    useEffect(() => {
+        axios.get('http://localhost:4000/checkwishlist/'+props.id).then(response => {
+            
+			setAdded(response.data)
+          
+		}, (error) => {
+            console.log(error)
+        })
+
+        
+    }, [])
+
+    useEffect(() => {
+        changeBtn()
+    }, [added])
+
+
+    return (
+        <div>
+            <Button className = "wishlistBtn" onClick={addedToWishlist} style={{ alignSelf: 'center', backgroundColor: '#F4F4ED', color: addBtn.style }}>
+                {addBtn.title}
+            </Button>
+        </div>
+    )
+}
+
+export default AddWishlist

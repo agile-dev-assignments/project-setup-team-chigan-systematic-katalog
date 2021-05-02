@@ -124,5 +124,44 @@ app.post("/update", async (req,res,next) => {
   }
 });
 
+app.post("/addtowishlist", async (req, res) => {
+
+  if (User.find({_id:"607f3995aec3658bd8c4af7b"})) {
+    console.log("add api is hit")
+    console.log(req.body)
+    await User.findOneAndUpdate({_id:"607f3995aec3658bd8c4af7b"}, {$push:{wishlist:req.body}})
+  }
+  
+})
+
+app.delete("/removefromwishlist", async (req, res) => {
+  
+  if (User.find({_id:"607f3995aec3658bd8c4af7b"})) {
+    console.log("remove api is hit")
+    console.log(req.body)
+    await User.updateOne({_id:"607f3995aec3658bd8c4af7b"}, {$pull:{wishlist: req.body}}, { safe: true })
+  }
+  
+})
+
+app.get("/checkwishlist/:id", async (req, res) => {
+  
+  if (User.find({_id:"607f3995aec3658bd8c4af7b"})) {
+    console.log("check api is hit")
+    const wishlist = await User.find({_id:"607f3995aec3658bd8c4af7b", "wishlist": {$elemMatch: {"id": req.params.id }}})
+    if (wishlist.length >= 1) {
+      //console.log("found")
+      res.send(true)
+    }
+    else{
+      //console.log("not found")
+      res.send(false)
+    }
+    
+  }
+  
+})
+
+
 // export the express app we created to make it available to other modules
 module.exports = app // CommonJS export style!

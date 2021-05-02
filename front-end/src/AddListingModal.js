@@ -121,7 +121,7 @@ function AddListingModal(props) {
 
   return (
     <>
-      <Button className = "pfLogin" onClick={handleShow} style={{ alignSelf: 'center', backgroundColor: '#F4F4ED' }}>
+      <Button className = "pfAdd" onClick={handleShow} style={{ alignSelf: 'center', backgroundColor: '#F4F4ED' }}>
         Add a Listing
       </Button>
 

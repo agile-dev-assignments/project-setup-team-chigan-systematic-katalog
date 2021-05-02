@@ -46,6 +46,11 @@ const UserSchema = new mongoose.Schema({
   //   type: Date,
   //   default: Date.now
   // }
+  wishlist: {
+    type: Array,
+    default: []
+  }
+
 });
 
 module.exports = mongoose.model('User', UserSchema); //user
