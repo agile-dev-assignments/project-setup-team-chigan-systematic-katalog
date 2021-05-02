@@ -12,7 +12,12 @@ function AddWishlist(props) {
 
     const photocard = [{
         id: props.id,
-        name: props.name
+        photocard_name: props.name,
+        group: props.grp,
+        member: props.member,
+        album: props.album,
+        picture: props.image[0],
+        picture2: props.image[1]
     }]
 
     const changeBtn = () => {

@@ -128,18 +128,17 @@ app.post("/addtowishlist", async (req, res) => {
 
   if (User.find({_id:"607f3995aec3658bd8c4af7b"})) {
     console.log("add api is hit")
-    console.log(req.body)
+    //console.log(req.body)
     await User.findOneAndUpdate({_id:"607f3995aec3658bd8c4af7b"}, {$push:{wishlist:req.body}})
   }
   
 })
 
-app.delete("/removefromwishlist", async (req, res) => {
+app.delete("/removefromwishlist/:id", async (req, res) => {
   
   if (User.find({_id:"607f3995aec3658bd8c4af7b"})) {
     console.log("remove api is hit")
-    console.log(req.body)
-    await User.updateOne({_id:"607f3995aec3658bd8c4af7b"}, {$pull:{wishlist: req.body}}, { safe: true })
+    await User.updateOne({_id:"607f3995aec3658bd8c4af7b"}, {$pull:{"wishlist": {"id": req.params.id}}})
   }
   
 })
@@ -159,7 +158,24 @@ app.get("/checkwishlist/:id", async (req, res) => {
     }
     
   }
+})
+
+app.get("/returnwishlist/", async (req, res) => {
   
+  if (User.find({_id:"607f3995aec3658bd8c4af7b"})) {
+    console.log("return api is hit")
+    const userArr = await User.find({_id:"607f3995aec3658bd8c4af7b", "wishlist": {$exists: true}})
+    //console.log(userArr[0].wishlist)
+    if (userArr[0].wishlist.length >= 1) {
+      //console.log("found")
+      res.send(userArr[0].wishlist)
+    }
+    else{
+      //console.log("not found")
+      res.send(false)
+    }
+    
+  }
 })
 
 

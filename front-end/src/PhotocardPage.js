@@ -17,7 +17,7 @@ function PhotocardPage(props){
             <Photocard image={image} name={data.photocard_name} grp={data.group} member={data.member} album={data.album}/>
             <div className="center">
                 <AddListingModal name={data.photocard_name} grp={data.group} member={data.member} album={data.album}/>
-                <AddWishlist name={data.photocard_name} id={data.id}/>
+                <AddWishlist name={data.photocard_name} id={data.id} image={image} grp={data.group} member={data.member} album={data.album}/>
             </div>
             <PhotocardInfo name={data.photocard_name}/>
         </div>
