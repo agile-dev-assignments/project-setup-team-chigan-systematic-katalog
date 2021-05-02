@@ -9,10 +9,14 @@ const sellingpostbackRouter = require('./sellingpostback');
 const photocard_json = require("./public/photocards.json")
 const Photocard = require('./models/Photocard');
 const Listing = require('./models/listing');
+const JWTstrategy = require('passport-jwt').Strategy;
+const ExtractJWT = require('passport-jwt').ExtractJwt;
+const jwt = require('jsonwebtoken');
 const db = require('./db');
 db();
 
 const bcrypt = require('bcrypt')
+const crypto = require('crypto')
 const passport = require('passport')
 const cookieParser = require('cookie-parser');
 const session = require('express-session')
@@ -49,6 +53,10 @@ app.use(express.json()) // decode JSON-formatted incoming POST data
 app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming POST data
 // make 'public' directory publicly readable with static content
 
+// app.use(bodyParser.urlencoded());
+
+// app.use(bodyParser.json());
+
 app.use("/static", express.static("public"))
 // use profile router
 app.use("/profile", profileRouter)
@@ -82,7 +90,6 @@ app.get('/search', async (req,res)=> {
   // console.log(parsedInfo);
   const photocards = await Photocard.find({ photocard_name: new RegExp(req.query.name, 'gi') });
   // console.log(photocards)
-
   res.send(photocards);
 })
 
@@ -137,7 +144,7 @@ app.post("/update", async (req, res, next) => {
     }
   }
 });
-
+//app.use('/authenticated', passport.authenticate('jwt', { session: false }), profileRouter);
 app.use(express.static(path.join(__dirname, 'public')));
 // app.set('view engine', 'hbs');
 
@@ -145,7 +152,44 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(expressSession);
 
-passport.use(User.createStrategy());
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+
+passport.use(new LocalStrategy({
+  usernameField: 'email',
+  passwordField: 'password'
+}, async (email, password, done) => {
+    try {
+      const user = await User.findOne({
+        email: email
+      })
+      if (!user) {
+        return done(null, false, { message: 'Invalid Email' })
+      }
+      const validate = await user.isValidPassword(password);
+      if (!validate) {
+        return done(null, false, { message: 'Wrong Password' });
+      }
+      return done(null, user);
+    }
+    catch(err) {
+      return done(err);
+    }
+  }
+))
+
+passport.use(new JWTstrategy(
+    {
+      secretOrKey: 'secret',
+      jwtFromRequest: ExtractJWT.fromUrlQueryParameter('secrettoken')
+    },
+    async (token, done) => {
+      return done(null, token.user);
+    }
+  )
+);
 
 passport.serializeUser(function (user, done) {
   done(null, user.id);
@@ -158,23 +202,19 @@ passport.deserializeUser(function (id, done) {
   });
 });
 
-passport.use(new LocalStrategy(function (username, password, done) {
-  User.findOne({
-    username: username,
-    password: password
-  }, function (err, user) {
-    if (err) return done(err);
-    if (!user) return done(null, false);
-    if (!user.authenticate(password)) return done(null, false);
-    return done(null, user);
-  });
-}));
+//passport.use(User.createStrategy());
+
+
+
+// User.pre('save', function(next) {
+//   if (this.password) {
+//       this.salt = new Buffer(crypto.randomBytes(16).toString('base64'), 'base64');
+//       this.password = crypto.pbkdf2Sync(password, this.salt, 10000, 64).toString('base64')
+//   }
+//   next();
+// });
 
 //passport middleware
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(flash());
-
 app.get('/', function (req, res) {
   res.redirect('/login');
 });
@@ -208,29 +248,34 @@ app.post('/signups', (req, res, next) => {
 });
 
 app.get('/login', (req, res) => {
-  res.render('login', { error: '' });
+  res.render('login')
+  //res.render('login', { error: '' });
 });
 
-app.post('/login', (req, res, next) => {
+app.post('/login', async (req, res, next) => {
   passport.authenticate('local',
-    (err, user, info) => {
-      if (err) {
-        return next(err);
-      }
-
-      if (!user) {
-        return res.redirect('/login');
-        // res.render('login', {error: 'username or password not found'});
-      }
-
-      req.logIn(user, function (err) {
+     async(err, user, info) => {
+      try {
         if (err) {
           return next(err);
         }
-
-        return res.redirect('/search');
-      });
-
+        if (!user) {
+          return res.redirect('/login');
+        }
+        req.logIn(user,{session: false }, async (err) => {
+          if (err) {
+            return next(err);
+          }
+          const body = { _id: user._id};
+          const token = jwt.sign({ user: body }, 'secret');
+          //res.redirect("/profile")
+          return res.json({ token });
+        });
+      }
+      catch(err) {
+        return next(error);
+      }
+    
     })(req, res, next);
 });
 
@@ -273,5 +318,10 @@ app.post('/login', (req, res, next) => {
 
 // app.post("/user", (req, res) => {})
 
-// export the express app we created to make it available to other modules
+// export the express app we created to make it available to other modules\
+
+app.get('/logout', (req, res) => {
+  res.redirect('/login');
+});
+
 module.exports = app; // CommonJS export style!
