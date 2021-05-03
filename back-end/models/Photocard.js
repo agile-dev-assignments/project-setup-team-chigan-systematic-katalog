@@ -8,6 +8,9 @@ const PhotoCardSchema = new Schema({
 	group: {
 		type: String,
 	},
+	groupType: {
+		type: String,
+	},
 	member: {
 		type: String,
 	},
