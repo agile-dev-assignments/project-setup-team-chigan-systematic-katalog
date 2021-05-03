@@ -93,6 +93,13 @@ app.get('/search', async (req,res)=> {
   res.send(photocards);
 })
 
+app.get('/filter', async (req,res)=> {
+  console.log('api hit');
+  console.log(req.query);
+  const photocards = await Photocard.find({ groupType: req.query.groupType});
+  res.send(photocards);
+})
+
 app.get("/photocarddata", (req, res, next) => {
   // axios
   //   .get("https://my.api.mockaroo.com/photocard.json?key=49083ca0")
@@ -144,7 +151,67 @@ app.post("/update", async (req, res, next) => {
     }
   }
 });
+
 //app.use('/authenticated', passport.authenticate('jwt', { session: false }), profileRouter);
+
+
+
+app.post("/addtowishlist", async (req, res) => {
+
+  if (User.find({_id:"607f3995aec3658bd8c4af7b"})) {
+    console.log("add api is hit")
+    //console.log(req.body)
+    await User.findOneAndUpdate({_id:"607f3995aec3658bd8c4af7b"}, {$push:{wishlist:req.body}})
+  }
+  
+})
+
+app.delete("/removefromwishlist/:id", async (req, res) => {
+  
+  if (User.find({_id:"607f3995aec3658bd8c4af7b"})) {
+    console.log("remove api is hit")
+    await User.updateOne({_id:"607f3995aec3658bd8c4af7b"}, {$pull:{"wishlist": {"id": req.params.id}}})
+  }
+  
+})
+
+app.get("/checkwishlist/:id", async (req, res) => {
+  
+  if (User.find({_id:"607f3995aec3658bd8c4af7b"})) {
+    console.log("check api is hit")
+    const wishlist = await User.find({_id:"607f3995aec3658bd8c4af7b", "wishlist": {$elemMatch: {"id": req.params.id }}})
+    if (wishlist.length >= 1) {
+      //console.log("found")
+      res.send(true)
+    }
+    else{
+      //console.log("not found")
+      res.send(false)
+    }
+    
+  }
+})
+
+app.get("/returnwishlist/", async (req, res) => {
+  
+  if (User.find({_id:"607f3995aec3658bd8c4af7b"})) {
+    console.log("return api is hit")
+    const userArr = await User.find({_id:"607f3995aec3658bd8c4af7b", "wishlist": {$exists: true}})
+    //console.log(userArr[0].wishlist)
+    if (userArr[0].wishlist.length >= 1) {
+      //console.log("found")
+      res.send(userArr[0].wishlist)
+    }
+    else{
+      //console.log("not found")
+      res.send(false)
+    }
+    
+  }
+})
+
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 // app.set('view engine', 'hbs');
 
@@ -318,10 +385,12 @@ app.post('/login', async (req, res, next) => {
 
 // app.post("/user", (req, res) => {})
 
-// export the express app we created to make it available to other modules\
+
+// export the express app we created to make it available to other modules
 
 app.get('/logout', (req, res) => {
   res.redirect('/login');
 });
+
 
 module.exports = app; // CommonJS export style!

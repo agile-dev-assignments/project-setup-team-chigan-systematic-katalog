@@ -28,7 +28,7 @@ const Wishlist = (props) => {
 
     useEffect(() => {
       console.log('fetching photocards...')
-      axios.get('http://localhost:4000/photocarddata')
+      axios.get('http://localhost:4000/returnwishlist')
         .then((response) => {
           setData(response.data)
         })
@@ -51,16 +51,29 @@ const Wishlist = (props) => {
         })
     }, [])
 
+    const checkEmpty = () =>{
+      if(data.length >= 1){
+        return [
+          data.map((item) => (
+            <WishlistPreview key={item.id} details={item} />
+          ))
+        ]
+      }
+      else{
+        return [
+          <h4>Empty Wishlist</h4>
+        ]
+      }
+    }
+
 
     return(
       <div className = "Wishlist">
         <h1>My Wishlist</h1>
         <Grid container spacing={4}>
         <Grid item xs={6}>
-        <section className="main-content">
-          {data.map((item) => (
-            <WishlistPreview key={item.id} details={item} />
-          ))}
+        <section className="main-content">         
+          {checkEmpty()}
           </section>
           </Grid>
         </Grid>
