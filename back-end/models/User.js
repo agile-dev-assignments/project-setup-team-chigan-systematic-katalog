@@ -25,7 +25,7 @@ const UserSchema = new mongoose.Schema({
   },
   password: {
     type: String
-  }
+  },
   //confirm: {
  //   type: String
  // }
@@ -36,6 +36,11 @@ const UserSchema = new mongoose.Schema({
   //   type: Date,
   //   default: Date.now
   // }
+  wishlist: {
+    type: Array,
+    default: []
+  }
+
 });
 
 UserSchema.plugin(passportLocalMongoose);

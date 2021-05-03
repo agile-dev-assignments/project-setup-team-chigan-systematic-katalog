@@ -1,4 +1,4 @@
-.pfAdd{
+.wishlistBtn{
     color: #8093f1;
     letter-spacing: normal;
     word-spacing: normal;
@@ -12,21 +12,4 @@
     border-width: 1px;
     border-style: solid;
     border-color: #8093f1;
-}
-
-.position {
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-}
-
-.filterTitle {
-  margin: 0 auto;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-}
-
-.filters {
-  margin: 10px;
 }

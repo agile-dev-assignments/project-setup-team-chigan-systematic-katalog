@@ -138,6 +138,62 @@ app.post("/update", async (req, res, next) => {
   }
 });
 
+
+app.post("/addtowishlist", async (req, res) => {
+
+  if (User.find({_id:"607f3995aec3658bd8c4af7b"})) {
+    console.log("add api is hit")
+    //console.log(req.body)
+    await User.findOneAndUpdate({_id:"607f3995aec3658bd8c4af7b"}, {$push:{wishlist:req.body}})
+  }
+  
+})
+
+app.delete("/removefromwishlist/:id", async (req, res) => {
+  
+  if (User.find({_id:"607f3995aec3658bd8c4af7b"})) {
+    console.log("remove api is hit")
+    await User.updateOne({_id:"607f3995aec3658bd8c4af7b"}, {$pull:{"wishlist": {"id": req.params.id}}})
+  }
+  
+})
+
+app.get("/checkwishlist/:id", async (req, res) => {
+  
+  if (User.find({_id:"607f3995aec3658bd8c4af7b"})) {
+    console.log("check api is hit")
+    const wishlist = await User.find({_id:"607f3995aec3658bd8c4af7b", "wishlist": {$elemMatch: {"id": req.params.id }}})
+    if (wishlist.length >= 1) {
+      //console.log("found")
+      res.send(true)
+    }
+    else{
+      //console.log("not found")
+      res.send(false)
+    }
+    
+  }
+})
+
+app.get("/returnwishlist/", async (req, res) => {
+  
+  if (User.find({_id:"607f3995aec3658bd8c4af7b"})) {
+    console.log("return api is hit")
+    const userArr = await User.find({_id:"607f3995aec3658bd8c4af7b", "wishlist": {$exists: true}})
+    //console.log(userArr[0].wishlist)
+    if (userArr[0].wishlist.length >= 1) {
+      //console.log("found")
+      res.send(userArr[0].wishlist)
+    }
+    else{
+      //console.log("not found")
+      res.send(false)
+    }
+    
+  }
+})
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 // app.set('view engine', 'hbs');
 
@@ -272,6 +328,7 @@ app.post('/login', (req, res, next) => {
 // })
 
 // app.post("/user", (req, res) => {})
+
 
 // export the express app we created to make it available to other modules
 module.exports = app; // CommonJS export style!
