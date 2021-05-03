@@ -35,6 +35,16 @@
         "album" : "Map of the Soul: Persona",
         "picture" : "https://i.imgur.com/0qzCXYL.jpg",
         "picture2" : "https://i.imgur.com/ksTmcIK.jpg"
+    },
+    {
+        "id": "5",
+        "photocard_name": "Eric Nam Honestly",
+        "group" : "n/a",
+        "groupType" : "solo",
+        "member" : "Eric Name",
+        "album" : "Honestly",
+        "picture" : "https://i.imgur.com/2iqIbXK.jpg",
+        "picture2" : "https://i.imgur.com/XWgph3b.jpg"
     }
 
 ]
