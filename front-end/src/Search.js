@@ -41,10 +41,22 @@ const Search = (props) => {
     
     setData(data.data);
   }
-  
-  // const handleQueryChange = (event) => {
-  //   setQuery(event.target.value);
-  // }
+
+  const handleFilter = async (query) => {
+    // event.preventDefault();
+    console.log("handle filter called");
+    let url = "http://localhost:4000/filter"
+    const groupType = query;
+    console.log("query" + query);
+    if (groupType){
+      url += "?groupType=" + groupType;
+    }
+    console.log(url);
+    const data = await axios.get(url);
+    console.log(data);
+    
+    setData(data.data);
+  }
 
   return (
     <div className="Search">
@@ -60,7 +72,15 @@ const Search = (props) => {
       </Grid>
       <br></br>
       <div className="center">
-        <button>Boy Group</button> <button>Girl Group</button> <button>Solo</button>
+        <button onClick={(event)=>{
+          handleFilter("boy_group");
+          }}>Boy Group</button>
+        <button onClick={(event)=>{
+          handleFilter("girl_group");
+          }}>Girl Group</button> 
+        <button onClick={(event)=>{
+          handleFilter("solo");
+          }}>Solo</button>
         <br></br>
       </div>
       
