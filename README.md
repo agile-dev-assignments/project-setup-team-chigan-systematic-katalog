@@ -56,7 +56,9 @@ To run the front-end: cd into the front-end directory and enter `npm start` in t
 
 To run the back-end: cd into the back-end directory and enter `npm start`. Go to localhost:4000 to see backend GET/POST apis. 
 
-To run front-end with back-end, run `npm start` on both the front-end and the back-end simutaneously in two terminals. Go to localhost:3000 to see website with back-end.
+To run front-end with back-end, open 2 terminals. Run `npm start` on the front-end in one terminal and run `npm start` on the back-end simutaneously in the other terminal. Go to localhost:3000 to see website with back-end.
+
+To test the apis with our unit test, cd into the back-end direcotry and enter `npm test`. `ctrl + c` after you see the # passing to get overall stats.
 
 ## Additional Links to Markdown documents
 [Project Proposal](https://github.com/agile-dev-assignments/project-proposal-jyn229/blob/main/README.md) — initial proposal and concept idea
