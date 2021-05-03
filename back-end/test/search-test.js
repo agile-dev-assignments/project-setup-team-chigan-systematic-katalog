@@ -15,3 +15,15 @@ describe("check for search", () => {
         })
     })
 })
+
+describe("check for filter", () => {
+    it("should successfully return filter", (done) => {
+        chai.request(app)
+        .get('/filter')
+        .end((err, res) => {
+            res.body.should.be.a('array')
+            expect(200)
+            done()
+        })
+    })
+})
