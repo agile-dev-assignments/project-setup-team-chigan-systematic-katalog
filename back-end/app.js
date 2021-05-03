@@ -187,8 +187,8 @@ app.post('/signups', (req, res, next) => {
   const obj = {
     username: req.body.username,
     password: req.body.password,
-    email: req.body.email,
-    confirm: req.body.confirm
+    email: req.body.email
+    // confirm: req.body.confirm
   };
 
   const u = new User(obj);

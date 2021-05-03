@@ -18,7 +18,7 @@ function SignUp(props) {
     axios.post("http://localhost:4000/signups", {
         username: username,
         password: password,
-        confirm: confirm,
+        // confirm: confirm,
         email: email
       })
       .then((response) => {
