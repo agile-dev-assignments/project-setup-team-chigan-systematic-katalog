@@ -86,6 +86,13 @@ app.get('/search', async (req,res)=> {
   res.send(photocards);
 })
 
+app.get('/filter', async (req,res)=> {
+  console.log('api hit');
+  console.log(req.query);
+  const photocards = await Photocard.find({ groupType: req.query.groupType});
+  res.send(photocards);
+})
+
 app.get("/photocarddata", (req, res, next) => {
   // axios
   //   .get("https://my.api.mockaroo.com/photocard.json?key=49083ca0")
