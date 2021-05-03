@@ -16,10 +16,10 @@ function PhotocardPage(props){
         <div className="photocardPage">
             <Photocard image={image} name={data.photocard_name} grp={data.group} member={data.member} album={data.album}/>
             <div className="center">
-                <AddListingModal name={data.photocard_name} grp={data.group} member={data.member} album={data.album}/>
+                <AddListingModal name={data.photocard_name} id={data.id} grp={data.group} member={data.member} album={data.album}/>
                 <AddWishlist name={data.photocard_name} id={data.id} image={image} grp={data.group} member={data.member} album={data.album}/>
             </div>
-            <PhotocardInfo name={data.photocard_name}/>
+            <PhotocardInfo name={data.photocard_name} id={data.id}/>
         </div>
     )
 }

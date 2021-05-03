@@ -87,6 +87,7 @@ function AddListingModal(props) {
 
   const listing = {
     photocard: {
+      id: props.id,
       name: props.name,
       group: props.grp,
       member: props.member,

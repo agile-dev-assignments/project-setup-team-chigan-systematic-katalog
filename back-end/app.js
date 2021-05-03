@@ -101,16 +101,16 @@ app.get("/photocarddata", (req, res, next) => {
   res.json(photocard_json);
 })
 
-app.get("/tradingdata", async (req, res) => {
-  const trading = await Listing.find({ "listedFor.trading": { $exists: true } });
+app.get("/tradingdata/:id", async (req, res) => {
+  const trading = await Listing.find({"photocard.id":req.params.id, "listedFor.trading": { $exists: true } });
   res.send(trading);
 })
-app.get("/sellingdata", async (req, res) => {
-  const selling = await Listing.find({ "listedFor.selling": { $exists: true } });
+app.get("/sellingdata/:id", async (req, res) => {
+  const selling = await Listing.find({"photocard.id":req.params.id, "listedFor.selling": { $exists: true } });
   res.send(selling);
 })
-app.get("/lookingfordata", async (req, res) => {
-  const lookingfor = await Listing.find({ "listedFor.looking": { $exists: true } });
+app.get("/lookingfordata/:id", async (req, res) => {
+  const lookingfor = await Listing.find({"photocard.id":req.params.id, "listedFor.looking": { $exists: true } });
   res.send(lookingfor);
 })
 
@@ -149,7 +149,7 @@ app.post("/update", async (req, res, next) => {
 app.post("/addtowishlist", async (req, res) => {
 
   if (User.find({_id:"607f3995aec3658bd8c4af7b"})) {
-    console.log("add api is hit")
+    //console.log("add api is hit")
     //console.log(req.body)
     await User.findOneAndUpdate({_id:"607f3995aec3658bd8c4af7b"}, {$push:{wishlist:req.body}})
   }
@@ -159,7 +159,7 @@ app.post("/addtowishlist", async (req, res) => {
 app.delete("/removefromwishlist/:id", async (req, res) => {
   
   if (User.find({_id:"607f3995aec3658bd8c4af7b"})) {
-    console.log("remove api is hit")
+    //console.log("remove api is hit")
     await User.updateOne({_id:"607f3995aec3658bd8c4af7b"}, {$pull:{"wishlist": {"id": req.params.id}}})
   }
   
@@ -168,7 +168,7 @@ app.delete("/removefromwishlist/:id", async (req, res) => {
 app.get("/checkwishlist/:id", async (req, res) => {
   
   if (User.find({_id:"607f3995aec3658bd8c4af7b"})) {
-    console.log("check api is hit")
+    //console.log("check api is hit")
     const wishlist = await User.find({_id:"607f3995aec3658bd8c4af7b", "wishlist": {$elemMatch: {"id": req.params.id }}})
     if (wishlist.length >= 1) {
       //console.log("found")

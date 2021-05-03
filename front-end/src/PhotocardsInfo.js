@@ -18,15 +18,15 @@ const Photocards = (props) => {
 				<p onClick = {() => setActivePage(2)}>Looking For</p>
 			</div>
 			{
-  				activePage===1 && <Trading photocardName={props.name}/>
+  				activePage===1 && <Trading photocardName={props.name} id={props.id}/>
 			}
 
 			{
-  				activePage===0 && <Selling photocardName={props.name}/>
+  				activePage===0 && <Selling photocardName={props.name} id={props.id}/>
 			}
 
 			{
-  				activePage===2 && <LookingFor photocardName={props.name}/>
+  				activePage===2 && <LookingFor photocardName={props.name} id={props.id}/>
 			}
 			
 		</div>
@@ -51,7 +51,7 @@ const Trading = (props) => {
 	const [sort, setSort] = React.useState('');
 	const [data, setData] = React.useState([]);
 	useEffect(() => {
-		axios.get('http://localhost:4000/tradingdata').then(response => {
+		axios.get('http://localhost:4000/tradingdata/'+props.id).then(response => {
 			setData(response.data)
 		})
 	}, [])
@@ -83,7 +83,7 @@ const Selling = (props) => {
 	const [sort, setSort] = React.useState("0");
 	const [data, setData] = React.useState([]);
 	useEffect(() => {
-		axios.get('http://localhost:4000/sellingdata').then(response => {
+		axios.get('http://localhost:4000/sellingdata/'+props.id).then(response => {
 			setData(response.data)
 		})
 	}, [])
@@ -115,7 +115,7 @@ const LookingFor = (props) => {
 	const [data, setData] = React.useState([]);
 	
 	useEffect(() => {
-		axios.get('http://localhost:4000/lookingfordata').then(response => {
+		axios.get('http://localhost:4000/lookingfordata/'+props.id).then(response => {
 			setData(response.data)
 		})
 	}, [])
@@ -142,7 +142,7 @@ const LookingFor = (props) => {
 const CardLookingFor = (props) => {
 	return (
 		<Link to={{
-            pathname: `/photocard/listing/${props.data.id}`,
+            pathname: `/photocard/listing/${props.data._id}`,
             state: {data: props.data, listingType: "Looking", photocardName: props.photocardName}
         }}>
 			<div className = "card">
@@ -164,7 +164,7 @@ const CardLookingFor = (props) => {
 const CardTrading = (props) => {
 	return (
 		<Link to={{
-            pathname: `/photocard/listing/${props.data.id}`,
+            pathname: `/photocard/listing/${props.data._id}`,
             state: {data: props.data, listingType: "Trade", photocardName: props.photocardName}
         }}>
 			<div className = "card">
@@ -186,7 +186,7 @@ const CardTrading = (props) => {
 const CardSelling= (props) => {
 	return (
 		<Link to={{
-            pathname: `/photocard/listing/${props.data.id}`,
+            pathname: `/photocard/listing/${props.data._id}`,
             state: {data: props.data, listingType: "Sale", photocardName: props.photocardName}
         }}>
 			<div className = "card">
