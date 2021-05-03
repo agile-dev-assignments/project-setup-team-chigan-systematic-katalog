@@ -1,19 +1,6 @@
-// const mongoose = require('mongoose');
 
-// const UserSchema = new mongoose.Schema({
-//   username: String,
-//   name: String,
-//   bio: String,
-//   venmo: String,
-//   email: String,
-//   phoneNum: Number, 
-//   password: String
-// });
-
-// //mongoose.model('User', User);
-
-// module.export = mongoose.model('User', UserSchema); 
 const mongoose = require('mongoose');
+const passportLocalMongoose = require('passport-local-mongoose');
 
 const UserSchema = new mongoose.Schema({
   username: {
@@ -38,7 +25,10 @@ const UserSchema = new mongoose.Schema({
   },
   password: {
     type: String
-  },
+  }
+  //confirm: {
+ //   type: String
+ // }
   // avatar: {
   //   type: String
   // },
@@ -52,5 +42,7 @@ const UserSchema = new mongoose.Schema({
   }
 
 });
+
+UserSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model('User', UserSchema); //user

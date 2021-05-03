@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import { Link } from 'react-router-dom'
 // import logo from './logo.svg';
 import './SignUp.css'
+import axios from "axios";
 
 
 function SignUp(props) {
@@ -12,23 +13,52 @@ function SignUp(props) {
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
 
-  function validateForm() {
-    return username.length > 0 && email.length > 0 && password.length > 0 && confirm.length > 0;
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    if (password !== confirm) {
-      alert("Passwords don't match");   
-    } else {
-      //link with backend account creation
-    }
-  }
-
+  const signUpS = () => {
+    localStorage.setItem("token", true);
+    axios.post("http://localhost:4000/signups", {
+        username: username,
+        password: password,
+        confirm: confirm,
+        email: email
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    // axios({
+    //   method: "POST",
+    //   data: {
+    //     username: setUsername,
+    //     password: setPassword,
+    //   },
+    //   withCredentials: true,
+    //   url: "http://localhost:4000/signup",
+    // }).then((res) => console.log(res))
+  };
+  // function validateForm() {
+  //   return username.length > 0 && email.length > 0 && password.length > 0 && confirm.length > 0;
+  // }
+  // function handleSubmit(event) {
+  //   event.preventDefault();
+  //   if (password !== confirm) {
+  //     alert("Passwords don't match");
+  //   } else {
+  //     //link with backend account creation
+  //   }
+  // }
+  // const handleSubmit = async (e) => {
+  //   await axios.post("http://localhost:4000/signup", {data: {
+  //     username: setUsername,
+  //     password: setPassword,
+  //   }})
+  // }
   return (
     <div className="SignUp">
       <h1>SignUp</h1>
-      <Form onSubmit={handleSubmit}>
+      {/* <Form onSubmit={handleSubmit}> */}
+      <Form>
         <Form.Group size="lg" controlId="username">
           <p>Username</p>
           <Form.Control
@@ -65,9 +95,10 @@ function SignUp(props) {
             onChange={(e) => setConfirm(e.target.value)}
           />
         </Form.Group>
-    
-        <br/>
-        <Button block size="lg" type="submit" disabled={!validateForm()}>
+        <br />
+        {/* disabled={!validateForm()} */}
+        <Button onClick={signUpS} href="/profile">
+
           SignUp
         </Button>
         <br/>
