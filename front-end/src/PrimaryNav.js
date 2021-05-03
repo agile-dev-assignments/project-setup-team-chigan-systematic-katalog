@@ -1,24 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './PrimaryNav.css'
-// import { Link } from 'react-router-dom'
+ import { useHistory } from 'react-router-dom'
 import { Navbar, Nav, Form, Button } from 'react-bootstrap';
 //import { slide as Menu } from 'react-burger-menu'
 
 
 const PrimaryNav = () => {
 
+        const history = useHistory();
         const logOut = () =>{
-          localStorage.setItem("token", false)
+          localStorage.removeItem('token')
+          setLoggedIn(localStorage.getItem("token") !== null)
+          history.push("/login");
         }
         
         // had    setLoggedIn    inside const
-        const [loggedIn] = useState(localStorage.getItem("token"))
+        const [loggedIn, setLoggedIn] = useState(localStorage.getItem("token") !== null)
 
         const changeNav = () =>{
-          if(loggedIn === "true"){
+          if(loggedIn){
             return [
               <Nav.Link className="user" href="/profile">Name</Nav.Link>,
-              <Button className="nav-button" variant="outline-light" size="sm" onClick={logOut} href="/login">Log Out</Button>
+              <Button className="nav-button" variant="outline-light" size="sm" onClick={logOut} href="localhost:4000/logout">Log Out</Button>
             ]
           }
           else{
@@ -30,7 +33,7 @@ const PrimaryNav = () => {
         }
 
         const changeProfile = () =>{
-          if(loggedIn === "true"){
+          if(loggedIn){
             return [
               <Nav.Link href="/profile">Profile</Nav.Link>
             ]
@@ -60,13 +63,31 @@ const PrimaryNav = () => {
                 <Nav className="mr-auto">
                   <Nav.Link href="/">Home</Nav.Link>
                   <Nav.Link href="/search">Search</Nav.Link>
-                  {changeProfile()}
+                  {
+                    loggedIn && <Nav.Link href="/profile">Profile</Nav.Link>
+                  }
+                  {
+                    !loggedIn && <Nav.Link href="/login">Profile</Nav.Link>
+                  }
                   <Nav.Link href="/faq">FAQ</Nav.Link>
                   <Nav.Link href="/about">About</Nav.Link>
                 </Nav>
                 
                 <Form inline>
-                  {changeNav()}
+                  {
+                    loggedIn && <Nav.Link className="user" href="/profile">Name</Nav.Link>
+                  }
+                  {
+                    loggedIn && <Button className="nav-button" variant="outline-light" size="sm" onClick={logOut} href="localhost:4000/logout">Log Out</Button>
+
+                    //loggedIn && <Button className="nav-button" variant="outline-light" size="sm" onClick={() => setLoggedIn(localStorage.getItem("token") !== null), logOut} href="localhost:4000/logout">Log Out</Button>
+                  }
+                  {
+                    !loggedIn &&  <Button className="nav-button" variant="outline-light" size="sm" href="/login">Login</Button>
+                  }
+                  {
+                    !loggedIn &&  <Button className="nav-button" variant="outline-light" size="sm" href="/signup">Signup</Button>
+                  }
                 </Form>
                 </Navbar.Collapse>
               </Navbar>

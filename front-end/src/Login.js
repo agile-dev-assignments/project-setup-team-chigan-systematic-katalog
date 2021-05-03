@@ -2,32 +2,52 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import Checkboxes from "./Checkboxes";
+import axios from 'axios'
 // import logo from './logo.svg';
 import './Login.css'
+
 
 
 function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState(""); 
 
+  const history = useHistory();
+
   function validateForm() {
     return email.length > 0 && password.length > 0;
   }
 
+  // this.state = {
+  //   isLoggedIn: true
+  // }
+
   function handleSubmit(event) {
     event.preventDefault();
-  }
+    axios.post('http://localhost:4000/login', {
+      email: email,
+      password: password
+    }).then((response) => {
 
-  function setToken() {
-    localStorage.setItem("token", true)
+      localStorage.setItem('token', response.data.token)
+      history.push("/profile");
+      window.location.reload();
+      // this.state = {
+      //   isLoggedIn: true
+      // }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   }
+  
 
   return (
     <div className="Login">
       <h1>Login</h1>
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} method="POST">
         <Form.Group size="lg" controlId="email">
           <p>Username/Email</p>
           <Form.Control
@@ -54,7 +74,7 @@ function Login(props) {
         
         <Checkboxes className='center'/>
         <br/>
-        <Button block size="lg" type="submit" disabled={!validateForm()} onClick={setToken} href="/profile">
+        <Button block size="lg" type="submit" disabled={!validateForm()} >
           Login
         </Button>
         <br/>
