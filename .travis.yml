@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+- node
+cache: npm
+
+install:
+  - cd front-end
+  - npm install
+  - cd back-end
+  - npm install
