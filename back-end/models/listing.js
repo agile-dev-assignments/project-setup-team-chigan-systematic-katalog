@@ -4,6 +4,7 @@ const Schema = mongoose.Schema
 
 const listingSchema = new Schema({
     photocard: {
+        id: String,
         name: String,
         group: String,
         member: String,
