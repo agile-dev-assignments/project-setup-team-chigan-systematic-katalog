@@ -4,7 +4,7 @@ import './TrendingPreview.css'
 
 const TrendingPreview = (props) => {
 
-  const imgSrc = `https://picsum.photos/200?id=${props.details.id}`
+  // const imgSrc = `https://picsum.photos/200?id=${props.details.id}`
 
   return (
     <article className="TrendingPreview">
@@ -12,7 +12,7 @@ const TrendingPreview = (props) => {
             pathname: `/photocard/${props.details.id}`,
             state: props.details
           }}>
-        <img alt={props.details.photocard_name} src={imgSrc} />
+        <img alt={props.details.photocard_name} src={props.details.picture} />
         <h3>{props.details.photocard_name}</h3>
 
       </Link>

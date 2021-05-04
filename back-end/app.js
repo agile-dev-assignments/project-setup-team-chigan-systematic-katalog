@@ -57,17 +57,17 @@ app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming P
 
 // app.use(bodyParser.json());
 
-app.use("/static", express.static("public"))
+app.use("/static", express.static("public"));
 // use profile router
-app.use("/profile", profileRouter)
+app.use("/profile", profileRouter);
 
 // use listing router
-app.use("/listing", listingRouter)
+app.use("/listing", listingRouter);
 
 //use sellingpostback router
-app.use("/sellingpostback", sellingpostbackRouter)
-//search
+app.use("/sellingpostback", sellingpostbackRouter);
 
+//search
 app.get('/search', async (req,res)=> {
   // console.log('api hit')
   // let parsedInfo = "";
@@ -92,6 +92,12 @@ app.get('/search', async (req,res)=> {
   // console.log(photocards)
   res.send(photocards);
 })
+
+app.get('/homeSearch', function (req, res) {
+  console.log(req.query + " query");
+  res.redirect('/search?name=' + req.query.name);
+});
+
 
 app.get('/filter', async (req,res)=> {
   console.log('api hit');
@@ -269,25 +275,9 @@ passport.deserializeUser(function (id, done) {
   });
 });
 
-//passport.use(User.createStrategy());
-
-
-
-// User.pre('save', function(next) {
-//   if (this.password) {
-//       this.salt = new Buffer(crypto.randomBytes(16).toString('base64'), 'base64');
-//       this.password = crypto.pbkdf2Sync(password, this.salt, 10000, 64).toString('base64')
-//   }
-//   next();
-// });
-
-//passport middleware
-app.get('/', function (req, res) {
-  res.redirect('/login');
-});
 
 app.get('/signups', (req, res) => {
-  res.render('signup', { error: '' });
+  res.json({ error: err })
 });
 
 app.post('/signups', (req, res, next) => {
@@ -304,7 +294,7 @@ app.post('/signups', (req, res, next) => {
     console.log(err, savedUser);
     if (err) {
       User.find({}, (err, users) => {
-        res.render('signup', { error: 'there was an error in your submission' });
+    res.json({ error: err })
       });
     }
     else {
@@ -314,10 +304,10 @@ app.post('/signups', (req, res, next) => {
 
 });
 
-app.get('/login', (req, res) => {
-  res.render('login')
-  //res.render('login', { error: '' });
-});
+// app.get('/login', (req, res) => {
+//   //res.render('login')
+//   res.render('login', { error: '' });
+// });
 
 app.post('/login', async (req, res, next) => {
   passport.authenticate('local',
@@ -327,7 +317,7 @@ app.post('/login', async (req, res, next) => {
           return next(err);
         }
         if (!user) {
-          return res.redirect('/login');
+          return new Error('An error occurred.');
         }
         req.logIn(user,{session: false }, async (err) => {
           if (err) {
@@ -388,9 +378,9 @@ app.post('/login', async (req, res, next) => {
 
 // export the express app we created to make it available to other modules
 
-app.get('/logout', (req, res) => {
-  res.redirect('/login');
-});
+// app.get('/logout', (req, res) => {
+//   res.redirect('/');
+// });
 
 
 module.exports = app; // CommonJS export style!
