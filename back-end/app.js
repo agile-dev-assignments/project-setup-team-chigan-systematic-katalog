@@ -275,25 +275,8 @@ passport.deserializeUser(function (id, done) {
   });
 });
 
-//passport.use(User.createStrategy());
-
-
-
-// User.pre('save', function(next) {
-//   if (this.password) {
-//       this.salt = new Buffer(crypto.randomBytes(16).toString('base64'), 'base64');
-//       this.password = crypto.pbkdf2Sync(password, this.salt, 10000, 64).toString('base64')
-//   }
-//   next();
-// });
-
-//passport middleware
-// app.get('/', function (req, res) {
-//   res.redirect('/login');
-// });
 
 app.get('/signups', (req, res) => {
-  //res.render('signup', { error: '' });
   res.json({ error: err })
 });
 
@@ -311,7 +294,6 @@ app.post('/signups', (req, res, next) => {
     console.log(err, savedUser);
     if (err) {
       User.find({}, (err, users) => {
-    //res.render('signup', { error: 'there was an error in your submission' });
     res.json({ error: err })
       });
     }
