@@ -162,30 +162,30 @@ app.post("/update", async (req, res, next) => {
 
 
 
-app.post("/addtowishlist", async (req, res) => {
+app.post("/addtowishlist/:userId", async (req, res) => {
 
-  if (User.find({_id:"607f3995aec3658bd8c4af7b"})) {
+  if (User.find({_id: req.params.userId})) {
     //console.log("add api is hit")
     //console.log(req.body)
-    await User.findOneAndUpdate({_id:"607f3995aec3658bd8c4af7b"}, {$push:{wishlist:req.body}})
+    await User.findOneAndUpdate({_id: req.params.userId}, {$push:{wishlist:req.body}})
   }
   
 })
 
-app.delete("/removefromwishlist/:id", async (req, res) => {
+app.delete("/removefromwishlist/:id/:userId", async (req, res) => {
   
-  if (User.find({_id:"607f3995aec3658bd8c4af7b"})) {
+  if (User.find({_id: req.params.userId})) {
     //console.log("remove api is hit")
-    await User.updateOne({_id:"607f3995aec3658bd8c4af7b"}, {$pull:{"wishlist": {"id": req.params.id}}})
+    await User.updateOne({_id: req.params.userId}, {$pull:{"wishlist": {"id": req.params.id}}})
   }
   
 })
 
-app.get("/checkwishlist/:id", async (req, res) => {
+app.get("/checkwishlist/:id/:userId", async (req, res) => {
   
-  if (User.find({_id:"607f3995aec3658bd8c4af7b"})) {
+  if (User.find({_id: req.params.userId})) {
     //console.log("check api is hit")
-    const wishlist = await User.find({_id:"607f3995aec3658bd8c4af7b", "wishlist": {$elemMatch: {"id": req.params.id }}})
+    const wishlist = await User.find({_id: req.params.userId, "wishlist": {$elemMatch: {"id": req.params.id }}})
     if (wishlist.length >= 1) {
       //console.log("found")
       res.send(true)
@@ -198,11 +198,11 @@ app.get("/checkwishlist/:id", async (req, res) => {
   }
 })
 
-app.get("/returnwishlist/", async (req, res) => {
+app.get("/returnwishlist/:userId", async (req, res) => {
   
-  if (User.find({_id:"607f3995aec3658bd8c4af7b"})) {
+  if (User.find({_id: req.params.userId})) {
     console.log("return api is hit")
-    const userArr = await User.find({_id:"607f3995aec3658bd8c4af7b", "wishlist": {$exists: true}})
+    const userArr = await User.find({_id: req.params.userId, "wishlist": {$exists: true}})
     //console.log(userArr[0].wishlist)
     if (userArr[0].wishlist.length >= 1) {
       //console.log("found")
@@ -325,8 +325,11 @@ app.post('/login', async (req, res, next) => {
           }
           const body = { _id: user._id};
           const token = jwt.sign({ user: body }, 'secret');
+          const userInfo = {
+            username: user.username
+           }
           //res.redirect("/profile")
-          return res.json({ token });
+          return res.json({ token, body, userInfo });
         });
       }
       catch(err) {

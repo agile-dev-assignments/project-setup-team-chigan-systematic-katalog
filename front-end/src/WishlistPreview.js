@@ -13,7 +13,7 @@ const WishlistPreview = (props) => {
 
   const removeWishlist = async () => {
         // removes photocard from wishlist
-        await axios.delete("http://localhost:4000/removefromwishlist/"+props.details.id)
+        await axios.delete("http://localhost:4000/removefromwishlist/"+props.details.id+"/"+localStorage.getItem("userId"))
         .then((response) => {
         console.log(response)    
         }, (error) => {
