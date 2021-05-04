@@ -14,7 +14,11 @@ import WishlistPreview from './WishlistPreview'
 
 /* popout the browser and maximize to see more rows! -> */
 const Wishlist = (props) => {
-
+  // test for command url 
+  let apiURL = "http://localhost:4000"; 
+  if (process.env.REACT_APP_api_base) {
+      apiURL = process.env.REACT_APP_api_base;
+  }
   const [data, setData] = React.useState([])
 
   // const testData = {
@@ -28,7 +32,7 @@ const Wishlist = (props) => {
 
     useEffect(() => {
       console.log('fetching photocards...')
-      axios.get('http://localhost:4000/returnwishlist')
+      axios.get(`${apiURL}/returnwishlist`)
         .then((response) => {
           setData(response.data)
         })

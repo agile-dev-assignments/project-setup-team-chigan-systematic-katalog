@@ -5,7 +5,11 @@ import { useState } from 'react';
 import axios from 'axios';
 
 function PopupModalVenmo() {
-
+  // test for command url 
+  let apiURL = "http://localhost:4000"; 
+  if (process.env.REACT_APP_api_base) {
+      apiURL = process.env.REACT_APP_api_base;
+  }
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -13,7 +17,7 @@ function PopupModalVenmo() {
 
   const [input, setInput] = useState("");
   const handleSubmit = async (e) => {
-    await axios.post("http://localhost:4000/update",{venmo:input})
+    await axios.post(`${apiURL}/update`,{venmo:input})
     .then((response) => {
       console.log(response);
     }, (error) => {

@@ -6,14 +6,18 @@ import axios from 'axios'
 
 
 const WishlistPreview = (props) => {
-
+  // test for command url 
+  let apiURL = "http://localhost:4000"; 
+  if (process.env.REACT_APP_api_base) {
+      apiURL = process.env.REACT_APP_api_base;
+  }
   const refreshPage = () => {
     window.location.reload()
   }
 
   const removeWishlist = async () => {
         // removes photocard from wishlist
-        await axios.delete("http://localhost:4000/removefromwishlist/"+props.details.id)
+        await axios.delete(`${apiURL}/removefromwishlist/`+props.details.id)
         .then((response) => {
         console.log(response)    
         }, (error) => {

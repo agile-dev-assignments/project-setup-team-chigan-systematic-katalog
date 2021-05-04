@@ -19,11 +19,17 @@ import CategoriesModal from './CategoriesModal'
 const logo = ["logo.png"]
 
 const Home = (props) => {
+  // test for command url 
+  let apiURL = "http://localhost:4000"; 
+  if (process.env.REACT_APP_api_base) {
+      apiURL = process.env.REACT_APP_api_base;
+  }
+
   const [data, setData] = React.useState([])
   
   useEffect(() => {
     console.log('fetching photocards...')
-    axios.get('http://localhost:4000/photocarddata')
+    axios.get(`${apiURL}/photocarddata`)
       .then((response) => {
         setData(response.data)
       })

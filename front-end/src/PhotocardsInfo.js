@@ -6,7 +6,14 @@ import './PhotocardsInfo.css'
 import { Link } from 'react-router-dom'
 
 
-
+// test for command url 
+const apiURL = () => {
+	if (process.env.REACT_APP_api_base) {
+		return process.env.REACT_APP_api_base;
+	} else {
+		return "http://localhost:4000"
+	}
+}
 
 const Photocards = (props) => {
 	const [activePage, setActivePage] = React.useState(0)
@@ -51,10 +58,10 @@ const Trading = (props) => {
 	const [sort, setSort] = React.useState('');
 	const [data, setData] = React.useState([]);
 	useEffect(() => {
-		axios.get('http://localhost:4000/tradingdata/'+props.id).then(response => {
+		axios.get(`${apiURL}/tradingdata/`+props.id).then(response => {
 			setData(response.data)
 		})
-	}, [])
+	})
 	return (
 		<div className = "content">
 			<div className = "sort">
@@ -83,10 +90,10 @@ const Selling = (props) => {
 	const [sort, setSort] = React.useState("0");
 	const [data, setData] = React.useState([]);
 	useEffect(() => {
-		axios.get('http://localhost:4000/sellingdata/'+props.id).then(response => {
+		axios.get(`${apiURL}/sellingdata/`+props.id).then(response => {
 			setData(response.data)
 		})
-	}, [])
+	})
 	return (
 		<div className = "content">
 			<div className = "sort">
@@ -115,10 +122,10 @@ const LookingFor = (props) => {
 	const [data, setData] = React.useState([]);
 	
 	useEffect(() => {
-		axios.get('http://localhost:4000/lookingfordata/'+props.id).then(response => {
+		axios.get(`${apiURL}/lookingfordata/`+props.id).then(response => {
 			setData(response.data)
 		})
-	}, [])
+	})
 	return (
 		<div className = "content">
 			<div className = "sort">
