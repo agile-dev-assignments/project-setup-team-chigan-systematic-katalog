@@ -1,5 +1,7 @@
 # Project Repository
 
+App is deployed on digital ocean: http://134.209.223.119:3000/
+
 This repository will be used for team projects. Delete the contents of this file and replace with the contents of a proper README.md, as described in the [project setup instructions](./project-setup-instructions.md)
 
 See the [Sprint Planning instructions](./sprint-planning-instructions.md) once the basic Project Kickoff tasks have been completed.
@@ -52,13 +54,24 @@ Information and instructions about how to contribute to the project here: [CONTR
 
 
 ## Instructions for Building and Testing 
-To run the front-end: cd into the front-end directory and enter `npm start` in the terminal. Go to localhost:3000 to see website. 
+###### To run locally:
+`git clone` this repository onto your local computer.   
+Run the front-end: cd into the front-end directory and enter `npm start` in the terminal. Go to localhost:3000 to see website. 
 
-To run the back-end: cd into the back-end directory and enter `npm start`. Go to localhost:4000 to see backend GET/POST apis. 
+Run the back-end: cd into the back-end directory and enter `npm start`. Go to localhost:4000 to see backend GET/POST apis. 
 
-To run front-end with back-end, open 2 terminals. Run `npm start` on the front-end in one terminal and run `npm start` on the back-end simutaneously in the other terminal. Go to localhost:3000 to see website with back-end.
+Run front-end with back-end, open 2 terminals. Run `npm start` on the front-end in one terminal and run `npm start` on the back-end simutaneously in the other terminal. Go to localhost:3000 to see website with back-end.
 
 To test the apis with our unit test, cd into the back-end direcotry and enter `npm test`. `ctrl + c` after you see the # passing to get overall stats.
+
+###### To deploy and view app on digital ocean: 
+ssh onto digital ocean ip
+`git clone` repository
+`cd` into the front-end folder and run `REACT_APP_api_base=http://134.209.223.119:4000 pm2 start npm -- start` to deploy front-end
+`cd` into the back-end folder and run `pm2 start server.js` to deploy back-end
+`pm2 kill` to stop all processes
+
+To view deployed app, go to the link: http://134.209.223.119:3000/
 
 ## Additional Links to Markdown documents
 [Project Proposal](https://github.com/agile-dev-assignments/project-proposal-jyn229/blob/main/README.md) — initial proposal and concept idea
