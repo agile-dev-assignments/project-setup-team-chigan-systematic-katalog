@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Router, Switch, Route } from 'react-router-dom'
 import PrimaryNav from './PrimaryNav'
 import Footer from './Footer'
 import Home from './Home'
@@ -24,9 +24,15 @@ import EditProfile from './EditProfile'
 const App = (props) => {
   return (
     <div className="container">
+      {/* <BrowserRouter>
+        <Switch>
+          <Route path="/" component={Home} />
+          <Route path="/search" component={Search} />
+        </Switch>
+      </BrowserRouter> */}
       <Router>
         <Switch>
-        <Route path="/login">
+          <Route path="/login">
             <PrimaryNav />
             <Login />
             <Footer />

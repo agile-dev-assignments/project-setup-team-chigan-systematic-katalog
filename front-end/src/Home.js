@@ -19,8 +19,35 @@ import CategoriesModal from './CategoriesModal'
 const logo = ["logo.png"]
 
 const Home = (props) => {
-  const [data, setData] = React.useState([])
+  const [data, setData] = React.useState([]);
+
+  const [query, setQuery] = React.useState('');
+  const [redirect, setRedirect] = React.useState(false);
   
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setRedirect(true);
+    console.log("handle sumbit called");
+    let url = "http://localhost:4000/search"
+    const name = query;
+    // const name = document.getElementById("search").name;
+    console.log(event.target);
+    if (name){
+      url += "?name=" + name;
+    }
+    console.log(url);
+    const data = await axios.get(url);
+    setData(data.data);
+    console.log(data);
+    // this.props.history.push({
+    //   pathname: '/search',
+    //   state:
+    //   {
+    //     data: data
+    //   }
+    // })
+  }
+
   useEffect(() => {
     console.log('fetching photocards...')
     axios.get('http://localhost:4000/photocarddata')
@@ -45,7 +72,7 @@ const Home = (props) => {
         setData(backupData)
       })
   }, []) 
-
+  
   return (
     <div>
 
@@ -59,8 +86,12 @@ const Home = (props) => {
             }}>{" \n "}</p>
 
         
-        <form method="GET" action="/search">
+        {/* <form method="GET" action="/search">
           Search: <input type="text" name="name" className="rcorners"/>
+          <input type="submit" value="Search" className="rcorners"/>
+        </form> */}
+        <form onSubmit={handleSubmit}>
+          Search: <input type="text" id="search" name="name" className="rcorners" onChange={(event)=>setQuery(event.target.value)}/>
           <input type="submit" value="Search" className="rcorners"/>
         </form>
         <br/>

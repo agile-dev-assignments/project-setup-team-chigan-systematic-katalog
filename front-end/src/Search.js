@@ -15,9 +15,13 @@ import { Link } from 'react-router-dom';
 import FilterModal from './FilterModal'
 
 const Search = (props) => {
+  console.log("search props" + props);
   const [data, setData] = React.useState([]);
-
   const [query, setQuery] = React.useState('');
+
+  // if (this.props.location.state.key){
+  //   setData(data);
+  // }
 
   useEffect(() => {
     axios.get('http://localhost:4000/photocarddata').then(response => {
