@@ -13,11 +13,18 @@ import { Grid } from "@material-ui/core"
 // import CategoriesModal from './CategoriesModal'
 import { Link } from 'react-router-dom';
 import FilterModal from './FilterModal'
+import {useLocation} from 'react-router-dom';
 
 const Search = (props) => {
   console.log("search props" + props);
   const [data, setData] = React.useState([]);
   const [query, setQuery] = React.useState('');
+
+  //new 
+  // const location = useLocation()
+  // if (location){
+  //   setData(location.state);
+  // }
 
   // if (this.props.location.state.key){
   //   setData(data);

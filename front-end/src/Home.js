@@ -6,8 +6,7 @@
 // import SearchIcon from "@material-ui/icons/Search";
 // import TextField from "@material-ui/core/TextField";
 // import { Form, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-// import { Link } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 import './Home.css'
 import React, { useEffect } from 'react'
 import axios from 'axios'
@@ -39,13 +38,7 @@ const Home = (props) => {
     const data = await axios.get(url);
     setData(data.data);
     console.log(data);
-    // this.props.history.push({
-    //   pathname: '/search',
-    //   state:
-    //   {
-    //     data: data
-    //   }
-    // })
+    setRedirect(true);
   }
 
   useEffect(() => {
@@ -71,8 +64,11 @@ const Home = (props) => {
         ]
         setData(backupData)
       })
-  }, []) 
-  
+  }, [])
+  if (redirect) {
+    return <Link to={{pathname: `/search`, state: {data: props.data}}}/>
+    
+  }
   return (
     <div>
 
