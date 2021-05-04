@@ -87,6 +87,7 @@ function AddListingModal(props) {
 
   const listing = {
     photocard: {
+      id: props.id,
       name: props.name,
       group: props.grp,
       member: props.member,
@@ -121,7 +122,7 @@ function AddListingModal(props) {
 
   return (
     <>
-      <Button className = "pfLogin" onClick={handleShow} style={{ alignSelf: 'center', backgroundColor: '#F4F4ED' }}>
+      <Button className = "pfAdd" onClick={handleShow} style={{ alignSelf: 'center', backgroundColor: '#F4F4ED' }}>
         Add a Listing
       </Button>
 

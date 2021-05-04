@@ -1,21 +1,49 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './WishlistPreview.css'
+import {Button} from "react-bootstrap"
+import axios from 'axios'
 
 
 const WishlistPreview = (props) => {
 
-  return (
-    <article className="WishlistPreview">
-      <Link to={{
-            pathname: `/photocard/${props.details.id}`,
-            state: props.details
-          }}>
-        <img alt={props.details.photocard_name} src={props.details.picture} />
-        <h4>{props.details.photocard_name}</h4>
+  const refreshPage = () => {
+    window.location.reload()
+  }
 
-      </Link>
-    </article>
+  const removeWishlist = async () => {
+        // removes photocard from wishlist
+        await axios.delete("http://localhost:4000/removefromwishlist/"+props.details.id)
+        .then((response) => {
+        console.log(response)    
+        }, (error) => {
+        console.log(error)
+        })      
+  }
+
+
+  return (
+    <div className="wishlistItem">
+      <article className="WishlistPreview">
+        <Link to={{
+              pathname: `/photocard/${props.details.id}`,
+              state: props.details
+            }}>
+          <img alt={props.details.photocard_name} src={props.details.picture} />
+          <h4>{props.details.photocard_name}</h4>
+
+        </Link>
+        
+      </article>
+      <Button className="removeBtn" onClick={() => 
+      {
+        removeWishlist()
+        refreshPage()
+      }} 
+      style={{ alignSelf: 'center', backgroundColor: '#F4F4ED'}}>
+        Remove
+      </Button>
+    </div>
   )
 }
 

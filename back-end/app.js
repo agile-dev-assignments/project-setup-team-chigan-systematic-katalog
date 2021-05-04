@@ -57,17 +57,17 @@ app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming P
 
 // app.use(bodyParser.json());
 
-app.use("/static", express.static("public"))
+app.use("/static", express.static("public"));
 // use profile router
-app.use("/profile", profileRouter)
+app.use("/profile", profileRouter);
 
 // use listing router
-app.use("/listing", listingRouter)
+app.use("/listing", listingRouter);
 
 //use sellingpostback router
-app.use("/sellingpostback", sellingpostbackRouter)
-//search
+app.use("/sellingpostback", sellingpostbackRouter);
 
+//search
 app.get('/search', async (req,res)=> {
   // console.log('api hit')
   // let parsedInfo = "";
@@ -93,6 +93,19 @@ app.get('/search', async (req,res)=> {
   res.send(photocards);
 })
 
+app.get('/homeSearch', function (req, res) {
+  console.log(req.query + " query");
+  res.redirect('/search?name=' + req.query.name);
+});
+
+
+app.get('/filter', async (req,res)=> {
+  console.log('api hit');
+  console.log(req.query);
+  const photocards = await Photocard.find({ groupType: req.query.groupType});
+  res.send(photocards);
+})
+
 app.get("/photocarddata", (req, res, next) => {
   // axios
   //   .get("https://my.api.mockaroo.com/photocard.json?key=49083ca0")
@@ -101,16 +114,16 @@ app.get("/photocarddata", (req, res, next) => {
   res.json(photocard_json);
 })
 
-app.get("/tradingdata", async (req, res) => {
-  const trading = await Listing.find({ "listedFor.trading": { $exists: true } });
+app.get("/tradingdata/:id", async (req, res) => {
+  const trading = await Listing.find({"photocard.id":req.params.id, "listedFor.trading": { $exists: true } });
   res.send(trading);
 })
-app.get("/sellingdata", async (req, res) => {
-  const selling = await Listing.find({ "listedFor.selling": { $exists: true } });
+app.get("/sellingdata/:id", async (req, res) => {
+  const selling = await Listing.find({"photocard.id":req.params.id, "listedFor.selling": { $exists: true } });
   res.send(selling);
 })
-app.get("/lookingfordata", async (req, res) => {
-  const lookingfor = await Listing.find({ "listedFor.looking": { $exists: true } });
+app.get("/lookingfordata/:id", async (req, res) => {
+  const lookingfor = await Listing.find({"photocard.id":req.params.id, "listedFor.looking": { $exists: true } });
   res.send(lookingfor);
 })
 
@@ -144,7 +157,67 @@ app.post("/update", async (req, res, next) => {
     }
   }
 });
+
 //app.use('/authenticated', passport.authenticate('jwt', { session: false }), profileRouter);
+
+
+
+app.post("/addtowishlist", async (req, res) => {
+
+  if (User.find({_id:"607f3995aec3658bd8c4af7b"})) {
+    //console.log("add api is hit")
+    //console.log(req.body)
+    await User.findOneAndUpdate({_id:"607f3995aec3658bd8c4af7b"}, {$push:{wishlist:req.body}})
+  }
+  
+})
+
+app.delete("/removefromwishlist/:id", async (req, res) => {
+  
+  if (User.find({_id:"607f3995aec3658bd8c4af7b"})) {
+    //console.log("remove api is hit")
+    await User.updateOne({_id:"607f3995aec3658bd8c4af7b"}, {$pull:{"wishlist": {"id": req.params.id}}})
+  }
+  
+})
+
+app.get("/checkwishlist/:id", async (req, res) => {
+  
+  if (User.find({_id:"607f3995aec3658bd8c4af7b"})) {
+    //console.log("check api is hit")
+    const wishlist = await User.find({_id:"607f3995aec3658bd8c4af7b", "wishlist": {$elemMatch: {"id": req.params.id }}})
+    if (wishlist.length >= 1) {
+      //console.log("found")
+      res.send(true)
+    }
+    else{
+      //console.log("not found")
+      res.send(false)
+    }
+    
+  }
+})
+
+app.get("/returnwishlist/", async (req, res) => {
+  
+  if (User.find({_id:"607f3995aec3658bd8c4af7b"})) {
+    console.log("return api is hit")
+    const userArr = await User.find({_id:"607f3995aec3658bd8c4af7b", "wishlist": {$exists: true}})
+    //console.log(userArr[0].wishlist)
+    if (userArr[0].wishlist.length >= 1) {
+      //console.log("found")
+      res.send(userArr[0].wishlist)
+    }
+    else{
+      //console.log("not found")
+      res.send(false)
+    }
+    
+  }
+})
+
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 // app.set('view engine', 'hbs');
 
@@ -318,10 +391,12 @@ app.post('/login', async (req, res, next) => {
 
 // app.post("/user", (req, res) => {})
 
-// export the express app we created to make it available to other modules\
+
+// export the express app we created to make it available to other modules
 
 app.get('/logout', (req, res) => {
   res.redirect('/login');
 });
+
 
 module.exports = app; // CommonJS export style!
