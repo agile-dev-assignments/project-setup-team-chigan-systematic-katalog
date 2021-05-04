@@ -57,17 +57,17 @@ app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming P
 
 // app.use(bodyParser.json());
 
-app.use("/static", express.static("public"))
+app.use("/static", express.static("public"));
 // use profile router
-app.use("/profile", profileRouter)
+app.use("/profile", profileRouter);
 
 // use listing router
-app.use("/listing", listingRouter)
+app.use("/listing", listingRouter);
 
 //use sellingpostback router
-app.use("/sellingpostback", sellingpostbackRouter)
-//search
+app.use("/sellingpostback", sellingpostbackRouter);
 
+//search
 app.get('/search', async (req,res)=> {
   // console.log('api hit')
   // let parsedInfo = "";
@@ -92,6 +92,12 @@ app.get('/search', async (req,res)=> {
   // console.log(photocards)
   res.send(photocards);
 })
+
+app.get('/homeSearch', function (req, res) {
+  console.log(req.query + " query");
+  res.redirect('/search?name=' + req.query.name);
+});
+
 
 app.get('/filter', async (req,res)=> {
   console.log('api hit');
