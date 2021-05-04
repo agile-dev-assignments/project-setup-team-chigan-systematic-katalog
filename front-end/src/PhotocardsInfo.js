@@ -7,13 +7,6 @@ import { Link } from 'react-router-dom'
 
 
 // test for command url 
-const apiURL = () => {
-	if (process.env.REACT_APP_api_base) {
-		return process.env.REACT_APP_api_base;
-	} else {
-		return "http://localhost:4000"
-	}
-}
 
 const Photocards = (props) => {
 	const [activePage, setActivePage] = React.useState(0)
@@ -55,6 +48,10 @@ const sortData = (type, setData, data) => {
 }
 
 const Trading = (props) => {
+	let apiURL = "http://localhost:4000";
+	if (process.env.REACT_APP_api_base) {
+		apiURL = process.env.REACT_APP_api_base;
+	}
 	const [sort, setSort] = React.useState('');
 	const [data, setData] = React.useState([]);
 	useEffect(() => {
@@ -85,8 +82,10 @@ const Trading = (props) => {
 }
 
 const Selling = (props) => {
-
-
+	let apiURL = "http://localhost:4000";
+	if (process.env.REACT_APP_api_base) {
+		apiURL = process.env.REACT_APP_api_base;
+	}	
 	const [sort, setSort] = React.useState("0");
 	const [data, setData] = React.useState([]);
 	useEffect(() => {
@@ -118,6 +117,10 @@ const Selling = (props) => {
 
 
 const LookingFor = (props) => {
+	let apiURL = "http://localhost:4000";
+	if (process.env.REACT_APP_api_base) {
+		apiURL = process.env.REACT_APP_api_base;
+	}
 	const [sort, setSort] = React.useState('');
 	const [data, setData] = React.useState([]);
 	
