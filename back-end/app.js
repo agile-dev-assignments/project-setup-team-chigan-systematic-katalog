@@ -215,9 +215,9 @@ passport.deserializeUser(function (id, done) {
 // });
 
 //passport middleware
-app.get('/', function (req, res) {
-  res.redirect('/login');
-});
+// app.get('/', function (req, res) {
+//   res.redirect('/login');
+// });
 
 app.get('/signups', (req, res) => {
   res.render('signup', { error: '' });
@@ -247,10 +247,10 @@ app.post('/signups', (req, res, next) => {
 
 });
 
-app.get('/login', (req, res) => {
-  res.render('login')
-  //res.render('login', { error: '' });
-});
+// app.get('/login', (req, res) => {
+//   //res.render('login')
+//   res.render('login', { error: '' });
+// });
 
 app.post('/login', async (req, res, next) => {
   passport.authenticate('local',
@@ -260,7 +260,7 @@ app.post('/login', async (req, res, next) => {
           return next(err);
         }
         if (!user) {
-          return res.redirect('/login');
+          return new Error('An error occurred.');
         }
         req.logIn(user,{session: false }, async (err) => {
           if (err) {
