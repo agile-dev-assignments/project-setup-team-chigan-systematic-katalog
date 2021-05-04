@@ -70,8 +70,7 @@ const Search = (props) => {
         </form>
 
       </Grid>
-      <br></br>
-      <div className="center">
+      <Grid>
         <button onClick={(event)=>{
           handleFilter("boy_group");
           }}>Boy Group</button>
@@ -82,7 +81,7 @@ const Search = (props) => {
           handleFilter("solo");
           }}>Solo</button>
         <br></br>
-      </div>
+      </Grid>
       
       {data.map(item => (
         <Link to={{
