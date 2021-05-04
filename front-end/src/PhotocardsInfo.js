@@ -6,7 +6,7 @@ import './PhotocardsInfo.css'
 import { Link } from 'react-router-dom'
 
 
-// test for command url 
+
 
 const Photocards = (props) => {
 	const [activePage, setActivePage] = React.useState(0)
@@ -48,17 +48,18 @@ const sortData = (type, setData, data) => {
 }
 
 const Trading = (props) => {
-	let apiURL = "http://localhost:4000";
-	if (process.env.REACT_APP_api_base) {
-		apiURL = process.env.REACT_APP_api_base;
-	}
+	  // test for command url 
+	  let apiURL = "http://localhost:4000"; 
+	  if (process.env.REACT_APP_api_base) {
+		  apiURL = process.env.REACT_APP_api_base;
+	  }
 	const [sort, setSort] = React.useState('');
 	const [data, setData] = React.useState([]);
 	useEffect(() => {
 		axios.get(`${apiURL}/tradingdata/`+props.id).then(response => {
 			setData(response.data)
-		},[])
-	})
+		})
+	}, [])
 	return (
 		<div className = "content">
 			<div className = "sort">
@@ -82,17 +83,19 @@ const Trading = (props) => {
 }
 
 const Selling = (props) => {
-	let apiURL = "http://localhost:4000";
-	if (process.env.REACT_APP_api_base) {
-		apiURL = process.env.REACT_APP_api_base;
-	}	
+	  // test for command url 
+	  let apiURL = "http://localhost:4000"; 
+	  if (process.env.REACT_APP_api_base) {
+		  apiURL = process.env.REACT_APP_api_base;
+	  }
+
 	const [sort, setSort] = React.useState("0");
 	const [data, setData] = React.useState([]);
 	useEffect(() => {
 		axios.get(`${apiURL}/sellingdata/`+props.id).then(response => {
 			setData(response.data)
-		},[])
-	})
+		})
+	}, [])
 	return (
 		<div className = "content">
 			<div className = "sort">
@@ -117,10 +120,12 @@ const Selling = (props) => {
 
 
 const LookingFor = (props) => {
-	let apiURL = "http://localhost:4000";
-	if (process.env.REACT_APP_api_base) {
-		apiURL = process.env.REACT_APP_api_base;
-	}
+	  // test for command url 
+	  let apiURL = "http://localhost:4000"; 
+	  if (process.env.REACT_APP_api_base) {
+		  apiURL = process.env.REACT_APP_api_base;
+	  }
+	  
 	const [sort, setSort] = React.useState('');
 	const [data, setData] = React.useState([]);
 	
