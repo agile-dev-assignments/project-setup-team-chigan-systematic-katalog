@@ -13,14 +13,14 @@ import React, { useEffect } from 'react'
 import axios from 'axios'
 import TrendingPreview from './TrendingPreview'
 import NewlyAddedPreview from './NewlyAddedPreview'
-import {Grid} from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import CategoriesModal from './CategoriesModal'
 
 const logo = ["logo.png"]
 
 const Home = (props) => {
   const [data, setData] = React.useState([])
-  
+
   useEffect(() => {
     console.log('fetching photocards...')
     axios.get('http://localhost:4000/photocarddata')
@@ -29,7 +29,7 @@ const Home = (props) => {
       })
       .catch((err) => {
         console.log(`No more requests allowed today!`)
-        console.error(err) 
+        console.error(err)
         const backupData = [
           {
             id: 1,
@@ -44,60 +44,59 @@ const Home = (props) => {
         ]
         setData(backupData)
       })
-  }, []) 
+  }, [])
 
   return (
     <div>
 
-    <div className="Home">
-      <img alt="logo" src={logo} />
-      <h1>katalog</h1>
+      <div className="Home">
+        <img alt="logo" src={logo} />
+        <h1>katalog</h1>
 
-      <Grid container direction="column" alignItems="center" justify="center">
-      <p style={{
+        <Grid container direction="column" alignItems="center" justify="center">
+          <p style={{
             'white-space': 'pre-wrap'
-            }}>{" \n "}</p>
+          }}>{" \n "}</p>
 
-        
+          {/*         
         <form method="GET" action="/search">
           Search: <input type="text" name="name" className="rcorners"/>
           <input type="submit" value="Search" className="rcorners"/>
         </form>
-        <br/>
+        <br/> */}
+          {/* <CategoriesModal /> */}
 
-          <CategoriesModal />
-
-            <div className="Trending">
+          <div className="Trending">
 
             <p style={{
-            'white-space': 'pre-wrap'
+              'white-space': 'pre-wrap'
             }}>{" \n \n \n "}</p>
-            
-              <h3> Top 5 Trending Photocards</h3>
-              <section className="main-content">
-                {data.map((item) => (
-                  <TrendingPreview key={item.id} details={item} />
-                ))}
-          </section>
-            </div>
-            <div className="Newly Added">
+
+            <h3> Top 5 Trending Photocards</h3>
+            <section className="main-content">
+              {data.map((item) => (
+                <TrendingPreview key={item.id} details={item} />
+              ))}
+            </section>
+          </div>
+          <div className="Newly Added">
             <p style={{
-            'white-space': 'pre-wrap'
+              'white-space': 'pre-wrap'
             }}>{" \n \n "}</p>
-              <h3> Newly Added</h3>
-              <section className="main-content">
+            <h3> Newly Added</h3>
+            <section className="main-content">
               {
-              data.map((item) => (
+                data.map((item) => (
                   <NewlyAddedPreview key={item.id} details={item} />
                 ))}
 
 
-          </section>
-            </div>
+            </section>
+          </div>
         </Grid>
-        <br/><br/><br/>
+        <br /><br /><br />
+      </div>
     </div>
-  </div>
   )
 }
 
