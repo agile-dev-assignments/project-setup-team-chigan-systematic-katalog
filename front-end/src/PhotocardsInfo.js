@@ -57,7 +57,7 @@ const Trading = (props) => {
 	useEffect(() => {
 		axios.get(`${apiURL}/tradingdata/`+props.id).then(response => {
 			setData(response.data)
-		})
+		},[])
 	})
 	return (
 		<div className = "content">
@@ -91,7 +91,7 @@ const Selling = (props) => {
 	useEffect(() => {
 		axios.get(`${apiURL}/sellingdata/`+props.id).then(response => {
 			setData(response.data)
-		})
+		},[])
 	})
 	return (
 		<div className = "content">
@@ -128,7 +128,7 @@ const LookingFor = (props) => {
 		axios.get(`${apiURL}/lookingfordata/`+props.id).then(response => {
 			setData(response.data)
 		})
-	})
+	}, [])
 	return (
 		<div className = "content">
 			<div className = "sort">
