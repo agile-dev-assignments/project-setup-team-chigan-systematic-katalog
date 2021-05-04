@@ -78,7 +78,7 @@ const PrimaryNav = () => {
                     loggedIn && <Nav.Link className="user" href="/profile">Name</Nav.Link>
                   }
                   {
-                    loggedIn && <Button className="nav-button" variant="outline-light" size="sm" onClick={logOut} href="localhost:4000/logout">Log Out</Button>
+                    loggedIn && <Button className="nav-button" variant="outline-light" size="sm" onClick={logOut}>Log Out</Button>
 
                     //loggedIn && <Button className="nav-button" variant="outline-light" size="sm" onClick={() => setLoggedIn(localStorage.getItem("token") !== null), logOut} href="localhost:4000/logout">Log Out</Button>
                   }

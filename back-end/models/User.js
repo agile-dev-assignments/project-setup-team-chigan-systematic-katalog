@@ -55,16 +55,13 @@ UserSchema.pre(
   }
 );
 
-// UserSchema.methods.isValidPassword = async function(password) {
-//   const user = this;
-//   const compare = await bcrypt.compare(password, user.password);
-
-//   return compare;
-// }
-
 UserSchema.methods.isValidPassword = async function(password) {
-  return password === "password"
+  const user = this;
+  const compare = await bcrypt.compare(password, user.password);
+
+  return compare;
 }
+
 UserSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model('User', UserSchema); //user
