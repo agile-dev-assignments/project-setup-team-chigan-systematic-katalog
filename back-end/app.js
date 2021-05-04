@@ -293,7 +293,8 @@ passport.deserializeUser(function (id, done) {
 // });
 
 app.get('/signups', (req, res) => {
-  res.render('signup', { error: '' });
+  //res.render('signup', { error: '' });
+  res.json({ error: err })
 });
 
 app.post('/signups', (req, res, next) => {
@@ -310,7 +311,8 @@ app.post('/signups', (req, res, next) => {
     console.log(err, savedUser);
     if (err) {
       User.find({}, (err, users) => {
-        res.render('signup', { error: 'there was an error in your submission' });
+    //res.render('signup', { error: 'there was an error in your submission' });
+    res.json({ error: err })
       });
     }
     else {
