@@ -394,9 +394,9 @@ app.post('/login', async (req, res, next) => {
 
 // export the express app we created to make it available to other modules
 
-app.get('/logout', (req, res) => {
-  res.redirect('/login');
-});
+// app.get('/logout', (req, res) => {
+//   res.redirect('/');
+// });
 
 
 module.exports = app; // CommonJS export style!
