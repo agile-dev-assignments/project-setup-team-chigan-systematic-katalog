@@ -15,6 +15,7 @@ import { Link } from 'react-router-dom';
 import FilterModal from './FilterModal'
 
 const Search = (props) => {
+  console.log(process.env.REACT_APP_api_base);
   const [data, setData] = React.useState([]);
 
   const [query, setQuery] = React.useState('');
