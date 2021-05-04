@@ -341,8 +341,11 @@ app.post('/login', async (req, res, next) => {
           }
           const body = { _id: user._id};
           const token = jwt.sign({ user: body }, 'secret');
+          const userInfo = {
+            username: user.username
+           }
           //res.redirect("/profile")
-          return res.json({ token, body });
+          return res.json({ token, body, userInfo });
         });
       }
       catch(err) {
