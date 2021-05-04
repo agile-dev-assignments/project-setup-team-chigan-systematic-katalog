@@ -5,8 +5,8 @@ import { Navbar, Nav, Form, Button } from 'react-bootstrap';
 //import { slide as Menu } from 'react-burger-menu'
 
 
-const PrimaryNav = () => {
-
+const PrimaryNav = (props) => {
+console.log(props)
         const history = useHistory();
         const logOut = () =>{
           localStorage.removeItem('token')
@@ -16,7 +16,7 @@ const PrimaryNav = () => {
         
         // had    setLoggedIn    inside const
         const [loggedIn, setLoggedIn] = useState(localStorage.getItem("token") !== null)
-
+        // console.log(JSON.parse(localStorage.getItem("user")))
         const changeNav = () =>{
           if(loggedIn){
             return [

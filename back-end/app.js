@@ -323,6 +323,7 @@ app.post('/login', async (req, res, next) => {
   passport.authenticate('local',
      async(err, user, info) => {
       try {
+        console.log(user);
         if (err) {
           return next(err);
         }
@@ -333,10 +334,16 @@ app.post('/login', async (req, res, next) => {
           if (err) {
             return next(err);
           }
+          const userInfo = {
+            name: user.name,
+            bio: user.bio
+          }
           const body = { _id: user._id};
           const token = jwt.sign({ user: body }, 'secret');
+          //const userInfo = ;
           //res.redirect("/profile")
-          return res.json({ token });
+          console.log(userInfo);
+          return res.json({ token, userInfo});
         });
       }
       catch(err) {
