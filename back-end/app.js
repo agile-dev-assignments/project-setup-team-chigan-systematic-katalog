@@ -291,14 +291,18 @@ app.post('/signups', (req, res, next) => {
   const u = new User(obj);
 
   u.save((err, savedUser) => {
-    console.log(err, savedUser);
-    if (err) {
-      User.find({}, (err, users) => {
-    res.json({ error: err })
-      });
+    try {
+      if (err) {
+        return new Error('An error occurred.');
+      }
+      else {
+        const body = { _id: savedUser._id};
+        const token = jwt.sign({ user: body }, 'secret');
+        return res.json({ token });
+      }
     }
-    else {
-      res.redirect('/search');
+    catch(err) {
+      return next(error);
     }
   });
 

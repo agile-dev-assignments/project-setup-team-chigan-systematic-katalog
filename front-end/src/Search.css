@@ -20,8 +20,9 @@
 .Search a{
     padding: 15px;
 }
-.Search Link:hover {
-    color: #8093F1;
+.Search a:hover {
+    color: violet;
+    text-decoration: none;
   }
   
 .Search p4{
