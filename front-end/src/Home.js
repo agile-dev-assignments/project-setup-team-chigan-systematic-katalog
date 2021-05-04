@@ -67,11 +67,6 @@ const Home = (props) => {
           {/* <CategoriesModal /> */}
 
           <div className="Trending">
-
-            <p style={{
-              'white-space': 'pre-wrap'
-            }}>{" \n \n \n "}</p>
-
             <h3> Top 5 Trending Photocards</h3>
             <section className="main-content">
               {data.map((item) => (
