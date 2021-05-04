@@ -30,7 +30,7 @@ function Login(props) {
       email: email,
       password: password
     }).then((response) => {
-
+      localStorage.setItem("userId", response.data.body._id)
       localStorage.setItem('token', response.data.token)
       history.push("/profile");
       window.location.reload();
