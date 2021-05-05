@@ -39,6 +39,7 @@ const axios = require("axios") // middleware for making requests to APIs
 require("dotenv").config({ silent: true }) // load environmental variables from a hidden file named .env
 const morgan = require("morgan"); // middleware for nice logging of incoming HTTP requests
 const { parse } = require("dotenv");
+const { userInfo } = require("os");
 /**
  * Typically, all middlewares would be included before routes
  * In this file, however, most middlewares are after most routes
@@ -127,15 +128,17 @@ app.get("/lookingfordata/:id", async (req, res) => {
   res.send(lookingfor);
 })
 
-app.post("/update", async (req, res, next) => {
-  console.log(req.body)
+app.post("/update", async (req, res) => {
+  
   res.status(200).json({ ok: true })
 
   //once user auth is complete, this line below will be replaced with this.user._id
-  if (User.find({ _id: "607f3995aec3658bd8c4af7b" })) { //for now, searches to see this user exists, using this condition until user auth is fully implemented
-    console.log("api is hit")
+  if (User.find({ _id: req.body._id })) { //for now, searches to see this user exists, using this condition until user auth is fully implemented
+    console.log(req.body._id);//i tried req.body,req.params, id, _id
+    console.log("update api is hit")
     if (req.body.username != null) {
-      await User.findOneAndUpdate({ _id: "607f3995aec3658bd8c4af7b" }, { username: req.body.username });  //use await before bc its a promise
+      await User.findOneAndUpdate({ _id: req.params._id }, {username: req.body.username });  //use await before bc its a promise
+      console.log("hello")
     }
     if (req.body.name != null) {
       await User.findOneAndUpdate({ _id: "607f3995aec3658bd8c4af7b" }, { name: req.body.name });
@@ -337,6 +340,7 @@ app.post('/login', async (req, res, next) => {
           const body = { _id: user._id};
           const token = jwt.sign({ user: body }, 'secret');
           const userInfo = {
+            _id: user._id,
             username: user.username,
             name: user.name,
             bio: user.bio
