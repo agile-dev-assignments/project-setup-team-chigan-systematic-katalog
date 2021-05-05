@@ -93,6 +93,7 @@ function AddListingModal(props) {
       member: props.member,
       album: props.album
     },
+    username: JSON.parse(localStorage.getItem("userInfo")).username,
     location: locationInput,
     shipTo: shipToInput,
     description: descriptionInput,

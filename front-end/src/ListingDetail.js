@@ -65,7 +65,7 @@ const ListingDetail = (props) => {
                     <img src={"https://picsum.photos/65"} alt="profile img" className="profileImage"/>
                 </div>
                 <div className="username">
-                    <h6>Username</h6>
+                    <h6>{data.username}</h6>
                 </div>
             </div>
 

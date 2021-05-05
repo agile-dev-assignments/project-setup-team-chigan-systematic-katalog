@@ -8,6 +8,7 @@ router.get("/", (req, res) => {
 router.post("/", async (req, res) => {
     
     const photocard = req.body.photocard
+    const username = req.body.username
     const location = req.body.location
     const shipTo = req.body.shipTo
     const description = req.body.description
@@ -17,6 +18,7 @@ router.post("/", async (req, res) => {
 
     const newListing = new ListingModel({
         photocard,
+        username,
         location,
         shipTo,
         description,
