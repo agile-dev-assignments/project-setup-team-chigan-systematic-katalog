@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import './PrimaryNav.css'
- import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { Navbar, Nav, Form, Button } from 'react-bootstrap';
 //import { slide as Menu } from 'react-burger-menu'
+
 
 
 const PrimaryNav = (props) => {
@@ -21,6 +22,8 @@ console.log(props)
         
         // had    setLoggedIn    inside const
         const [loggedIn, setLoggedIn] = useState(localStorage.getItem("token") !== null)
+        
+        const url = `${apiURL}/logout`;
 
         // const changeNav = () =>{
         //   if(loggedIn){
@@ -98,6 +101,7 @@ console.log(props)
               </Navbar>
             </div>
         )
+
 
 }
 

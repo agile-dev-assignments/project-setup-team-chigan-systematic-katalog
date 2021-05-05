@@ -11,8 +11,13 @@ import './Login.css'
 
 
 function Login(props) {
+  // test for command url 
+  let apiURL = "http://localhost:4000"; 
+  if (process.env.REACT_APP_api_base) {
+      apiURL = process.env.REACT_APP_api_base;
+  }
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState(""); 
+  const [password, setPassword] = useState("");
 
   const history = useHistory();
 
@@ -26,7 +31,7 @@ function Login(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    axios.post('http://localhost:4000/login', {
+    axios.post(`${apiURL}/login`, {
       email: email,
       password: password
     }).then((response) => {

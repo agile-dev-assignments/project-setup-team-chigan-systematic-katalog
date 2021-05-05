@@ -9,7 +9,11 @@ import { useState } from 'react';
 import axios from 'axios';
 
 function PopupModalBio() {
-
+  // test for command url 
+  let apiURL = "http://localhost:4000"; 
+  if (process.env.REACT_APP_api_base) {
+      apiURL = process.env.REACT_APP_api_base;
+  }
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -17,7 +21,7 @@ function PopupModalBio() {
 
   const [input, setInput] = useState("");
   const handleSubmit = async (e) => {
-    await axios.post("http://localhost:4000/update",{bio:input})
+    await axios.post(`${apiURL}/update`,{bio:input})
     .then((response) => {
       console.log(response);
     }, (error) => {
