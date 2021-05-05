@@ -34,6 +34,15 @@ function Login(props) {
       localStorage.setItem("userInfo", JSON.stringify(response.data.userInfo))
       localStorage.setItem('token', response.data.token)
       history.push("/profile");
+      //localStorage.setItem('user',JSON.parse(JSON.stringify(response.data.userInfo)))
+      // history.push("/profile");
+
+    //   history.push({
+    //     pathname:"/profile",
+    //     userInfo: userInformation
+        
+    // })
+    // history.push("/profile")
       window.location.reload();
       // this.state = {
       //   isLoggedIn: true

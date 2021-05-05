@@ -327,10 +327,17 @@ app.post('/login', async (req, res, next) => {
           if (err) {
             return next(err);
           }
+          // const body = { _id: user._id};
+          // const token = jwt.sign({ user: body }, 'secret');
+          // const userInfo = {
+          //   username: user.username
+ 
           const body = { _id: user._id};
           const token = jwt.sign({ user: body }, 'secret');
           const userInfo = {
-            username: user.username
+            username: user.username,
+            name: user.name,
+            bio: user.bio
            }
           //res.redirect("/profile")
           return res.json({ token, body, userInfo });
