@@ -57,17 +57,17 @@ app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming P
 
 // app.use(bodyParser.json());
 
-app.use("/static", express.static("public"))
+app.use("/static", express.static("public"));
 // use profile router
-app.use("/profile", profileRouter)
+app.use("/profile", profileRouter);
 
 // use listing router
-app.use("/listing", listingRouter)
+app.use("/listing", listingRouter);
 
 //use sellingpostback router
-app.use("/sellingpostback", sellingpostbackRouter)
-//search
+app.use("/sellingpostback", sellingpostbackRouter);
 
+//search
 app.get('/search', async (req,res)=> {
   // console.log('api hit')
   // let parsedInfo = "";
@@ -93,6 +93,12 @@ app.get('/search', async (req,res)=> {
   res.send(photocards);
 })
 
+app.get('/homeSearch', function (req, res) {
+  console.log(req.query + " query");
+  res.redirect('/search?name=' + req.query.name);
+});
+
+
 app.get('/filter', async (req,res)=> {
   console.log('api hit');
   console.log(req.query);
@@ -108,16 +114,16 @@ app.get("/photocarddata", (req, res, next) => {
   res.json(photocard_json);
 })
 
-app.get("/tradingdata", async (req, res) => {
-  const trading = await Listing.find({ "listedFor.trading": { $exists: true } });
+app.get("/tradingdata/:id", async (req, res) => {
+  const trading = await Listing.find({"photocard.id":req.params.id, "listedFor.trading": { $exists: true } });
   res.send(trading);
 })
-app.get("/sellingdata", async (req, res) => {
-  const selling = await Listing.find({ "listedFor.selling": { $exists: true } });
+app.get("/sellingdata/:id", async (req, res) => {
+  const selling = await Listing.find({"photocard.id":req.params.id, "listedFor.selling": { $exists: true } });
   res.send(selling);
 })
-app.get("/lookingfordata", async (req, res) => {
-  const lookingfor = await Listing.find({ "listedFor.looking": { $exists: true } });
+app.get("/lookingfordata/:id", async (req, res) => {
+  const lookingfor = await Listing.find({"photocard.id":req.params.id, "listedFor.looking": { $exists: true } });
   res.send(lookingfor);
 })
 
@@ -156,30 +162,30 @@ app.post("/update", async (req, res, next) => {
 
 
 
-app.post("/addtowishlist", async (req, res) => {
+app.post("/addtowishlist/:userId", async (req, res) => {
 
-  if (User.find({_id:"607f3995aec3658bd8c4af7b"})) {
-    console.log("add api is hit")
+  if (User.find({_id: req.params.userId})) {
+    //console.log("add api is hit")
     //console.log(req.body)
-    await User.findOneAndUpdate({_id:"607f3995aec3658bd8c4af7b"}, {$push:{wishlist:req.body}})
+    await User.findOneAndUpdate({_id: req.params.userId}, {$push:{wishlist:req.body}})
   }
   
 })
 
-app.delete("/removefromwishlist/:id", async (req, res) => {
+app.delete("/removefromwishlist/:id/:userId", async (req, res) => {
   
-  if (User.find({_id:"607f3995aec3658bd8c4af7b"})) {
-    console.log("remove api is hit")
-    await User.updateOne({_id:"607f3995aec3658bd8c4af7b"}, {$pull:{"wishlist": {"id": req.params.id}}})
+  if (User.find({_id: req.params.userId})) {
+    //console.log("remove api is hit")
+    await User.updateOne({_id: req.params.userId}, {$pull:{"wishlist": {"id": req.params.id}}})
   }
   
 })
 
-app.get("/checkwishlist/:id", async (req, res) => {
+app.get("/checkwishlist/:id/:userId", async (req, res) => {
   
-  if (User.find({_id:"607f3995aec3658bd8c4af7b"})) {
-    console.log("check api is hit")
-    const wishlist = await User.find({_id:"607f3995aec3658bd8c4af7b", "wishlist": {$elemMatch: {"id": req.params.id }}})
+  if (User.find({_id: req.params.userId})) {
+    //console.log("check api is hit")
+    const wishlist = await User.find({_id: req.params.userId, "wishlist": {$elemMatch: {"id": req.params.id }}})
     if (wishlist.length >= 1) {
       //console.log("found")
       res.send(true)
@@ -192,11 +198,11 @@ app.get("/checkwishlist/:id", async (req, res) => {
   }
 })
 
-app.get("/returnwishlist/", async (req, res) => {
+app.get("/returnwishlist/:userId", async (req, res) => {
   
-  if (User.find({_id:"607f3995aec3658bd8c4af7b"})) {
+  if (User.find({_id: req.params.userId})) {
     console.log("return api is hit")
-    const userArr = await User.find({_id:"607f3995aec3658bd8c4af7b", "wishlist": {$exists: true}})
+    const userArr = await User.find({_id: req.params.userId, "wishlist": {$exists: true}})
     //console.log(userArr[0].wishlist)
     if (userArr[0].wishlist.length >= 1) {
       //console.log("found")
@@ -269,25 +275,9 @@ passport.deserializeUser(function (id, done) {
   });
 });
 
-//passport.use(User.createStrategy());
-
-
-
-// User.pre('save', function(next) {
-//   if (this.password) {
-//       this.salt = new Buffer(crypto.randomBytes(16).toString('base64'), 'base64');
-//       this.password = crypto.pbkdf2Sync(password, this.salt, 10000, 64).toString('base64')
-//   }
-//   next();
-// });
-
-//passport middleware
-app.get('/', function (req, res) {
-  res.redirect('/login');
-});
 
 app.get('/signups', (req, res) => {
-  res.render('signup', { error: '' });
+  res.json({ error: err })
 });
 
 app.post('/signups', (req, res, next) => {
@@ -301,23 +291,27 @@ app.post('/signups', (req, res, next) => {
   const u = new User(obj);
 
   u.save((err, savedUser) => {
-    console.log(err, savedUser);
-    if (err) {
-      User.find({}, (err, users) => {
-        res.render('signup', { error: 'there was an error in your submission' });
-      });
+    try {
+      if (err) {
+        return new Error('An error occurred.');
+      }
+      else {
+        const body = { _id: savedUser._id};
+        const token = jwt.sign({ user: body }, 'secret');
+        return res.json({ token });
+      }
     }
-    else {
-      res.redirect('/search');
+    catch(err) {
+      return next(error);
     }
   });
 
 });
 
-app.get('/login', (req, res) => {
-  res.render('login')
-  //res.render('login', { error: '' });
-});
+// app.get('/login', (req, res) => {
+//   //res.render('login')
+//   res.render('login', { error: '' });
+// });
 
 app.post('/login', async (req, res, next) => {
   passport.authenticate('local',
@@ -328,22 +322,26 @@ app.post('/login', async (req, res, next) => {
           return next(err);
         }
         if (!user) {
-          return res.redirect('/login');
+          return new Error('An error occurred.');
         }
         req.logIn(user,{session: false }, async (err) => {
           if (err) {
             return next(err);
           }
-          const userInfo = {
-            name: user.name,
-            bio: user.bio
-          }
+          // const body = { _id: user._id};
+          // const token = jwt.sign({ user: body }, 'secret');
+          // const userInfo = {
+          //   username: user.username
+ 
           const body = { _id: user._id};
           const token = jwt.sign({ user: body }, 'secret');
-          //const userInfo = ;
+          const userInfo = {
+            username: user.username,
+            name: user.name,
+            bio: user.bio
+           }
           //res.redirect("/profile")
-          console.log(userInfo);
-          return res.json({ token, userInfo});
+          return res.json({ token, body, userInfo });
         });
       }
       catch(err) {
@@ -395,9 +393,9 @@ app.post('/login', async (req, res, next) => {
 
 // export the express app we created to make it available to other modules
 
-app.get('/logout', (req, res) => {
-  res.redirect('/login');
-});
+// app.get('/logout', (req, res) => {
+//   res.redirect('/');
+// });
 
 
 module.exports = app; // CommonJS export style!

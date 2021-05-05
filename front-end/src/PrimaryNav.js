@@ -13,24 +13,29 @@ console.log(props)
           setLoggedIn(localStorage.getItem("token") !== null)
           history.push("/login");
         }
+
+
+        const [username, setUsername] = useState(localStorage.getItem("userInfo") ? JSON.parse(localStorage.getItem("userInfo")).username : "");
+
+        // const [username, setUsername] = useState(JSON.parse(localStorage.getItem("userInfo")))
         
         // had    setLoggedIn    inside const
         const [loggedIn, setLoggedIn] = useState(localStorage.getItem("token") !== null)
-        // console.log(JSON.parse(localStorage.getItem("user")))
-        const changeNav = () =>{
-          if(loggedIn){
-            return [
-              <Nav.Link className="user" href="/profile">Name</Nav.Link>,
-              <Button className="nav-button" variant="outline-light" size="sm" onClick={logOut} href="localhost:4000/logout">Log Out</Button>
-            ]
-          }
-          else{
-            return [
-              <Button className="nav-button" variant="outline-light" size="sm" href="/login">Login</Button>,
-              <Button className="nav-button" variant="outline-light" size="sm" href="/signup">Signup</Button>
-            ]
-          }
-        }
+
+        // const changeNav = () =>{
+        //   if(loggedIn){
+        //     return [
+        //       <Nav.Link className="user" href="/profile">Name</Nav.Link>,
+        //       <Button className="nav-button" variant="outline-light" size="sm" onClick={logOut} href="localhost:4000/logout">Log Out</Button>
+        //     ]
+        //   }
+        //   else{
+        //     return [
+        //       <Button className="nav-button" variant="outline-light" size="sm" href="/login">Login</Button>,
+        //       <Button className="nav-button" variant="outline-light" size="sm" href="/signup">Signup</Button>
+        //     ]
+        //   }
+        // }
 
         const changeProfile = () =>{
           if(loggedIn){
@@ -75,10 +80,10 @@ console.log(props)
                 
                 <Form inline>
                   {
-                    loggedIn && <Nav.Link className="user" href="/profile">Name</Nav.Link>
+                    loggedIn && <Nav.Link className="user" href="/profile">@{username}</Nav.Link>
                   }
                   {
-                    loggedIn && <Button className="nav-button" variant="outline-light" size="sm" onClick={logOut} href="localhost:4000/logout">Log Out</Button>
+                    loggedIn && <Button className="nav-button" variant="outline-light" size="sm" onClick={logOut}>Log Out</Button>
 
                     //loggedIn && <Button className="nav-button" variant="outline-light" size="sm" onClick={() => setLoggedIn(localStorage.getItem("token") !== null), logOut} href="localhost:4000/logout">Log Out</Button>
                   }

@@ -30,9 +30,10 @@ function Login(props) {
       email: email,
       password: password
     }).then((response) => {
-      const userInformation = response.data.userInfo;
-      console.log(userInformation);
+      localStorage.setItem("userId", response.data.body._id)
+      localStorage.setItem("userInfo", JSON.stringify(response.data.userInfo))
       localStorage.setItem('token', response.data.token)
+      history.push("/profile");
       //localStorage.setItem('user',JSON.parse(JSON.stringify(response.data.userInfo)))
       // history.push("/profile");
 
@@ -41,7 +42,8 @@ function Login(props) {
     //     userInfo: userInformation
         
     // })
-    history.push("/profile",{userInformation})
+   // history.push("/profile",{userInformation})
+    // history.push("/profile")
       window.location.reload();
       // this.state = {
       //   isLoggedIn: true

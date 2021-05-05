@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { Link } from 'react-router-dom'
+import { Link,useHistory } from 'react-router-dom'
 // import logo from './logo.svg';
 import './SignUp.css'
 import axios from "axios";
@@ -12,9 +12,9 @@ function SignUp(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
+  const history = useHistory();
 
   const signUpS = () => {
-    localStorage.setItem("token", true);
     axios.post("http://localhost:4000/signups", {
         username: username,
         password: password,
@@ -22,7 +22,9 @@ function SignUp(props) {
         email: email
       })
       .then((response) => {
-        console.log(response);
+        localStorage.setItem('token', response.data.token)
+        history.push("/profile");
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
@@ -97,12 +99,12 @@ function SignUp(props) {
         </Form.Group>
         <br />
         {/* disabled={!validateForm()} */}
-        <Button onClick={signUpS} href="/profile">
+        <Button onClick={signUpS}>
 
           SignUp
         </Button>
         <br/>
-        <links>
+        <links className="loginbutton">
           <Link to="/login">Already have an account?</Link>
         </links>
       </Form>

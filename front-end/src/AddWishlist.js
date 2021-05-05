@@ -39,7 +39,7 @@ function AddWishlist(props) {
         
         if (added == true && clicked == true){
             // adds photocard to wishlist
-            await axios.post("http://localhost:4000/addtowishlist", photocard)
+            await axios.post("http://localhost:4000/addtowishlist/"+localStorage.getItem("userId"), photocard)
             .then((response) => {
             console.log(response)
             }, (error) => {
@@ -56,7 +56,7 @@ function AddWishlist(props) {
     }
 
     useEffect(() => {
-        axios.get('http://localhost:4000/checkwishlist/'+props.id).then(response => {
+        axios.get('http://localhost:4000/checkwishlist/'+props.id+'/'+localStorage.getItem("userId")).then(response => {
             
 			setAdded(response.data)
           
