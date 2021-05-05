@@ -48,10 +48,15 @@ const sortData = (type, setData, data) => {
 }
 
 const Trading = (props) => {
+	  // test for command url 
+	  let apiURL = "http://localhost:4000"; 
+	  if (process.env.REACT_APP_api_base) {
+		  apiURL = process.env.REACT_APP_api_base;
+	  }
 	const [sort, setSort] = React.useState('');
 	const [data, setData] = React.useState([]);
 	useEffect(() => {
-		axios.get('http://localhost:4000/tradingdata/'+props.id).then(response => {
+		axios.get(`${apiURL}/tradingdata/`+props.id).then(response => {
 			setData(response.data)
 		})
 	}, [])
@@ -78,12 +83,16 @@ const Trading = (props) => {
 }
 
 const Selling = (props) => {
-
+	  // test for command url 
+	  let apiURL = "http://localhost:4000"; 
+	  if (process.env.REACT_APP_api_base) {
+		  apiURL = process.env.REACT_APP_api_base;
+	  }
 
 	const [sort, setSort] = React.useState("0");
 	const [data, setData] = React.useState([]);
 	useEffect(() => {
-		axios.get('http://localhost:4000/sellingdata/'+props.id).then(response => {
+		axios.get(`${apiURL}/sellingdata/`+props.id).then(response => {
 			setData(response.data)
 		})
 	}, [])
@@ -111,11 +120,17 @@ const Selling = (props) => {
 
 
 const LookingFor = (props) => {
+	  // test for command url 
+	  let apiURL = "http://localhost:4000"; 
+	  if (process.env.REACT_APP_api_base) {
+		  apiURL = process.env.REACT_APP_api_base;
+	  }
+	  
 	const [sort, setSort] = React.useState('');
 	const [data, setData] = React.useState([]);
 	
 	useEffect(() => {
-		axios.get('http://localhost:4000/lookingfordata/'+props.id).then(response => {
+		axios.get(`${apiURL}/lookingfordata/`+props.id).then(response => {
 			setData(response.data)
 		})
 	}, [])

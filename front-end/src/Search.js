@@ -16,12 +16,17 @@ import FilterModal from './FilterModal'
 
 const Search = (props) => {
   console.log(process.env.REACT_APP_api_base);
+  // test for command url 
+  let apiURL = "http://localhost:4000"; 
+  if (process.env.REACT_APP_api_base) {
+      apiURL = process.env.REACT_APP_api_base;
+  }  
   const [data, setData] = React.useState([]);
 
   const [query, setQuery] = React.useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:4000/photocarddata').then(response => {
+    axios.get(`${apiURL}/photocarddata`).then(response => {
       setData(response.data)
     })
   }, [])
@@ -29,7 +34,7 @@ const Search = (props) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log("handle sumbit called");
-    let url = "http://localhost:4000/search"
+    let url = `${apiURL}/search`
     const name = query;
     // const name = document.getElementById("search").name;
     console.log(event.target);
@@ -46,7 +51,7 @@ const Search = (props) => {
   const handleFilter = async (query) => {
     // event.preventDefault();
     console.log("handle filter called");
-    let url = "http://localhost:4000/filter"
+    let url = `${apiURL}/filter`
     const groupType = query;
     console.log("query" + query);
     if (groupType){

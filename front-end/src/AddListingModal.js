@@ -11,6 +11,15 @@ import { useState, useEffect } from 'react';
 import axios from 'axios'
 
 function AddListingModal(props) {
+  // test for command url 
+  const apiURL = () => {
+    if (process.env.REACT_APP_api_base){
+      return process.env.REACT_APP_api_base;
+    }else {
+      return "http://localhost:4000"
+    }
+  }
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
@@ -108,7 +117,7 @@ function AddListingModal(props) {
   }, [listedForInput])
 
   const handleSubmit = async (e) => {
-    await axios.post("http://localhost:4000/listing", listing)
+    await axios.post(`${apiURL}/listing`, listing)
     .then((response) => {
       console.log(response)
     }, (error) => {
