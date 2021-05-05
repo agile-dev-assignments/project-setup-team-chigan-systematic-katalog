@@ -17,7 +17,7 @@ function PopupModalVenmo() {
 
   const [input, setInput] = useState("");
   const handleSubmit = async (e) => {
-    await axios.post(`${apiURL}/update`,{venmo:input})
+    await axios.post(`${apiURL}/update/${localStorage.getItem("userId")}`,{venmo:input})
     .then((response) => {
       console.log(response);
     }, (error) => {

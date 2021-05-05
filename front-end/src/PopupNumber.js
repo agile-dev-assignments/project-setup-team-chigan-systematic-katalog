@@ -17,7 +17,7 @@ function PopupModalNumber() {
 
   const [input, setInput] = useState("");
   const handleSubmit = async (e) => {
-    await axios.post(`${apiURL}/update`,{number:input})
+    await axios.post(`${apiURL}/update/${localStorage.getItem("userId")}`,{number:input})
     .then((response) => {
       console.log(response);
     }, (error) => {

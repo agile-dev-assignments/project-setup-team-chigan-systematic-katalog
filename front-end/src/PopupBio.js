@@ -21,7 +21,7 @@ function PopupModalBio() {
 
   const [input, setInput] = useState("");
   const handleSubmit = async (e) => {
-    await axios.post(`${apiURL}/update`,{bio:input})
+    await axios.post(`${apiURL}/update/${localStorage.getItem("userId")}`,{bio:input})
     .then((response) => {
       console.log(response);
     }, (error) => {
