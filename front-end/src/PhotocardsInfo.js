@@ -34,16 +34,23 @@ const Photocards = (props) => {
 }
 
 
-const sortAccording = {
-	1: "date",
-	2: "date",
-	3: "price",
-	4: "price"
-}
-
 const sortData = (type, setData, data) => {
-	const sortType =sortAccording[type]
-	const sorted = (type === 1 || type === 3 ) ? [...data].sort((a, b) => b[sortType] - a[sortType]) : [...data].sort((b, a) => b[sortType] - a[sortType])
+	const sorted = (type == 1 || type == 3 ) ? [...data].sort((a, b) => {
+		if(type > 2) {
+			return b.listedFor.selling.price > a.listedFor.selling.price ? 1 : -1
+		}
+		else {
+			return b.posted > a.posted ? 1 : -1
+		}
+		
+	}) : [...data].sort((b, a) => {
+		if(type > 2) {
+			return b.listedFor.selling.price > a.listedFor.selling.price ? 1 : -1
+		}
+		else {
+			return b.posted > a.posted ? 1 : -1
+		}
+	})
 	setData(sorted)
 }
 
