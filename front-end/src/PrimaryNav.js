@@ -23,7 +23,7 @@ console.log(props)
         // had    setLoggedIn    inside const
         const [loggedIn, setLoggedIn] = useState(localStorage.getItem("token") !== null)
         
-        const url = `${apiURL}/logout`;
+        //const url = `${apiURL}/logout`;
 
         // const changeNav = () =>{
         //   if(loggedIn){
