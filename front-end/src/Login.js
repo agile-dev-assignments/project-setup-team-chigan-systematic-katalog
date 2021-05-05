@@ -35,7 +35,8 @@ function Login(props) {
       email: email,
       password: password
     }).then((response) => {
-
+      localStorage.setItem("userId", response.data.body._id)
+      localStorage.setItem("userInfo", JSON.stringify(response.data.userInfo))
       localStorage.setItem('token', response.data.token)
       history.push("/profile");
       window.location.reload();
