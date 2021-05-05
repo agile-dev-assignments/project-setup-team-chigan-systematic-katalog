@@ -15,8 +15,11 @@ const PrimaryNav = () => {
         }
 
 
-        const [username, setUsername] = useState(JSON.parse(localStorage.getItem("userInfo")).username)
-        
+        const [username, setUsername] = useState([]);
+
+        if (localStorage.getItem("userInfo")){
+          setUsername(JSON.parse(localStorage.getItem("userInfo")).username);
+        }
         // had    setLoggedIn    inside const
         const [loggedIn, setLoggedIn] = useState(localStorage.getItem("token") !== null)
 
