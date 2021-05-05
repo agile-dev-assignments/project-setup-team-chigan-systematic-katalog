@@ -283,6 +283,7 @@ app.get('/signups', (req, res) => {
 app.post('/signups', (req, res, next) => {
   const obj = {
     username: req.body.username,
+    name: req.body.name,
     password: req.body.password,
     email: req.body.email,
     confirm: req.body.confirm
@@ -327,10 +328,17 @@ app.post('/login', async (req, res, next) => {
           if (err) {
             return next(err);
           }
+          // const body = { _id: user._id};
+          // const token = jwt.sign({ user: body }, 'secret');
+          // const userInfo = {
+          //   username: user.username
+ 
           const body = { _id: user._id};
           const token = jwt.sign({ user: body }, 'secret');
           const userInfo = {
-            username: user.username
+            username: user.username,
+            name: user.name,
+            bio: user.bio
            }
           //res.redirect("/profile")
           return res.json({ token, body, userInfo });

@@ -70,6 +70,9 @@ const Profile = (props) => {
   }
   const [data, setData] = useState([])
 
+
+  const [name, setName] = useState(localStorage.getItem("userInfo") ? JSON.parse(localStorage.getItem("userInfo")).name : "");
+  const [bio, setBio] = useState(localStorage.getItem("userInfo") ? JSON.parse(localStorage.getItem("userInfo")).bio : "");
   const randomNum = Math.floor(Math.random() * 3); 
 
   useEffect(() => {
@@ -113,9 +116,9 @@ const Profile = (props) => {
           </Button><br /><br />
         </section>
         <section>
-          <h3>{data.Username}</h3>
+          <h3>{name}</h3>
           <p>
-            {data.Bio}
+            {bio}
             </p><br/><br/>
           <h5>Showcase</h5>
           <div className={classes.root}>

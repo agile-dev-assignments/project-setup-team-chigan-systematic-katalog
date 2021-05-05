@@ -105,7 +105,6 @@ const PrimaryNav = () => {
     </div>
   )
 
-
 }
 
 export default PrimaryNav;
