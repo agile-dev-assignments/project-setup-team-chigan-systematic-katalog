@@ -33,7 +33,7 @@ const Profile = (props) => {
     return (
       <React.Fragment>
         <Grid item xs={3.5}>
-          <Paper className={classes.paper}><img alt="Photocard 1" src="https://picsum.photos/200?page=profile" style={{
+          <Paper className={classes.paper}><img alt="Photocard 1" src="images/image1.jpg" style={{
             resizeMode: "repeat",
             display: "flex",
             padding: 1,
@@ -44,7 +44,7 @@ const Profile = (props) => {
           }}/> </Paper>
         </Grid>
         <Grid item xs={3.5}>
-          <Paper className={classes.paper}><img alt="Photocard 1" src="https://picsum.photos/200?page=profile" style={{
+          <Paper className={classes.paper}><img alt="Photocard 1" src="images/image3.jpg" style={{
             resizeMode: "repeat",
             display: "flex",
             padding: 1,
@@ -55,7 +55,7 @@ const Profile = (props) => {
           }}/> </Paper>
         </Grid>
         <Grid item xs={3.5}>
-          <Paper className={classes.paper}><img alt="Photocard 1" src="https://picsum.photos/200?page=profile" style={{
+          <Paper className={classes.paper}><img alt="Photocard 1" src="images/image4.jpg" style={{
             resizeMode: "repeat",
             display: "flex",
             padding: 1,
