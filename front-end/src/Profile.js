@@ -91,7 +91,7 @@ const Profile = (props) => {
 
         setData(backupData[0])
       })
-  })
+  }, [])
 
   //console.log(data)
 

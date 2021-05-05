@@ -71,9 +71,7 @@ function AddWishlist(props) {
 		}, (error) => {
             console.log(error)
         })
-
-        
-    })
+    }, [])
 
     useEffect(() => {
         changeBtn()
