@@ -6,13 +6,10 @@ import axios from 'axios'
 
 function AddWishlist(props) {
     // test for command url 
-    const apiURL = () => {
-        if (process.env.REACT_APP_api_base) {
-            return process.env.REACT_APP_api_base;
-        } else {
-            return "http://localhost:4000"
-        }
-    }
+  let apiURL = "http://localhost:4000"; 
+  if (process.env.REACT_APP_api_base) {
+      apiURL = process.env.REACT_APP_api_base;
+  }
 
     const [added, setAdded] = useState(false)
     const [addBtn, setAddBtn] = useState({title: "Add to Wishlist", style: "#8093f1"})
