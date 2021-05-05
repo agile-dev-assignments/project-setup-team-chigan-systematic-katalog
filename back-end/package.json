@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "coverage": "nyc npm run test",
-    "test": "nyc mocha --timeout 3000",
+    "test": "nyc mocha --timeout 3000 --exit",
     "server": "nodemon server.js"
   },
   "author": "Foo Barstein",

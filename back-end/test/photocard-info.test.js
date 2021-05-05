@@ -7,10 +7,12 @@ const should = chai.should();
 chai.use(chaiHttp);
 const photocarddata = require("../public/photocards.json")
 
+beforeEach(done => setTimeout(done, 2000));
+
 describe("get request of selling data", () => {
     it("should successfully return selling json data", (done) => {
         chai.request(app)
-        .get('/sellingdata')
+        .get('/sellingdata/:id')
         .end((err, res) => {
             res.should.have.status(200)
             res.body.should.be.a('array')
@@ -22,7 +24,7 @@ describe("get request of selling data", () => {
 describe("get request of trading data", () => {
     it("should successfully return trading json data", (done) => {
         chai.request(app)
-        .get('/tradingdata')
+        .get('/tradingdata/:id')
         .end((err, res) => {
             res.should.have.status(200)
             res.body.should.be.a('array')
@@ -34,7 +36,7 @@ describe("get request of trading data", () => {
 describe("get request of looking for data", () => {
     it("should successfully return looking for json data", (done) => {
         chai.request(app)
-        .get('/lookingfordata')
+        .get('/lookingfordata/:id')
         .end((err, res) => {
             res.should.have.status(200)
             res.body.should.be.a('array')
