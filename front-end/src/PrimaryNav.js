@@ -19,25 +19,27 @@ const PrimaryNav = () => {
   }
 
 
+  const [username, setUsername] = useState(localStorage.getItem("userInfo") ? JSON.parse(localStorage.getItem("userInfo")).username : "");
+  
   // had    setLoggedIn    inside const
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem("token") !== null)
 
   // moved url from const changeNav to below
   const url = `${apiURL}/logout`;
-  const changeNav = () => {
-    if (loggedIn) {
-      return [
-        <Nav.Link className="user" href="/profile">Name</Nav.Link>,
-        <Button className="nav-button" variant="outline-light" size="sm" onClick={logOut} href={url}>Log Out</Button>
-      ]
-    }
-    else {
-      return [
-        <Button className="nav-button" variant="outline-light" size="sm" href="/login">Login</Button>,
-        <Button className="nav-button" variant="outline-light" size="sm" href="/signup">Signup</Button>
-      ]
-    }
-  }
+//   const changeNav = () => {
+//     if (loggedIn) {
+//       return [
+//         <Nav.Link className="user" href="/profile">Name</Nav.Link>,
+//         <Button className="nav-button" variant="outline-light" size="sm" onClick={logOut} href={url}>Log Out</Button>
+//       ]
+//     }
+//     else {
+//       return [
+//         <Button className="nav-button" variant="outline-light" size="sm" href="/login">Login</Button>,
+//         <Button className="nav-button" variant="outline-light" size="sm" href="/signup">Signup</Button>
+//       ]
+//     }
+//   }
 
 
   const changeProfile = () => {
@@ -102,6 +104,7 @@ const PrimaryNav = () => {
       </Navbar>
     </div>
   )
+
 
 }
 
