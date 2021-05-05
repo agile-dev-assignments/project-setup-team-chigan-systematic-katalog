@@ -20,7 +20,7 @@
 .Search a{
     padding: 15px;
 }
-.Search a:hover {
+.Search p4:hover {
     color: violet;
     text-decoration: none;
   }
@@ -32,7 +32,6 @@
     padding-top: 50px;
     margin: auto;
     font-size: large;
-
 }
 
 .Search #middle-content{
@@ -48,6 +47,13 @@
 .Search {
     padding-left: 50px;
     padding-right: 50px;
+}
+
+.Search input[type="submit"]:hover{
+    background-color: #72DDF7;
+    border-color: #72DDF7;
+    font-weight: 500;
+    color: white;
 }
 
 .Search button{
@@ -67,6 +73,13 @@
     border-color: #8093f1;
 }
 
+.Search button:hover {
+    background-color: #72DDF7;
+    border-color: #72DDF7;
+    font-weight: 500;
+    color: white;
+    text-decoration: none;
+  }
 
 .Search form {
     margin-left: 200px;
