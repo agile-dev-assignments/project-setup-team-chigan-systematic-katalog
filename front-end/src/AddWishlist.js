@@ -44,8 +44,7 @@ function AddWishlist(props) {
         
         if (added === true && clicked === true){
             // adds photocard to wishlist
-
-            await axios.post(`${apiURL}/addtowishlist`, photocard)
+            await axios.post(`${apiURL}/addtowishlist/`+localStorage.getItem("userId"), photocard)
 
             .then((response) => {
             console.log(response)
@@ -64,8 +63,7 @@ function AddWishlist(props) {
 
     useEffect(() => {
 
-        axios.get(`${apiURL}/checkwishlist/`+props.id).then(response => {
-
+        axios.get(`${apiURL}/checkwishlist/`+props.id+'/'+localStorage.getItem("userId")).then(response => {
             
 			setAdded(response.data)
           
