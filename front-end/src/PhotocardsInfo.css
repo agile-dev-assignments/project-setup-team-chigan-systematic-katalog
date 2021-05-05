@@ -84,3 +84,8 @@
   width: 80%;
   margin: auto;
 }
+
+.cards a:hover {
+    color: violet;
+    text-decoration: none;
+  }

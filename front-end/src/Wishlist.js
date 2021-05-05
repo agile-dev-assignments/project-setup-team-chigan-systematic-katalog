@@ -32,7 +32,9 @@ const Wishlist = (props) => {
 
     useEffect(() => {
       console.log('fetching photocards...')
+
       axios.get(`${apiURL}/returnwishlist`)
+
         .then((response) => {
           setData(response.data)
         })

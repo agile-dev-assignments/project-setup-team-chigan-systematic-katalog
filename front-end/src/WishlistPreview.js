@@ -17,7 +17,9 @@ const WishlistPreview = (props) => {
 
   const removeWishlist = async () => {
         // removes photocard from wishlist
+
         await axios.delete(`${apiURL}/removefromwishlist/`+props.details.id)
+
         .then((response) => {
         console.log(response)    
         }, (error) => {

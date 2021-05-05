@@ -19,3 +19,8 @@ links {
 links a {
     margin: 20px 50px 10px 0px;
 }
+
+.loginbutton a:hover {
+    color: violet;
+    text-decoration: none;
+}

@@ -18,6 +18,7 @@ const PrimaryNav = () => {
     history.push("/login");
   }
 
+
   // had    setLoggedIn    inside const
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem("token") !== null)
 
@@ -37,6 +38,7 @@ const PrimaryNav = () => {
       ]
     }
   }
+
 
   const changeProfile = () => {
     if (loggedIn) {
@@ -78,6 +80,7 @@ const PrimaryNav = () => {
             <Nav.Link href="/faq">FAQ</Nav.Link>
             <Nav.Link href="/about">About</Nav.Link>
           </Nav>
+
 
           <Form inline>
             {

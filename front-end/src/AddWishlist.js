@@ -47,7 +47,9 @@ function AddWishlist(props) {
         
         if (added === true && clicked === true){
             // adds photocard to wishlist
+
             await axios.post(`${apiURL}/addtowishlist`, photocard)
+
             .then((response) => {
             console.log(response)
             }, (error) => {
@@ -64,7 +66,9 @@ function AddWishlist(props) {
     }
 
     useEffect(() => {
+
         axios.get(`${apiURL}/checkwishlist/`+props.id).then(response => {
+
             
 			setAdded(response.data)
           
