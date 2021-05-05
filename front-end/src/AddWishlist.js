@@ -1,10 +1,15 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
-import {Button} from "react-bootstrap"
+import { Button } from "react-bootstrap"
 import './AddWishlist.css'
 import axios from 'axios'
 
 function AddWishlist(props) {
+    // test for command url 
+  let apiURL = "http://localhost:4000"; 
+  if (process.env.REACT_APP_api_base) {
+      apiURL = process.env.REACT_APP_api_base;
+  }
 
     const [added, setAdded] = useState(false)
     const [addBtn, setAddBtn] = useState({title: "Add to Wishlist", style: "#8093f1"})
@@ -22,11 +27,11 @@ function AddWishlist(props) {
 
     const changeBtn = () => {
         
-        if (added == true){
+        if (added === true){
             setAddBtn({title: "Added to Wishlist", style: "#F7AEF8"})
             
         }
-        else if (added == false){
+        else if (added === false){
             setAddBtn({title: "Add to Wishlist", style: "#8093f1"})
             
         }
@@ -37,9 +42,10 @@ function AddWishlist(props) {
 
     const updateWishlist = async () => {
         
-        if (added == true && clicked == true){
+        if (added === true && clicked === true){
             // adds photocard to wishlist
-            await axios.post("http://localhost:4000/addtowishlist/"+localStorage.getItem("userId"), photocard)
+            await axios.post(`${apiURL}/addtowishlist/`+localStorage.getItem("userId"), photocard)
+
             .then((response) => {
             console.log(response)
             }, (error) => {
@@ -56,15 +62,14 @@ function AddWishlist(props) {
     }
 
     useEffect(() => {
-        axios.get('http://localhost:4000/checkwishlist/'+props.id+'/'+localStorage.getItem("userId")).then(response => {
+
+        axios.get(`${apiURL}/checkwishlist/`+props.id+'/'+localStorage.getItem("userId")).then(response => {
             
 			setAdded(response.data)
           
 		}, (error) => {
             console.log(error)
         })
-
-        
     }, [])
 
     useEffect(() => {

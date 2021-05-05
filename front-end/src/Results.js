@@ -16,6 +16,11 @@ import FilterModal from './FilterModal'
 
 
 const Results = (props) => {
+  // test for command url 
+  let apiURL = "http://localhost:4000"; 
+  if (process.env.REACT_APP_api_base) {
+      apiURL = process.env.REACT_APP_api_base;
+  }  
   const [data, setData] = React.useState([]);
   const testData = {
       id:1,
@@ -28,7 +33,7 @@ const Results = (props) => {
     }
 
     useEffect(() => {
-      axios.get('http://localhost:4000/photocarddata').then(response => {
+      axios.get(`${apiURL}/photocarddata`).then(response => {
         setData(response.data)
       })
     }, [])

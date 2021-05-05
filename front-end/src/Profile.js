@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import axios from 'axios'
 
-import AddListingModal from './AddListingModal'
+// import AddListingModal from './AddListingModal'
 // import { Link } from 'react-router-dom';
 
 
@@ -23,6 +23,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Profile = (props) => {
+  // test for command url 
+  let apiURL = "http://localhost:4000"; 
+  if (process.env.REACT_APP_api_base) {
+      apiURL = process.env.REACT_APP_api_base;
+  }
   const classes = useStyles();
   function FormRow() {
     return (
@@ -71,7 +76,7 @@ const Profile = (props) => {
   const randomNum = Math.floor(Math.random() * 3); 
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/profile/`)
+    axios.get(`${apiURL}/profile/`)
       .then(response => {
         setData(response.data[randomNum])
       })

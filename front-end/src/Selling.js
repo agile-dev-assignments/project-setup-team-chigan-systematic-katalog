@@ -11,11 +11,16 @@ import axios from 'axios'
 
 /* popout the browser and maximize to see more rows! -> */
 const Selling = () => {
+  // test for command url 
+  let apiURL = "http://localhost:4000"; 
+  if (process.env.REACT_APP_api_base) {
+      apiURL = process.env.REACT_APP_api_base;
+  }  
   const [data, setData] = useState([])
 
   useEffect(() => {
     console.log('loading selling posts')
-    axios.get(`http://localhost:4000/sellingpostback/`)
+    axios.get(`${apiURL}/sellingpostback/`)
       .then(response => {
         setData(response.data)
       })

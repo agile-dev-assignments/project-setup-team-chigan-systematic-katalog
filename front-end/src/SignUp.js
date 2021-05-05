@@ -8,6 +8,11 @@ import axios from "axios";
 
 
 function SignUp(props) {
+  // test for command url 
+  let apiURL = "http://localhost:4000"; 
+  if (process.env.REACT_APP_api_base) {
+      apiURL = process.env.REACT_APP_api_base;
+  }  
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -16,7 +21,10 @@ function SignUp(props) {
   const history = useHistory();
 
   const signUpS = () => {
-    axios.post("http://localhost:4000/signups", {
+
+    localStorage.setItem("token", true);
+    axios.post(`${apiURL}/signups`, {
+
         username: username,
         name: name,
         password: password,
@@ -38,7 +46,7 @@ function SignUp(props) {
     //     password: setPassword,
     //   },
     //   withCredentials: true,
-    //   url: "http://localhost:4000/signup",
+    //   url: `${apiURL}/signup`,
     // }).then((res) => console.log(res))
   };
   // function validateForm() {
@@ -53,7 +61,7 @@ function SignUp(props) {
   //   }
   // }
   // const handleSubmit = async (e) => {
-  //   await axios.post("http://localhost:4000/signup", {data: {
+  //   await axios.post(`${apiURL}/signup`, {data: {
   //     username: setUsername,
   //     password: setPassword,
   //   }})
