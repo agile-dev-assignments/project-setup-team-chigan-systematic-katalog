@@ -10,7 +10,7 @@ const listingSchema = new Schema({
         member: String,
         album: String
     },
-    // username: String,
+    username: String,
     location: String,
     shipTo: String,
     description: String,

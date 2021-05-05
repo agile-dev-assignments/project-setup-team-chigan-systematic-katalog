@@ -283,6 +283,7 @@ app.get('/signups', (req, res) => {
 app.post('/signups', (req, res, next) => {
   const obj = {
     username: req.body.username,
+    name: req.body.name,
     password: req.body.password,
     email: req.body.email,
     confirm: req.body.confirm

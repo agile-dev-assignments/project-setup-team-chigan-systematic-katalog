@@ -6,13 +6,10 @@ import axios from 'axios'
 
 function AddWishlist(props) {
     // test for command url 
-    const apiURL = () => {
-        if (process.env.REACT_APP_api_base) {
-            return process.env.REACT_APP_api_base;
-        } else {
-            return "http://localhost:4000"
-        }
-    }
+  let apiURL = "http://localhost:4000"; 
+  if (process.env.REACT_APP_api_base) {
+      apiURL = process.env.REACT_APP_api_base;
+  }
 
     const [added, setAdded] = useState(false)
     const [addBtn, setAddBtn] = useState({title: "Add to Wishlist", style: "#8093f1"})
@@ -47,8 +44,7 @@ function AddWishlist(props) {
         
         if (added === true && clicked === true){
             // adds photocard to wishlist
-
-            await axios.post(`${apiURL}/addtowishlist`, photocard)
+            await axios.post(`${apiURL}/addtowishlist/`+localStorage.getItem("userId"), photocard)
 
             .then((response) => {
             console.log(response)
@@ -67,8 +63,7 @@ function AddWishlist(props) {
 
     useEffect(() => {
 
-        axios.get(`${apiURL}/checkwishlist/`+props.id).then(response => {
-
+        axios.get(`${apiURL}/checkwishlist/`+props.id+'/'+localStorage.getItem("userId")).then(response => {
             
 			setAdded(response.data)
           

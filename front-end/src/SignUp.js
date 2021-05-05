@@ -14,6 +14,7 @@ function SignUp(props) {
       apiURL = process.env.REACT_APP_api_base;
   }  
   const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
@@ -25,6 +26,7 @@ function SignUp(props) {
     axios.post(`${apiURL}/signups`, {
 
         username: username,
+        name: name,
         password: password,
         confirm: confirm,
         email: email
@@ -66,7 +68,7 @@ function SignUp(props) {
   // }
   return (
     <div className="SignUp">
-      <h1>SignUp</h1>
+      <h1>Sign Up</h1>
       {/* <Form onSubmit={handleSubmit}> */}
       <Form>
         <Form.Group size="lg" controlId="username">
@@ -78,6 +80,19 @@ function SignUp(props) {
             onChange={(e) => setUsername(e.target.value)}
           />
           </Form.Group>
+
+          <Form.Group size="lg" controlId="name">
+          <p>Name</p>
+          <Form.Control
+            autoFocus
+            type="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </Form.Group>
+
+
+
         <Form.Group size="lg" controlId="email">
           <p>Email</p>
           <Form.Control
@@ -109,7 +124,7 @@ function SignUp(props) {
         {/* disabled={!validateForm()} */}
         <Button onClick={signUpS}>
 
-          SignUp
+          Sign Up
         </Button>
         <br/>
         <links className="loginbutton">

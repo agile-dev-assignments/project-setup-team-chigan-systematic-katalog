@@ -12,12 +12,9 @@ import axios from 'axios'
 
 function AddListingModal(props) {
   // test for command url 
-  const apiURL = () => {
-    if (process.env.REACT_APP_api_base){
-      return process.env.REACT_APP_api_base;
-    }else {
-      return "http://localhost:4000"
-    }
+  let apiURL = "http://localhost:4000"; 
+  if (process.env.REACT_APP_api_base) {
+      apiURL = process.env.REACT_APP_api_base;
   }
 
   const [show, setShow] = useState(false);
@@ -102,6 +99,7 @@ function AddListingModal(props) {
       member: props.member,
       album: props.album
     },
+    username: JSON.parse(localStorage.getItem("userInfo")).username,
     location: locationInput,
     shipTo: shipToInput,
     description: descriptionInput,

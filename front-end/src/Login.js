@@ -47,7 +47,9 @@ function Login(props) {
     //     userInfo: userInformation
         
     // })
+
    // history.push("/profile",{userInformation})
+
     // history.push("/profile")
       window.location.reload();
       // this.state = {

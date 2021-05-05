@@ -33,7 +33,7 @@ const Wishlist = (props) => {
     useEffect(() => {
       console.log('fetching photocards...')
 
-      axios.get(`${apiURL}/returnwishlist`)
+      axios.get(`${apiURL}/returnwishlist/`+localStorage.getItem("userId"))
 
         .then((response) => {
           setData(response.data)
