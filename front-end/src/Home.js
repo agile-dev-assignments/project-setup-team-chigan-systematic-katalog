@@ -61,7 +61,7 @@ const Home = (props) => {
         
         <form method="GET" action="/search">
           Search: <input type="text" name="name" className="rcorners"/>
-          <input type="submit" value="Search" className="rcorners"/>
+          <submit><input type="submit" value="Search" className="rcorners"/></submit>
         </form>
         <br/>
 

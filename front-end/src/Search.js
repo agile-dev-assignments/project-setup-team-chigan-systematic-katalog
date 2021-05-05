@@ -62,7 +62,7 @@ const Search = (props) => {
   return (
     <div className="Search">
       <h1>Search</h1>
-      <FilterModal />
+      {/* <FilterModal /> */} <br/>
 
       <Grid container direction="column" alignItems="left" justify="left">
         <form onSubmit={handleSubmit}>
@@ -71,19 +71,18 @@ const Search = (props) => {
         </form>
 
       </Grid>
-      <br></br>
-      <div className="center">
+      <Grid>
         <button onClick={(event)=>{
           handleFilter("boy_group");
-          }}>Boy Group</button>
+          }} className="rcorners">Boy Group</button>
         <button onClick={(event)=>{
           handleFilter("girl_group");
-          }}>Girl Group</button> 
+          }}className="rcorners">Girl Group</button> 
         <button onClick={(event)=>{
           handleFilter("solo");
-          }}>Solo</button>
+          }}className="rcorners">Solo</button>
         <br></br>
-      </div>
+      </Grid>
       
       {data.map(item => (
         <Link to={{
