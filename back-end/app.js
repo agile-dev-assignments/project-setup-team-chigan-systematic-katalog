@@ -128,35 +128,35 @@ app.get("/lookingfordata/:id", async (req, res) => {
   res.send(lookingfor);
 })
 
-app.post("/update", async (req, res) => {
+app.post("/update/:userId", async (req, res) => {
   
   res.status(200).json({ ok: true })
 
   //once user auth is complete, this line below will be replaced with this.user._id
-  if (User.find({ _id: req.body._id })) { //for now, searches to see this user exists, using this condition until user auth is fully implemented
-    console.log(req.body._id);//i tried req.body,req.params, id, _id
+  if (User.find({ _id: req.params.userId })) { //for now, searches to see this user exists, using this condition until user auth is fully implemented
+    //console.log(req.body._id);//i tried req.body,req.params, id, _id
     console.log("update api is hit")
     if (req.body.username != null) {
-      await User.findOneAndUpdate({ _id: req.params._id }, {username: req.body.username });  //use await before bc its a promise
+      await User.findOneAndUpdate({ _id: req.params.userId }, {username: req.body.username });  //use await before bc its a promise
       console.log("hello")
     }
     if (req.body.name != null) {
-      await User.findOneAndUpdate({ _id: "607f3995aec3658bd8c4af7b" }, { name: req.body.name });
+      await User.findOneAndUpdate({ _id: req.params.userId }, { name: req.body.name });
     }
     if (req.body.bio != null) {
-      await User.findOneAndUpdate({ _id: "607f3995aec3658bd8c4af7b" }, { bio: req.body.bio });
+      await User.findOneAndUpdate({ _id: req.params.userId }, { bio: req.body.bio });
     }
     if (req.body.venmo != null) {
-      await User.findOneAndUpdate({ _id: "607f3995aec3658bd8c4af7b" }, { venmo: req.body.venmo });
+      await User.findOneAndUpdate({ _id: req.params.userId }, { venmo: req.body.venmo });
     }
     if (req.body.email != null) {
-      await User.findOneAndUpdate({ _id: "607f3995aec3658bd8c4af7b" }, { email: req.body.email });
+      await User.findOneAndUpdate({ _id: req.params.userId }, { email: req.body.email });
     }
     if (req.body.number != null) {
-      await User.findOneAndUpdate({ _id: "607f3995aec3658bd8c4af7b" }, { phoneNum: req.body.number });
+      await User.findOneAndUpdate({ _id: req.params.userId }, { phoneNum: req.body.number });
     }
     if (req.body.password != null) {
-      await User.findOneAndUpdate({ _id: "607f3995aec3658bd8c4af7b" }, { password: req.body.password });
+      await User.findOneAndUpdate({ _id: req.params.userId }, { password: req.body.password });
     }
   }
 });

@@ -18,7 +18,7 @@ function PopupModalPassword() {
 
   const [input, setInput] = useState("");
   const handleSubmit = async (e) => {
-    await axios.post(`${apiURL}/update`,{password:input})
+    await axios.post(`${apiURL}/update/${localStorage.getItem("userId")}`,{password:input})
     .then((response) => {
       console.log(response);
     }, (error) => {

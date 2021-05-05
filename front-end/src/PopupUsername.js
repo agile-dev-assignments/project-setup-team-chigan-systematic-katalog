@@ -20,7 +20,7 @@ function PopupModalUsername() {
   const [id, setId] = useState(localStorage.getItem("userInfo") ? JSON.parse(localStorage.getItem("userInfo"))._id : "");
   const handleSubmit = async (e) => {
     console.log({id})
-    await axios.post(`${apiURL}/update`,{username:input}, {_id:id})
+    await axios.post(`${apiURL}/update/${localStorage.getItem("userId")}`,{username:input}, {_id:id})
     .then((response) => {
       console.log(response);
     }, (error) => {
