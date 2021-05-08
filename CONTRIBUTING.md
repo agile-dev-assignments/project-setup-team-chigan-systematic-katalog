@@ -29,7 +29,7 @@ Click the fork button in the repository and from that fork, clone the repository
 3. copy the link provided and run `git clone REPLACE_WITH_COPIED_LINK` in your local terminal to copy the outer repository onto your local computer
 4. git pull to make sure the repository has the most recent changes 
 5. request the two `.env` files from us for the database and upload APIs to work
-6. place the `.env` file with first word `REACT` in the `front-end` directory
+6. place the `.env` file with the first word `REACT` in the `front-end` directory
 7. place the `.env` file with the first word `URI` in the `back-end` directory
 
 ###### To build the front-end: 
