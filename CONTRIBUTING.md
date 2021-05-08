@@ -69,3 +69,8 @@ Click the fork button in the repository and from that fork, clone the repository
 10. `pm2 kill` to stop all processes
 
 To view deployed app, go to the link: http://134.209.223.119:3000/
+
+###### Continuouse Integration With Travis CI
+1. Every time a commit is pushed or a pull request has been made, a Travis CI build is automatically triggered.
+
+2. You can check the Travis CI build status page of our repository [here](https://travis-ci.com/github/agile-dev-assignments/project-setup-team-chigan-systematic-katalog) to see if the build passes or fails according to the return status. 

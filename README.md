@@ -100,6 +100,11 @@ Information and instructions about how to contribute to the project here: [CONTR
 
 To view deployed app, go to the link: http://134.209.223.119:3000/
 
+###### Continuouse Integration With Travis CI
+1. Every time a commit is pushed or a pull request has been made, a Travis CI build is automatically triggered.
+
+2. You can check the Travis CI build status page of our repository [here](https://travis-ci.com/github/agile-dev-assignments/project-setup-team-chigan-systematic-katalog) to see if the build passes or fails according to the return status. 
+
 ## Additional Links to Markdown documents
 [Project Proposal](https://github.com/agile-dev-assignments/project-proposal-jyn229/blob/main/README.md) — initial proposal and concept idea
 
