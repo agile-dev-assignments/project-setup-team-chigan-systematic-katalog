@@ -54,22 +54,49 @@ Information and instructions about how to contribute to the project here: [CONTR
 
 
 ## Instructions for Building and Testing 
-###### To run locally:
-`git clone` this repository onto your local computer.   
-Run the front-end: cd into the front-end directory and enter `npm start` in the terminal. Go to localhost:3000 to see website. 
+###### Before building app locally:
+1. press green code button at the top of this repository page
+2. copy the link provided and run `git clone REPLACE_WITH_COPIED_LINK` in your local terminal to copy the outer repository onto your local computer
+3. git pull to make sure the repository has the most recent changes 
+4. request the two `.env` files from us for the database and upload APIs to work
+5. place the `.env` file with the first word `REACT` in the `front-end` directory
+6. place the `.env` file with the first word `URI` in the `back-end` directory
 
-Run the back-end: cd into the back-end directory and enter `npm start`. Go to localhost:4000 to see backend GET/POST apis. 
+###### To build the front-end: 
+1. open a terminal on your local computer
+2. enter the command `cd project-setup-team-chigan-systematic-katalog/front-end/` in the terminal to go to the front-end directory
+3. enter the command `npm start` in your local terminal 
+4. go to localhost:3000 to see the front-end website
 
-Run front-end with back-end, open 2 terminals. Run `npm start` on the front-end in one terminal and run `npm start` on the back-end simutaneously in the other terminal. Go to localhost:3000 to see website with back-end.
+###### To build the back-end: 
+1. open a terminal on your local computer
+2. enter the command `cd project-setup-team-chigan-systematic-katalog/back-end/` in the terminal to go to the back-end directory
+3. enter `npm start` 
+4. go to localhost:4000 to see backend GET/POST apis
 
-To test the apis with our unit test, cd into the back-end direcotry and enter `npm test`. `ctrl + c` after you see the # passing to get overall stats.
+###### To build front-end with back-end:
+1. Open 2 local terminals 
+2. in the first terminal, enter the command `cd project-setup-team-chigan-systematic-katalog/back-end/` to go to the back-end directory
+3. enter `npm start` to build back-end
+4. in the second terminal, enter the command `cd project-setup-team-chigan-systematic-katalog/front-end/` to go to the front-end directory
+5. while keeping first terminal open and running, enter `npm start` to build front-end 
+6. go to localhost:3000 to see front-end with back-end build
 
-###### To deploy and view app on digital ocean: 
-ssh onto digital ocean ip
-`git clone` repository
-`cd` into the front-end folder and run `REACT_APP_api_base=http://134.209.223.119:4000 pm2 start npm -- start` to deploy front-end
-`cd` into the back-end folder and run `pm2 start server.js` to deploy back-end
-`pm2 kill` to stop all processes
+###### To test the apis with our unit tests 
+1. cd into the `back-end` directory  
+2. enter `npm test` to run tests
+3. `ctrl + c` after you see the # passing to get overall stats.
+
+###### To deploy and view app on digital ocean:
+1. request to be added to our digital ocean account
+2. `ssh` onto digital ocean ip using the provided username and password from us
+4. if repo do not exist already, `git clone` repository onto the server
+5. if repo exists, `git pull` to get most recent changes
+6. `cd` into the front-end folder
+7. run `REACT_APP_api_base=http://134.209.223.119:4000 pm2 start npm -- start` to deploy front-end 
+8. `cd` into the back-end folder  
+9. `run pm2 start server.js` to deploy back-end 
+10. `pm2 kill` to stop all processes
 
 To view deployed app, go to the link: http://134.209.223.119:3000/
 
