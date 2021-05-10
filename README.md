@@ -95,7 +95,7 @@ Information and instructions about how to contribute to the project here: [CONTR
 6. `cd` into the front-end folder
 7. run `REACT_APP_api_base=http://134.209.223.119:4000 pm2 start npm -- start` to deploy front-end 
 8. `cd` into the back-end folder  
-9. `run pm2 start server.js` to deploy back-end 
+9. run `pm2 start server.js` to deploy back-end 
 10. `pm2 kill` to stop all processes
 
 To view deployed app, go to the link: http://134.209.223.119:3000/
