@@ -26,7 +26,7 @@ const Search = (props) => {
   const [query, setQuery] = React.useState('');
 
   useEffect(() => {
-    axios.get(`${apiURL}/photocarddata`).then(response => {
+    axios.get(`${apiURL}/search`).then(response => {
       setData(response.data)
     })
   }, [])
