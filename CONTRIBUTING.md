@@ -23,3 +23,54 @@ Any disagreements or conflicts will be resolved through clear communication and 
 Click the fork button in the repository and from that fork, clone the repository locally from Github through terminal using **git clone URL**. Go to the location of the fork you cloned on your local computer with the **cd** command and type **git remote -v** which you should see the current configured remote repository for the fork. Then type **git remote add upstream URL** and paste the same cloned URL so that the fork is synced with the upstream repository. Next create branches for your edits with **git checkout -b nameofbranch**.
 
 ### Instructions for Building and Testing  
+###### Before building app locally:
+1. go to the [the outer repository](https://github.com/agile-dev-assignments/project-setup-team-chigan-systematic-katalog)
+2. press green code button
+3. copy the link provided and run `git clone REPLACE_WITH_COPIED_LINK` in your local terminal to copy the outer repository onto your local computer
+4. git pull to make sure the repository has the most recent changes 
+5. request the two `.env` files from us for the database and upload APIs to work
+6. place the `.env` file with the first word `REACT` in the `front-end` directory
+7. place the `.env` file with the first word `URI` in the `back-end` directory
+
+###### To build the front-end: 
+1. open a terminal on your local computer
+2. enter the command `cd project-setup-team-chigan-systematic-katalog/front-end/` in the terminal to go to the front-end directory
+3. enter the command `npm start` in your local terminal 
+4. go to localhost:3000 to see the front-end website
+
+###### To build the back-end: 
+1. open a terminal on your local computer
+2. enter the command `cd project-setup-team-chigan-systematic-katalog/back-end/` in the terminal to go to the back-end directory
+3. enter `npm start` 
+4. go to localhost:4000 to see backend GET/POST apis
+
+###### To build front-end with back-end:
+1. Open 2 local terminals 
+2. in the first terminal, enter the command `cd project-setup-team-chigan-systematic-katalog/back-end/` to go to the back-end directory
+3. enter `npm start` to build back-end
+4. in the second terminal, enter the command `cd project-setup-team-chigan-systematic-katalog/front-end/` to go to the front-end directory
+5. while keeping first terminal open and running, enter `npm start` to build front-end 
+6. go to localhost:3000 to see front-end with back-end build
+
+###### To test the apis with our unit tests 
+1. cd into the `back-end` directory  
+2. enter `npm test` to run tests
+3. `ctrl + c` after you see the # passing to get overall stats.
+
+###### To deploy and view app on digital ocean:
+1. request to be added to our digital ocean account
+2. `ssh` onto digital ocean ip using the provided username and password from us
+4. if repo do not exist already, `git clone` repository onto the server
+5. if repo exists, `git pull` to get most recent changes
+6. `cd` into the front-end folder
+7. run `REACT_APP_api_base=http://134.209.223.119:4000 pm2 start npm -- start` to deploy front-end 
+8. `cd` into the back-end folder  
+9. `run pm2 start server.js` to deploy back-end 
+10. `pm2 kill` to stop all processes
+
+To view deployed app, go to the link: http://134.209.223.119:3000/
+
+###### Continuouse Integration With Travis CI
+1. Every time a commit is pushed or a pull request has been made, a Travis CI build is automatically triggered.
+
+2. You can check the Travis CI build status page of our repository [here](https://travis-ci.com/github/agile-dev-assignments/project-setup-team-chigan-systematic-katalog) to see if the build passes or fails according to the return status. 
